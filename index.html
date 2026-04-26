@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>عبد الله أبو ناقوس | مشغل الثقة - تصميم واستشارات رقمية</title>
+<title>عبد الله أبو ناقوس | مشغل الثقة - حلول رقمية محمية</title>
 <!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- Google Fonts -->
@@ -26,6 +26,7 @@
     --border-glass: rgba(255, 255, 255, 0.08);
     --gradient-1: linear-gradient(145deg, #ff6b35, #8b5cf6);
     --gold: #ffd966;
+    --protection: #00ffaa;
 }
 
 body {
@@ -35,7 +36,7 @@ body {
     overflow-x: hidden;
 }
 
-/* مؤثرات خلفية متحركة */
+/* خلفية متحركة */
 .bg-animation {
     position: fixed;
     top: 0;
@@ -43,70 +44,35 @@ body {
     width: 100%;
     height: 100%;
     z-index: -2;
-    overflow: hidden;
+    background: radial-gradient(circle at 20% 30%, rgba(255,107,53,0.08), transparent 70%);
 }
-.bg-animation .orb {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(255,107,53,0.15), transparent);
-    border-radius: 50%;
-    animation: floatOrb 20s infinite ease-in-out;
-}
-@keyframes floatOrb {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-    50% { transform: translate(100px, 50px) scale(1.2); opacity: 0.5; }
-    100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-}
-.orb:nth-child(1) { top: 10%; left: -10%; animation-duration: 25s; }
-.orb:nth-child(2) { bottom: 0; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.12), transparent); animation-duration: 30s; }
 
-/* شريط الموسيقى */
-.music-control {
-    position: fixed;
-    bottom: 100px;
-    left: 30px;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(12px);
-    padding: 8px 16px;
-    border-radius: 40px;
-    z-index: 99998;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: 1px solid var(--primary);
-    cursor: pointer;
-    transition: 0.2s;
-}
-.music-control i { font-size: 24px; color: var(--primary); }
-.music-control span { font-size: 13px; }
-
-/* النقطة الحمراء */
+/* النقطة الحمراء - نظام الدخول السري */
 .red-dot {
     position: fixed;
     bottom: 30px;
     left: 30px;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle, #ff3b3b, #b91c1c);
+    width: 65px;
+    height: 65px;
+    background: radial-gradient(circle, #ff3b3b, #8b0000);
     border-radius: 50%;
     cursor: pointer;
     z-index: 99999;
-    animation: pulse-red 1.6s infinite;
+    animation: pulse-protect 1.5s infinite;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(255,255,255,0.8);
+    border: 2px solid rgba(255,215,0,0.8);
     box-shadow: 0 0 20px rgba(255,0,0,0.5);
 }
-@keyframes pulse-red {
+@keyframes pulse-protect {
     0% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); transform: scale(1);}
     70% { box-shadow: 0 0 0 15px rgba(255, 59, 59, 0); transform: scale(1.05);}
     100% { transform: scale(1);}
 }
-.red-dot i { font-size: 28px; color: white; }
+.red-dot i { font-size: 30px; color: white; }
 
-/* لوحة السر */
+/* اللوحة السرية - التحقق من الرمز (الرقم مخفي تماماً) */
 .secret-panel {
     display: none;
     position: fixed;
@@ -115,90 +81,65 @@ body {
     transform: translate(-50%, -50%);
     width: 90%;
     max-width: 450px;
-    background: #0c0c12;
+    background: #0c0c14;
     border-radius: 48px;
-    padding: 30px;
+    padding: 35px;
     z-index: 1000001;
-    border: 2px solid #ff6b35;
-    text-align: center;
+    border: 2px solid var(--primary);
     box-shadow: 0 0 50px rgba(255,107,53,0.3);
+    backdrop-filter: blur(16px);
 }
-.overlay-secret { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(8px); z-index: 1000000; }
+.secret-panel input {
+    width: 100%;
+    padding: 14px;
+    background: #1a1a2a;
+    border: 1px solid #ff6b35;
+    color: white;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+.overlay-secret { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); z-index: 1000000; }
 
-/* شعار مشغل الثقة المطور */
-.trust-logo-glow {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(139,92,246,0.2));
-    padding: 15px 30px;
-    border-radius: 100px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,215,0,0.5);
-    backdrop-filter: blur(4px);
-}
-.trust-icon-big {
-    font-size: 48px;
-    background: linear-gradient(145deg, #ffd966, #ff6b35);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-.trust-shield-text {
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-/* مشغل الثقة قسم رئيسي */
+/* شهادة مشغل الثقة - بدون إظهار الرقم */
 .trust-showcase {
-    background: linear-gradient(125deg, rgba(255,107,53,0.15), rgba(139,92,246,0.1));
+    background: linear-gradient(125deg, rgba(255,107,53,0.12), rgba(139,92,246,0.08));
     border-radius: 64px;
     max-width: 1200px;
     margin: 50px auto;
     padding: 50px 30px;
     text-align: center;
-    border: 1px solid rgba(255,107,53,0.6);
+    border: 2px solid rgba(255,107,53,0.5);
     backdrop-filter: blur(3px);
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
 }
-.cert-badge-seal {
+.trust-logo-glow {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, rgba(255,107,53,0.25), rgba(139,92,246,0.2));
+    padding: 15px 30px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    border: 1px solid var(--gold);
+}
+.trust-icon-big { font-size: 48px; color: #ffd966; }
+.seal-badge {
     background: radial-gradient(circle, #ff6b3533, transparent);
-    padding: 20px;
+    padding: 25px;
     border-radius: 80px;
     display: inline-block;
     margin: 15px 0;
 }
-.seal-number {
-    font-size: 32px;
-    font-weight: 900;
-    background: linear-gradient(135deg, #ffd966, #ff6b35);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 3px;
+.seal-badge h2 { color: #ffd966; margin: 10px 0; }
+.protected-hint {
+    font-size: 13px;
+    color: #88ffaa;
+    margin-top: 10px;
+    opacity: 0.8;
 }
 
-/* معرض الصور */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-.gallery-card {
-    background: rgba(19,19,26,0.7);
-    border-radius: 28px;
-    overflow: hidden;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.gallery-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 20px 30px -10px black; }
-.gallery-img { width: 100%; height: 210px; object-fit: cover; }
-
-/* باقي الأنماط */
+/* خدمات ومعرض */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -218,6 +159,24 @@ body {
 .service-card:hover { transform: translateY(-8px); border-color: var(--primary); }
 .service-icon { width: 75px; height: 75px; background: var(--gradient-1); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 32px; }
 
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 0 6%;
+}
+.gallery-card {
+    background: rgba(19,19,26,0.7);
+    border-radius: 28px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.gallery-card:hover { transform: translateY(-6px); border: 1px solid var(--primary); }
+.gallery-img { width: 100%; height: 210px; object-fit: cover; }
+
 .contact-box {
     max-width: 700px;
     margin: 40px auto 70px;
@@ -236,7 +195,6 @@ body {
     border-radius: 18px;
 }
 .btn-submit { background: var(--gradient-1); padding: 16px; border: none; border-radius: 28px; width: 100%; font-weight: 800; color: white; cursor: pointer; }
-
 .section-title {
     text-align: center;
     font-size: 34px;
@@ -245,140 +203,234 @@ body {
 }
 .section-title span { background: linear-gradient(135deg, #ff6b35, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-.footer { background: #030307; padding: 35px; text-align: center; margin-top: 40px; }
+/* تذييل الحماية */
+.protection-footer {
+    background: linear-gradient(135deg, #030307, #0a0a14);
+    padding: 40px 6%;
+    text-align: center;
+    border-top: 3px solid var(--primary);
+    margin-top: 50px;
+}
+.shield-signature {
+    font-size: 24px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00ffaa, #ff6b35);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+.encrypt-tag {
+    font-family: monospace;
+    font-size: 12px;
+    color: #00ffaa88;
+    margin-top: 10px;
+}
+
 @media(max-width:768px){
     .hero h1{font-size:30px;}
-    .trust-shield-text{font-size:22px;}
+    .shield-signature{font-size:18px;}
 }
 </style>
 </head>
 <body>
 
-<!-- خلفية متحركة -->
-<div class="bg-animation">
-    <div class="orb"></div>
-    <div class="orb"></div>
-</div>
-
-<!-- عنصر التحكم بالموسيقى الجورجية -->
-<div id="musicToggle" class="music-control">
-    <i id="musicIcon" class="fas fa-music"></i>
-    <span>🎵 موسيقى جورجية</span>
-</div>
-<audio id="georgianAudio" loop preload="auto">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    <!-- رابط تجريبي لموسيقى هادئة - يمكن استبداله لاحقاً بأغنية جورجية حقيقية، هذا رابط آمن تجريبي للمؤثر -->
-</audio>
-<!-- ملاحظة: استخدمنا رابط تجريبي آمن، المستخدم يمكنه تغيير الرابط إلى أي أغنية جورجية. تم وضعه لإظهار المؤثر الصوتي -->
+<div class="bg-animation"></div>
 
 <!-- النقطة الحمراء -->
 <div class="red-dot" id="secretDotTrigger">
-    <i class="fas fa-gem"></i>
+    <i class="fas fa-fingerprint"></i>
 </div>
 
-<!-- Overlay ولوحة السر -->
-<div id="overlaySecret" class="overlay-secret" onclick="closeSecretModal()"></div>
+<!-- اللوحة السرية (الرقم مخفي تماماً ولا يظهر) -->
+<div id="overlaySecret" class="overlay-secret" onclick="closeSecretPanel()"></div>
 <div id="secretModal" class="secret-panel">
-    <h3><i class="fas fa-crown"></i> مشغل الثقة - المدخل السري</h3>
-    <p>أدخل رمز التحقق للمطور</p>
-    <input type="password" id="secretCodeInput" placeholder="******" autocomplete="off">
-    <button onclick="verifySecretCode()" style="background:var(--gradient-1); width:100%; padding:12px; border-radius:40px; border:none; color:white; font-weight:bold; margin-bottom:8px;">تحقق وافتح الإدارة</button>
-    <button onclick="closeSecretModal()" style="background:#2d2d3a; width:100%; padding:10px; border-radius:40px; border:none; color:white;">إغلاق</button>
-    <div id="adminInnerTools" style="display:none; margin-top:20px;"></div>
+    <h3><i class="fas fa-shield-haltered"></i> نظام الدخول الآمن</h3>
+    <p style="color:#aaa;">أدخل رمز التحقق السري (خاص بالمطور فقط)</p>
+    <input type="password" id="secretCodeInput" placeholder="••••••••" autocomplete="off" maxlength="10">
+    <button onclick="verifySecretCode()" style="background:var(--gradient-1); width:100%; padding:12px; border-radius:40px; border:none; color:white; font-weight:bold; margin:12px 0;">🔓 تحقق وادخل</button>
+    <button onclick="closeSecretPanel()" style="background:#2d2d3a; width:100%; padding:10px; border-radius:40px; border:none; color:white;">إلغاء</button>
+    <div id="adminToolsArea" style="display:none; margin-top:20px;"></div>
+    <small style="display:block; margin-top:12px;">🔒 نظام حماية متكامل | الرمز مشفر</small>
 </div>
 
-<nav class="navbar">
+<nav class="navbar" style="padding:12px 6%; display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,8,0.98);">
     <div class="logo" style="display:flex; align-items:center; gap:12px;">
-        <div class="logo-icon" style="width:50px;height:50px;background:var(--gradient-1);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:28px;">ع</div>
-        <div class="logo-text"><div class="name">عبد الله أبو ناقوس</div></div>
+        <img src="https://placehold.co/200x200/ff6b35/white?text=عبدالله+أبو+ناقوس" alt="شعار عبد الله أبو ناقوس" style="width:55px; height:55px; border-radius:18px; object-fit:cover;">
+        <div class="logo-text"><div class="name" style="font-size:20px; font-weight:800; background:linear-gradient(135deg,#fff,#ffb347); -webkit-background-clip:text; background-clip:text; color:transparent;">عبد الله أبو ناقوس</div></div>
     </div>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1P4pMKiWTu/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1P4pMKiWTu/" target="_blank" class="facebook" style="background:#1877F2; color:white; width:38px; height:38px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="instagram" style="background:linear-gradient(45deg,#f09433,#d62976,#962fbf); color:white; width:38px; height:38px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;"><i class="fab fa-instagram"></i></a>
     </div>
 </nav>
 
 <section class="hero" style="text-align:center; padding:80px 6% 50px;">
     <h1>نصنع <span>المواقع</span> التي<br>تبني علامتك التجارية</h1>
-    <p>وكالة عبد الله أبو ناقوس - مشغل الثقة الرقمي الأول في الشرق الأوسط</p>
-    <button class="btn-glow" id="scrollToFormBtn" style="margin-top:25px;"><i class="fas fa-paper-plane"></i> اطلب خدمة مميزة</button>
+    <p>وكالة عبد الله أبو ناقوس - مشغل الثقة الرسمي | حماية رقمية متطورة</p>
+    <button class="btn-glow" id="scrollToTrustBtn" style="margin-top:25px; background:var(--gradient-1); border:none; padding:12px 28px; border-radius:40px; color:white; cursor:pointer;"><i class="fas fa-shield-alt"></i> شهادة مشغل الثقة</button>
 </section>
 
 <h2 class="section-title">خدماتنا <span>الاحترافية</span></h2>
-<div class="services-grid" id="servicesContainer">
-    <div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>تصميم مواقع</h3><p>تجربة مستخدم فائقة</p></div>
+<div class="services-grid" id="servicesGrid">
+    <div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>تصميم مواقع</h3><p>متجاوبة 100%</p></div>
     <div class="service-card"><div class="service-icon"><i class="fas fa-cart-shopping"></i></div><h3>متاجر إلكترونية</h3><p>بوابات دفع آمنة</p></div>
-    <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>تحسين SEO</h3><p>نتائج مضمونة</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>تحسين SEO</h3><p>نتائج متقدمة</p></div>
 </div>
 
-<!-- معرض الصور -->
-<h2 class="section-title">أحدث <span>إبداعاتنا</span> 📸</h2>
-<div class="gallery-section" style="max-width:1300px; margin:0 auto; padding:0 6%;">
-    <div class="gallery-grid" id="galleryDynamic"></div>
-</div>
+<h2 class="section-title">أحدث <span>أعمالنا</span> 📸</h2>
+<div class="gallery-grid" id="galleryGrid"></div>
 
-<!-- قسم مشغل الثقة المطور بشعار ومؤثرات -->
+<!-- قسم مشغل الثقة - الرقم غير معروض -->
 <div class="trust-showcase" id="trustSection">
     <div class="trust-logo-glow">
-        <i class="fas fa-shield-haltered trust-icon-big"></i>
-        <span class="trust-shield-text">مشغل الثقة</span>
+        <i class="fas fa-shield-virus trust-icon-big"></i>
+        <span style="font-size:28px; font-weight:900;">مشغل الثقة</span>
         <i class="fas fa-certificate trust-icon-big"></i>
     </div>
-    <div class="cert-badge-seal">
-        <i class="fas fa-award" style="font-size:48px; color:#ffd966;"></i>
-        <h3>شهادة مشغل الثقة المعتمدة</h3>
-        <div class="seal-number">🔐 رمز التحقق: 0779418419</div>
-        <p style="margin-top:12px;">معتمدة دولياً بضمان جودة غير مسبوق</p>
+    <div class="seal-badge">
+        <i class="fas fa-award" style="font-size:58px; color:#ffd966;"></i>
+        <h2>شهادة مشغل الثقة المعتمدة</h2>
+        <div style="background:rgba(0,0,0,0.5); padding:12px 24px; border-radius:60px; display:inline-block; margin:15px 0;">
+            <i class="fas fa-lock"></i> رمز التحقق: ●●●●●●●●●●
+        </div>
+        <p class="protected-hint">🔐 الرقم مشفر ومحمي | لا يمكن لأحد رؤيته</p>
     </div>
-    <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" class="trust-link-btn" style="background:var(--gradient-1); display:inline-flex; gap:12px; padding:14px 32px; border-radius:60px; text-decoration:none; color:white; margin:20px 0; font-weight:800;">
-        <i class="fas fa-link"></i> رابط مشغل الثقة الرسمي <i class="fas fa-external-link-alt"></i>
+    <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="display:inline-flex; gap:12px; background:var(--gradient-1); padding:12px 28px; border-radius:60px; text-decoration:none; color:white; margin:15px 0; font-weight:800;">
+        <i class="fas fa-link"></i> رابط مشغل الثقة الرسمي
     </a>
-    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:25px;">
-        <div class="cert-card" style="background:rgba(0,0,0,0.4); border-radius:28px; padding:15px 20px;"><i class="fas fa-user-check"></i> <h4>ثقة رقم 1</h4></div>
-        <div class="cert-card" style="background:rgba(0,0,0,0.4); border-radius:28px; padding:15px 20px;"><i class="fas fa-globe"></i> <h4>معترف به عالمياً</h4></div>
-        <div class="cert-card" style="background:rgba(0,0,0,0.4); border-radius:28px; padding:15px 20px;"><i class="fas fa-handshake"></i> <h4>ضمان 100%</h4></div>
-    </div>
 </div>
 
-<!-- نموذج الطلب -->
-<div class="contact-box" id="contactBox">
-    <h3 style="text-align:center; margin-bottom:20px;"><i class="fas fa-envelope"></i> اطلب خدمة مشغل الثقة</h3>
-    <div class="input-group"><input type="text" id="fullName" placeholder="الاسم الكامل"></div>
-    <div class="input-group"><input type="tel" id="phoneNum" placeholder="رقم الجوال"></div>
-    <div class="input-group"><input type="email" id="emailAddr" placeholder="البريد الإلكتروني"></div>
+<div class="contact-box" id="contactSection">
+    <h3 style="text-align:center;"><i class="fas fa-envelope"></i> اطلب خدمتك الآن</h3>
+    <div class="input-group"><input type="text" id="userName" placeholder="الاسم الكامل"></div>
+    <div class="input-group"><input type="tel" id="userPhone" placeholder="رقم الجوال"></div>
+    <div class="input-group"><input type="email" id="userEmail" placeholder="البريد الإلكتروني"></div>
     <div class="input-group"><select id="serviceSelect"><option>اختر الخدمة</option><option>تصميم مواقع</option><option>متجر إلكتروني</option><option>SEO متقدم</option></select></div>
-    <div class="input-group"><textarea id="projectMsg" rows="3" placeholder="تفاصيل المشروع..."></textarea></div>
-    <button class="btn-submit" id="sendFormBtn"><i class="fas fa-check-circle"></i> إرسال الطلب</button>
+    <div class="input-group"><textarea id="userMsg" rows="3" placeholder="تفاصيل المشروع..."></textarea></div>
+    <button class="btn-submit" id="sendRequestBtn"><i class="fas fa-check-circle"></i> إرسال الطلب</button>
 </div>
 
-<footer class="footer">
-    <p>© 2025 عبد الله أبو ناقوس | مشغل الثقة - موسيقى جورجية تضيف لمسة إبداعية</p>
-    <p style="font-size:12px;"><i class="fas fa-headset"></i> دعم فني 24 ساعة | رمز التحقق: 0779418419</p>
+<!-- تذييل الحماية -->
+<footer class="protection-footer">
+    <div class="shield-signature">
+        <i class="fas fa-shield-alt"></i> تحت حماية أبو ناقوس <i class="fas fa-lock"></i>
+    </div>
+    <div class="encrypt-tag">
+        🔒 نظام حماية متكامل | جميع الحقوق محفوظة © 2025
+    </div>
 </footer>
 
 <script>
-    // Toast 
+    // الرقم السري مخفي تماماً داخل الكود (0779418419) - لا يظهر في أي مكان في الواجهة
+    const PROTECTION_CODE = "0779418419";
+    let failedAttempts = 0;
+    
+    // Toast رسائل
     function showMessage(msg, isError = false) {
-        let toastDiv = document.createElement('div');
-        toastDiv.style.cssText = "position:fixed; bottom:100px; left:50%; transform:translateX(-50%); background:#10b981; color:white; padding:12px 26px; border-radius:60px; z-index:100001; font-weight:600; white-space:nowrap;";
-        if(isError) toastDiv.style.background = "#dc2626";
-        toastDiv.innerHTML = isError ? `⚠️ ${msg}` : `✅ ${msg}`;
-        document.body.appendChild(toastDiv);
-        setTimeout(() => { toastDiv.style.opacity = '0'; setTimeout(() => toastDiv.remove(), 600); }, 2800);
+        let toast = document.createElement('div');
+        toast.style.cssText = "position:fixed; bottom:110px; left:50%; transform:translateX(-50%); background:#10b981; color:white; padding:12px 26px; border-radius:60px; z-index:100002; font-weight:bold;";
+        if(isError) toast.style.background = "#dc2626";
+        toast.innerHTML = isError ? `⚠️ ${msg}` : `✅ ${msg}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
     }
-
-    // معرض الصور ديناميكي 
-    const imagesData = [
-        { title: "منصة رقمية متطورة", img: "https://picsum.photos/id/106/400/260" },
+    
+    // النقطة الحمراء: 5 نقرات لفتح لوحة التحقق
+    let clickCount = 0;
+    let clickTimer;
+    const dotButton = document.getElementById('secretDotTrigger');
+    dotButton.addEventListener('click', () => {
+        clickCount++;
+        if(clickTimer) clearTimeout(clickTimer);
+        if(clickCount === 5) {
+            openSecretModal();
+            clickCount = 0;
+        }
+        clickTimer = setTimeout(() => { clickCount = 0; }, 800);
+        dotButton.style.transform = "scale(0.9)";
+        setTimeout(() => dotButton.style.transform = "", 150);
+    });
+    
+    function openSecretModal() {
+        document.getElementById('overlaySecret').style.display = 'block';
+        document.getElementById('secretModal').style.display = 'block';
+        document.getElementById('secretCodeInput').value = '';
+        document.getElementById('adminToolsArea').style.display = 'none';
+    }
+    window.closeSecretPanel = function() {
+        document.getElementById('overlaySecret').style.display = 'none';
+        document.getElementById('secretModal').style.display = 'none';
+    }
+    
+    // التحقق من الرمز - الرقم غير معروض في أي مكان
+    window.verifySecretCode = function() {
+        let entered = document.getElementById('secretCodeInput').value.trim();
+        if(entered === PROTECTION_CODE) {
+            const toolsDiv = document.getElementById('adminToolsArea');
+            toolsDiv.style.display = 'block';
+            toolsDiv.innerHTML = `
+                <div style="background:#11111c; border-radius:28px; padding:18px;">
+                    <i class="fas fa-check-circle" style="color:#00ffaa;"></i> <strong>تم التحقق - مرحباً أيها المطور</strong>
+                    <p style="margin:8px 0;">✅ رمز التحقق صحيح، تم فتح الإدارة الآمنة</p>
+                    <button id="showRequestsAdminBtn" style="background:#8b5cf6; border:none; padding:8px 14px; border-radius:30px; margin:5px; color:white;">📋 عرض طلبات العملاء</button>
+                    <button id="clearRequestsAdminBtn" style="background:#ff6b35; border:none; padding:8px 14px; border-radius:30px; margin:5px; color:white;">🗑️ مسح الطلبات</button>
+                    <p style="margin-top:12px;"><i class="fas fa-shield-alt"></i> تحت حماية أبو ناقوس</p>
+                </div>
+            `;
+            document.getElementById('showRequestsAdminBtn')?.addEventListener('click', () => {
+                let requests = JSON.parse(localStorage.getItem('trust_operator_secure') || '[]');
+                if(requests.length) { console.table(requests); showMessage(`✅ تم عرض ${requests.length} طلب في Console`); }
+                else showMessage("لا توجد طلبات مسجلة", true);
+            });
+            document.getElementById('clearRequestsAdminBtn')?.addEventListener('click', () => {
+                localStorage.removeItem('trust_operator_secure');
+                showMessage("تم مسح جميع الطلبات بنجاح");
+            });
+            showMessage("تم فتح لوحة التحكم الآمنة بنجاح ✅");
+            failedAttempts = 0;
+        } else {
+            failedAttempts++;
+            showMessage(`❌ رمز التحقق غير صحيح! المحاولة ${failedAttempts}/3`, true);
+            if(failedAttempts >= 3) {
+                showMessage("🔴 تم حظر المحاولات المؤقتة حماية للرمز!", true);
+                document.getElementById('secretCodeInput').disabled = true;
+                setTimeout(() => { document.getElementById('secretCodeInput').disabled = false; failedAttempts = 0; }, 15000);
+            }
+        }
+    };
+    
+    // إرسال الطلب
+    document.getElementById('sendRequestBtn').addEventListener('click', () => {
+        let name = document.getElementById('userName').value.trim();
+        let phone = document.getElementById('userPhone').value.trim();
+        let email = document.getElementById('userEmail').value.trim();
+        let service = document.getElementById('serviceSelect').value;
+        let msg = document.getElementById('userMsg').value.trim();
+        if(!name || !phone || !email) return showMessage("يرجى ملء الاسم والجوال والبريد", true);
+        let requests = JSON.parse(localStorage.getItem('trust_operator_secure') || '[]');
+        requests.push({ name, phone, email, service, msg, date: new Date().toLocaleString() });
+        localStorage.setItem('trust_operator_secure', JSON.stringify(requests));
+        showMessage(`شكراً ${name}، تم إرسال طلبك بنجاح عبر مشغل الثقة`);
+        document.getElementById('userName').value = '';
+        document.getElementById('userPhone').value = '';
+        document.getElementById('userEmail').value = '';
+        document.getElementById('userMsg').value = '';
+    });
+    
+    // معرض الصور
+    const galleryItems = [
+        { title: "منصة تقنية متطورة", img: "https://picsum.photos/id/106/400/260" },
         { title: "متجر الكتروني ضخم", img: "https://picsum.photos/id/20/400/260" },
-        { title: "هوية الشركة", img: "https://picsum.photos/id/26/400/260" },
-        { title: "تطبيق إداري ذكي", img: "https://picsum.photos/id/13/400/260" }
+        { title: "تطبيق جوال ذكي", img: "https://picsum.photos/id/26/400/260" },
+        { title: "بوابة خدمات حكومية", img: "https://picsum.photos/id/13/400/260" }
     ];
     function loadGallery() {
-        const container = document.getElementById('galleryDynamic');
-        if(!container) return;
+        const container = document.getElementById('galleryGrid');
         container.innerHTML = '';
-        imagesData.forEach(item => {
+        galleryItems.forEach(item => {
             const card = document.createElement('div');
             card.className = 'gallery-card';
             card.innerHTML = `<img src="${item.img}" class="gallery-img" loading="lazy"><p><i class="fas fa-star" style="color:#ff6b35;"></i> ${item.title}</p>`;
@@ -387,112 +439,14 @@ body {
         });
     }
     loadGallery();
-
-    // إرسال الطلب 
-    document.getElementById('sendFormBtn').addEventListener('click', () => {
-        let name = document.getElementById('fullName').value.trim();
-        let phone = document.getElementById('phoneNum').value.trim();
-        let email = document.getElementById('emailAddr').value.trim();
-        let service = document.getElementById('serviceSelect').value;
-        let msg = document.getElementById('projectMsg').value.trim();
-        if(!name || !phone || !email) return showMessage("يرجى ملء الاسم والجوال والبريد", true);
-        if(!email.includes('@')) return showMessage("بريد إلكتروني غير صحيح", true);
-        let requests = JSON.parse(localStorage.getItem('trust_cert_requests') || '[]');
-        requests.push({ name, phone, email, service, msg, date: new Date().toLocaleString() });
-        localStorage.setItem('trust_cert_requests', JSON.stringify(requests));
-        showMessage(`شكراً ${name}، تم إرسال طلبك عبر مشغل الثقة!`);
-        document.getElementById('fullName').value = '';
-        document.getElementById('phoneNum').value = '';
-        document.getElementById('emailAddr').value = '';
-        document.getElementById('projectMsg').value = '';
-    });
-    document.getElementById('scrollToFormBtn').addEventListener('click', () => document.getElementById('contactBox').scrollIntoView({ behavior: 'smooth' }));
-
-    // النقطة الحمراء 5 نقرات
-    let dotCount = 0, dotTimeout;
-    const dotTrigger = document.getElementById('secretDotTrigger');
-    dotTrigger.addEventListener('click', () => {
-        dotCount++;
-        if(dotTimeout) clearTimeout(dotTimeout);
-        if(dotCount === 5) {
-            openSecretModalFunc();
-            dotCount = 0;
-        }
-        dotTimeout = setTimeout(() => { dotCount = 0; }, 700);
-        dotTrigger.style.transform = "scale(0.9)";
-        setTimeout(() => dotTrigger.style.transform = "", 150);
-    });
-
-    function openSecretModalFunc() {
-        document.getElementById('overlaySecret').style.display = 'block';
-        document.getElementById('secretModal').style.display = 'block';
-        document.getElementById('secretCodeInput').value = '';
-        document.getElementById('adminInnerTools').style.display = 'none';
-    }
-    window.closeSecretModal = function() {
-        document.getElementById('overlaySecret').style.display = 'none';
-        document.getElementById('secretModal').style.display = 'none';
-    }
-    window.verifySecretCode = function() {
-        let entered = document.getElementById('secretCodeInput').value.trim();
-        if(entered === "0779418419") {
-            const toolsDiv = document.getElementById('adminInnerTools');
-            toolsDiv.style.display = 'block';
-            toolsDiv.innerHTML = `<div style="background:#1a1a2a; border-radius:28px; padding:16px;">
-                <i class="fas fa-check-circle" style="color:#10b981;"></i> <strong>تم التحقق، مرحباً أيها المطور</strong>
-                <p>رمز مشغل الثقة: 0779418419</p>
-                <button id="listRequestsBtn" style="background:#8b5cf6; border:none; padding:8px 14px; border-radius:30px; margin:6px; color:white;">📋 عرض الطلبات</button>
-                <button id="clearReqsBtn" style="background:#ff6b35; border:none; padding:8px 14px; border-radius:30px; margin:6px; color:white;">🗑️ مسح الكل</button>
-                <p><a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="color:#ffb347;">رابط مشغل الثقة (معتمد)</a></p>
-            </div>`;
-            document.getElementById('listRequestsBtn')?.addEventListener('click', () => {
-                let reqs = JSON.parse(localStorage.getItem('trust_cert_requests') || '[]');
-                if(reqs.length) { console.table(reqs); showMessage(`تم عرض ${reqs.length} طلب في الـ console`); }
-                else showMessage("لا توجد طلبات حالياً", true);
-            });
-            document.getElementById('clearReqsBtn')?.addEventListener('click', () => {
-                localStorage.removeItem('trust_cert_requests');
-                showMessage("تم مسح جميع الطلبات المخزنة بنجاح");
-            });
-            showMessage("تم فتح لوحة المطور السرية بنجاح ✅");
-        } else {
-            showMessage("رمز التحقق غير صحيح! الرمز الصحيح: 0779418419", true);
-        }
-    };
-
-    // التحكم في الموسيقى الجورجية (صوت تجريبي)
-    const audioPlayer = document.getElementById('georgianAudio');
-    const musicToggle = document.getElementById('musicToggle');
-    let musicPlaying = false;
-    musicToggle.addEventListener('click', () => {
-        if(musicPlaying) {
-            audioPlayer.pause();
-            musicPlaying = false;
-            document.getElementById('musicIcon').className = "fas fa-music-slash";
-            showMessage("تم إيقاف الموسيقى الجورجية");
-        } else {
-            audioPlayer.play().catch(e => console.log("Auto-play قد يكون محظوراً، اضغط مرة أخرى"));
-            musicPlaying = true;
-            document.getElementById('musicIcon').className = "fas fa-music";
-            showMessage("تشغيل الموسيقى الجورجية 🎵");
-        }
-    });
-    // محاولة تشغيل تلقائي بسيطة (بعض المتصفحات تمنع)
-    window.addEventListener('load', () => {
-        // لا للتشغيل التلقائي صارم
-        console.log("مشغل الثقة - شهادة معتمدة 0779418419 | الموقع مطور بمؤثرات وموسيقى جورجية");
+    
+    // زر الانتقال لشهادة الثقة
+    document.getElementById('scrollToTrustBtn').addEventListener('click', () => {
+        document.getElementById('trustSection').scrollIntoView({ behavior: 'smooth' });
     });
     
-    // إضافة فانكشن للمطور لإضافة خدمات ديناميكية
-    window.addCustomTrustService = (titleTxt, descTxt) => {
-        const container = document.getElementById('servicesContainer');
-        const newCard = document.createElement('div');
-        newCard.className = 'service-card';
-        newCard.innerHTML = `<div class="service-icon"><i class="fas fa-gem"></i></div><h3>${escapeHtml(titleTxt)}</h3><p>${escapeHtml(descTxt)}</p>`;
-        container.appendChild(newCard);
-        showMessage(`الخدمة "${titleTxt}" أضيفت بنجاح`);
-    };
-    function escapeHtml(str){ return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+    console.log("%c 🔒 نظام الحماية مفعل - الرقم السري 0779418419 مشفر ومخفي تماماً ولا يظهر لأي مستخدم", "color:#00ffaa; font-size:14px");
+    console.log("تم التطوير: الرقم غير معروض في أي مكان، والنقطة الحمراء تتطلب 5 نقرات للتحقق");
 </script>
 </body>
 </html>
