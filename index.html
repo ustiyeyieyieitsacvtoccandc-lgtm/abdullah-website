@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>أبو ناقوس | تصميم وبرمجة مواقع احترافية</title>
-<meta name="description" content="أبو ناقوس - خدمات تصميم وبرمجة مواقع احترافية. مواقع تعريفية، مواقع عيدات، متاجر إلكترونية، منصات تعليمية. نخدم طلاب اليتي، لبتك، وطلاب الجمعات.">
+<title>أبو ناقوس | Tech Studio - برمجة وتصميم مواقع</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 * {
@@ -17,39 +16,62 @@
 }
 
 :root {
-    --primary: #ff3b6f;
-    --primary-dark: #e82e5e;
+    --primary: #00ff88;
+    --primary-glow: rgba(0,255,136,0.3);
     --secondary: #00d4ff;
-    --dark: #0a0a14;
-    --dark-card: #11111c;
-    --gray: #8a8aa3;
-    --white: #fff;
-    --shadow: 0 10px 30px rgba(0,0,0,0.2);
-    --shadow-sm: 0 5px 15px rgba(0,0,0,0.1);
+    --dark: #0a0a0f;
+    --card-bg: rgba(10,10,15,0.85);
+    --gray: #8892b0;
+    --white: #e6f1ff;
 }
 
 body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--dark);
+    font-family: 'Space Mono', 'Cairo', monospace;
+    background: #0a0a0f;
     color: var(--white);
-    line-height: 1.6;
+    min-height: 100vh;
+    line-height: 1.5;
 }
 
-/* شريط التنقل */
+/* فيديو الخلفية */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    object-fit: cover;
+    opacity: 0.35;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10,10,15,0.92), rgba(5,5,10,0.96));
+    z-index: -1;
+}
+
+/* شاشة الترمينال */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10,10,20,0.98);
-    padding: 15px 6%;
+    background: rgba(5,5,10,0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255,59,111,0.2);
+    z-index: 100;
+    border-bottom: 1px solid var(--primary);
+    font-family: 'Space Mono', monospace;
 }
 
 .logo {
@@ -60,29 +82,23 @@ body {
 }
 
 .logo-icon {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    color: white;
-}
-
-.logo-icon svg {
-    width: 28px;
-    height: 28px;
+    font-size: 20px;
+    color: #0a0a0f;
+    font-weight: bold;
 }
 
 .logo-text {
-    font-size: 20px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 1px;
 }
 
 .nav-links {
@@ -93,31 +109,43 @@ body {
 .nav-links a {
     color: var(--gray);
     text-decoration: none;
-    font-weight: 500;
+    font-size: 14px;
     transition: 0.2s;
+    font-family: 'Space Mono', monospace;
 }
 
 .nav-links a:hover {
     color: var(--primary);
 }
 
-/* المحتوى الرئيسي */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 100px 20px 60px;
+/* السطر الأول */
+.hero {
+    padding: 120px 5% 60px;
+    text-align: center;
 }
 
-/* القسم الرئيسي */
-.hero {
-    text-align: center;
-    padding: 40px 0 60px;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid var(--primary);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 30px;
+}
+
+.hero-badge i {
+    color: var(--primary);
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 800;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 @media (max-width: 768px) {
@@ -125,167 +153,239 @@ body {
 }
 
 .hero h1 span {
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary-glow);
 }
 
 .hero p {
     color: var(--gray);
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto 30px;
-    font-size: 18px;
+    font-size: 16px;
+}
+
+/* ترمينال كود */
+.terminal {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.7);
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    overflow: hidden;
+    text-align: left;
+}
+
+.terminal-header {
+    background: rgba(0,0,0,0.5);
+    padding: 10px 15px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+}
+.terminal-dot:nth-child(2) { background: #ffbd2e; }
+.terminal-dot:nth-child(3) { background: #27c93f; }
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    color: #aaa;
+    font-size: 11px;
+    font-family: monospace;
+}
+
+.terminal-body {
+    padding: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--primary);
+}
+
+.terminal-body .line {
+    margin: 5px 0;
+}
+
+.terminal-body .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--primary);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* الأزرار */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
 .btn-primary, .btn-outline {
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    transition: 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 30px;
-    border-radius: 40px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.2s;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    color: white;
+    background: var(--primary);
+    color: #0a0a0f;
     border: none;
 }
 
 .btn-primary:hover {
+    box-shadow: 0 0 15px var(--primary);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
 }
 
 .btn-outline {
-    border: 1px solid var(--secondary);
-    color: var(--secondary);
+    border: 1px solid var(--primary);
+    color: var(--primary);
     background: transparent;
 }
 
 .btn-outline:hover {
-    background: rgba(0,212,255,0.1);
+    background: rgba(0,255,136,0.1);
 }
 
-/* العناوين */
+/* الأقسام */
+.section {
+    padding: 60px 5%;
+}
+
 .section-title {
     text-align: center;
     font-size: 32px;
-    font-weight: 800;
-    margin: 60px 0 15px;
-}
-
-@media (max-width: 768px) {
-    .section-title { font-size: 28px; margin: 40px 0 10px; }
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: 'Space Mono', monospace;
 }
 
 .section-title span {
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--primary);
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--gray);
     margin-bottom: 40px;
+    font-size: 14px;
 }
 
 /* بطاقات الخدمات */
-.services-grid {
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
-    margin: 30px 0;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.service-card {
-    background: var(--dark-card);
-    border-radius: 20px;
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 30px 25px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,255,136,0.2);
     transition: 0.2s;
 }
 
-.service-card:hover {
+.card:hover {
     border-color: var(--primary);
     transform: translateY(-3px);
 }
 
-.service-icon {
-    width: 65px;
-    height: 65px;
-    background: linear-gradient(135deg, rgba(255,59,111,0.15), rgba(0,212,255,0.1));
-    border-radius: 18px;
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(0,255,136,0.1);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
     font-size: 28px;
-    color: var(--secondary);
+    color: var(--primary);
 }
 
-.service-card h3 {
+.card h3 {
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.service-card p {
+.card p {
     color: var(--gray);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
     margin-bottom: 15px;
 }
 
 .price {
     display: inline-block;
-    background: rgba(0,212,255,0.1);
+    background: rgba(0,255,136,0.1);
     padding: 4px 15px;
     border-radius: 20px;
-    font-size: 13px;
-    color: var(--secondary);
+    font-size: 12px;
+    color: var(--primary);
+    font-family: 'Space Mono', monospace;
 }
 
-/* بطاقات الفئات */
-.categories {
+/* الفئات */
+.tags {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
     flex-wrap: wrap;
     margin: 30px 0;
 }
 
-.category-item {
-    background: rgba(0,212,255,0.05);
-    border-radius: 50px;
-    padding: 10px 25px;
-    display: flex;
+.tag {
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 30px;
+    padding: 8px 22px;
+    font-size: 14px;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    border: 1px solid rgba(0,212,255,0.2);
+    gap: 8px;
 }
 
-.category-item i {
-    font-size: 18px;
-    color: var(--secondary);
+.tag i {
+    color: var(--primary);
 }
 
 /* الإحصائيات */
 .stats {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
-    margin: 50px 0;
-    padding: 30px;
-    background: var(--dark-card);
-    border-radius: 30px;
+    margin: 40px auto;
+    padding: 25px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    max-width: 700px;
+    border: 1px solid rgba(0,255,136,0.2);
 }
 
 .stat {
@@ -293,27 +393,26 @@ body {
 }
 
 .stat-number {
-    font-size: 38px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #ffd700, #ff8c00);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: 'Space Mono', monospace;
     display: block;
 }
 
 .stat-label {
     color: var(--gray);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* نموذج */
-.form-box {
-    max-width: 650px;
+.form-container {
+    max-width: 600px;
     margin: 0 auto;
-    background: var(--dark-card);
-    border-radius: 30px;
-    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(0,255,136,0.2);
 }
 
 .input-group {
@@ -327,7 +426,7 @@ body {
     padding: 14px 18px;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 15px;
+    border-radius: 8px;
     color: white;
     font-family: 'Cairo', sans-serif;
     font-size: 14px;
@@ -343,21 +442,22 @@ body {
 .btn-submit {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
+    background: var(--primary);
     border: none;
-    border-radius: 15px;
-    color: white;
-    font-weight: 600;
+    border-radius: 8px;
+    color: #0a0a0f;
+    font-weight: 700;
     font-size: 16px;
     cursor: pointer;
+    font-family: 'Space Mono', monospace;
     transition: 0.2s;
 }
 
 .btn-submit:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--primary);
 }
 
-/* أيقونات التواصل */
+/* أيقونات */
 .social {
     display: flex;
     justify-content: center;
@@ -369,29 +469,28 @@ body {
     width: 45px;
     height: 45px;
     background: rgba(255,255,255,0.05);
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 20px;
     color: var(--gray);
     transition: 0.2s;
 }
 
 .social a:hover {
-    background: linear-gradient(135deg, #ff3b6f, #00d4ff);
-    color: white;
-    transform: translateY(-2px);
+    background: var(--primary);
+    color: #0a0a0f;
 }
 
 /* تذييل */
 .footer {
     text-align: center;
-    padding: 30px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    margin-top: 50px;
-    font-size: 12px;
+    padding: 25px;
+    border-top: 1px solid rgba(0,255,136,0.1);
+    font-size: 11px;
     color: var(--gray);
+    font-family: 'Space Mono', monospace;
 }
 
 /* نقطة سرية */
@@ -401,240 +500,174 @@ body {
     right: 20px;
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,255,136,0.1);
     border-radius: 50%;
     cursor: pointer;
-    z-index: 999;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     color: var(--gray);
+    transition: 0.2s;
 }
 
 .secret:hover {
     background: var(--primary);
-    color: white;
+    color: #0a0a0f;
 }
 
-/* رسالة */
 .toast {
     position: fixed;
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
-    background: #11111c;
+    background: #1a1a2a;
     border-left: 3px solid var(--primary);
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     z-index: 1000;
     font-size: 13px;
-}
-
-/* معرض */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin: 30px 0;
-}
-
-.portfolio-item {
-    background: var(--dark-card);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.2s;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--primary);
-}
-
-.portfolio-img {
-    height: 160px;
-    background: linear-gradient(135deg, rgba(255,59,111,0.1), rgba(0,212,255,0.05));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 45px;
-    color: var(--secondary);
-}
-
-.portfolio-info {
-    padding: 20px;
-}
-
-.portfolio-info h4 {
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-.portfolio-info p {
-    color: var(--gray);
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.portfolio-link {
-    color: var(--secondary);
-    text-decoration: none;
-    font-size: 13px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    font-family: monospace;
 }
 
 @media (max-width: 700px) {
     .nav-links { display: none; }
-    .container { padding: 80px 16px 40px; }
-    .form-box { padding: 25px; }
+    .hero { padding-top: 100px; }
+    .section { padding: 40px 5%; }
 }
 </style>
 </head>
 <body>
 
+<video class="video-bg" autoplay loop muted playsinline>
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-screen-with-fast-moving-numbers-4310-large.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
 <nav class="navbar">
     <a href="#" class="logo">
-        <div class="logo-icon">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 10L61.8 30H38.2L50 10Z" fill="white"/>
-                <path d="M50 90L38.2 70H61.8L50 90Z" fill="white"/>
-                <path d="M10 50L30 38.2V61.8L10 50Z" fill="white"/>
-                <path d="M90 50L70 61.8V38.2L90 50Z" fill="white"/>
-                <circle cx="50" cy="50" r="15" fill="white"/>
-                <circle cx="50" cy="50" r="8" fill="url(#gradient)"/>
-                <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#ff3b6f"/>
-                        <stop offset="100%" stop-color="#00d4ff"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <div class="logo-text">أبو ناقوس</div>
+        <div class="logo-icon">&lt;/&gt;</div>
+        <div class="logo-text">ABU NAQOS</div>
     </a>
     <div class="nav-links">
-        <a href="#">الرئيسية</a>
-        <a href="#services">خدمات</a>
-        <a href="#contact">طلب خدمة</a>
+        <a href="#">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#contact">REQUEST</a>
     </div>
 </nav>
 
-<main class="container">
-    <section class="hero">
-        <h1>نصمم <span>مواقع احترافية</span><br>تناسب طموحك</h1>
-        <p>مواقع تعريفية | مواقع عيدات | متاجر إلكترونية | منصات تعليمية</p>
-        <div>
-            <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> اطلب موقعك</a>
-            <a href="#services" class="btn-outline" style="margin-right:15px;"><i class="fas fa-play"></i> خدماتنا</a>
+<main>
+    <div class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-terminal"></i>
+            <span>DEVELOPMENT STUDIO</span>
         </div>
-    </section>
+        <h1>We Build <span>Code</span><br>That Impresses</h1>
+        <p>مواقع تعريفية | مواقع عيدات | متاجر إلكترونية | منصات تعليمية</p>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-title">abunaqos@portfolio:~</div>
+            </div>
+            <div class="terminal-body">
+                <div class="line">$> cat services.txt</div>
+                <div class="line">├── Websites Development</div>
+                <div class="line">├── Counters System</div>
+                <div class="line">├── E-commerce Solutions</div>
+                <div class="line">└── Educational Platforms</div>
+                <div class="line">$> ready_to_build<span class="cursor"></span></div>
+            </div>
+        </div>
+        
+        <div class="btn-group">
+            <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> START PROJECT</a>
+            <a href="#services" class="btn-outline"><i class="fas fa-code"></i> VIEW SERVICES</a>
+        </div>
+    </div>
 
     <div class="stats">
         <div class="stat">
-            <span class="stat-number" id="projects">45+</span>
-            <span class="stat-label">مشروع منجز</span>
+            <span class="stat-number" id="projects">0</span>
+            <span class="stat-label">PROJECTS</span>
         </div>
         <div class="stat">
-            <span class="stat-number" id="clients">38+</span>
-            <span class="stat-label">عميل سعيد</span>
+            <span class="stat-number" id="clients">0</span>
+            <span class="stat-label">CLIENTS</span>
         </div>
         <div class="stat">
-            <span class="stat-number" id="years">5</span>
-            <span class="stat-label">سنوات خبرة</span>
+            <span class="stat-number" id="years">0</span>
+            <span class="stat-label">EXPERIENCE</span>
         </div>
     </div>
 
-    <h2 id="services" class="section-title">خدماتنا <span>الاحترافية</span></h2>
-    <p class="section-subtitle">نقدم حلولاً رقمية متكاملة</p>
-    
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-globe"></i></div>
-            <h3>مواقع تعريفية</h3>
-            <p>موقع بطاقة شخصية، سيرة ذاتية، أعمال، شركة. تصميم عصري متجاوب</p>
-            <span class="price">يبدأ من 50$</span>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>مواقع عيدات</h3>
-            <p>عدادات منشورات، إحصائيات، متابعة. نظام متكامل لإدارة المنشورات</p>
-            <span class="price">يبدأ من 70$</span>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-store"></i></div>
-            <h3>متاجر إلكترونية</h3>
-            <p>متجر متكامل بإدارة منتجات، سلة مشتريات، بوابات دفع آمنة</p>
-            <span class="price">يبدأ من 120$</span>
-        </div>
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
-            <h3>منصات تعليمية</h3>
-            <p>منصة لدوراتك، فيديوهات، اختبارات، شهادات</p>
-            <span class="price">يبدأ من 150$</span>
-        </div>
-    </div>
-
-    <h2 class="section-title">من <span>نخدم</span></h2>
-    <div class="categories">
-        <div class="category-item"><i class="fab fa-youtube"></i> طلاب اليتي</div>
-        <div class="category-item"><i class="fas fa-map-marker-alt"></i> طلاب لبتك</div>
-        <div class="category-item"><i class="fas fa-users"></i> طلاب الجمعات</div>
-    </div>
-
-    <h2 class="section-title">أحدث <span>أعمالنا</span></h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-item">
-            <div class="portfolio-img"><i class="fas fa-shield-alt"></i></div>
-            <div class="portfolio-info">
-                <h4>مشغل الثقة</h4>
-                <p>موقع خدمي متكامل مع عداد منشورات</p>
-                <a href="#" class="portfolio-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+    <div id="services" class="section">
+        <h2 class="section-title"><span>&lt;services&gt;</span></h2>
+        <p class="section-subtitle">What We Offer</p>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-globe"></i></div>
+                <h3>Websites</h3>
+                <p>مواقع تعريفية متجاوبة 100%</p>
+                <span class="price">from $50</span>
             </div>
-        </div>
-        <div class="portfolio-item">
-            <div class="portfolio-img"><i class="fas fa-chart-simple"></i></div>
-            <div class="portfolio-info">
-                <h4>نظام العدادت</h4>
-                <p>عدادات منشورات متطورة مع لوحة تحكم</p>
-                <a href="#" class="portfolio-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Counters System</h3>
+                <p>عدادات منشورات وإحصائيات</p>
+                <span class="price">from $70</span>
             </div>
-        </div>
-        <div class="portfolio-item">
-            <div class="portfolio-img"><i class="fas fa-store"></i></div>
-            <div class="portfolio-info">
-                <h4>متجر إلكتروني</h4>
-                <p>متجر متكامل مع نظام دفع</p>
-                <a href="#" class="portfolio-link">عرض المشروع <i class="fas fa-arrow-left"></i></a>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-store"></i></div>
+                <h3>E-commerce</h3>
+                <p>متاجر إلكترونية متكاملة</p>
+                <span class="price">from $120</span>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Platforms</h3>
+                <p>منصات تعليمية ودورات</p>
+                <span class="price">from $150</span>
             </div>
         </div>
     </div>
 
-    <h2 id="contact" class="section-title">اطلب <span>موقعك</span> الآن</h2>
-    <p class="section-subtitle">احصل على عرض سعر مجاني</p>
-    
-    <div class="form-box">
-        <div class="input-group">
-            <input type="text" id="name" placeholder="الاسم الكامل">
+    <div class="section">
+        <h2 class="section-title"><span>WHO WE SERVE</span></h2>
+        <div class="tags">
+            <div class="tag"><i class="fab fa-youtube"></i> YT Students</div>
+            <div class="tag"><i class="fas fa-map-marker-alt"></i> Libya Students</div>
+            <div class="tag"><i class="fas fa-users"></i> Group Students</div>
         </div>
-        <div class="input-group">
-            <input type="tel" id="phone" placeholder="رقم الجوال">
+    </div>
+
+    <div id="contact" class="section">
+        <h2 class="section-title"><span>REQUEST</span></h2>
+        <p class="section-subtitle">Get Your Website Now</p>
+        <div class="form-container">
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Full Name">
+            </div>
+            <div class="input-group">
+                <input type="tel" id="phone" placeholder="Phone Number">
+            </div>
+            <div class="input-group">
+                <select id="service">
+                    <option value="">Select Service</option>
+                    <option>Website</option>
+                    <option>Counters System</option>
+                    <option>E-commerce</option>
+                    <option>Educational Platform</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <textarea id="message" rows="3" placeholder="Project Details..."></textarea>
+            </div>
+            <button class="btn-submit" id="sendBtn"><i class="fas fa-paper-plane"></i> SEND REQUEST</button>
         </div>
-        <div class="input-group">
-            <select id="service">
-                <option value="">اختر الخدمة</option>
-                <option>موقع تعريفي</option>
-                <option>موقع عيدات</option>
-                <option>متجر إلكتروني</option>
-                <option>منصة تعليمية</option>
-            </select>
-        </div>
-        <div class="input-group">
-            <textarea id="message" rows="3" placeholder="تفاصيل المشروع..."></textarea>
-        </div>
-        <button class="btn-submit" id="sendBtn"><i class="fas fa-paper-plane"></i> إرسال الطلب</button>
     </div>
 
     <div class="social">
@@ -645,22 +678,39 @@ body {
 </main>
 
 <footer class="footer">
-    <p>© 2025 أبو ناقوس - تصميم وبرمجة مواقع احترافية</p>
+    <p>© 2025 ABU NAQOS | CODE THAT IMPRESSES</p>
 </footer>
 
 <div class="secret" id="secretDot"><i class="fas fa-key"></i></div>
 
 <script>
+    // إحصائيات متحركة
+    function animateNumber(el, target, suffix) {
+        let current = 0;
+        let step = Math.ceil(target / 40);
+        let interval = setInterval(() => {
+            current += step;
+            if(current >= target) {
+                el.innerText = target + suffix;
+                clearInterval(interval);
+            } else {
+                el.innerText = current + suffix;
+            }
+        }, 25);
+    }
+    
+    animateNumber(document.getElementById('projects'), 45, '+');
+    animateNumber(document.getElementById('clients'), 38, '+');
+    animateNumber(document.getElementById('years'), 5, '');
+    
     // حفظ الطلبات
     function getOrders() { return JSON.parse(localStorage.getItem('abunaqos_requests') || '[]'); }
     function saveOrders(orders) { localStorage.setItem('abunaqos_requests', JSON.stringify(orders)); }
     
-    function showMessage(msg, isError = false) {
+    function showMessage(msg) {
         let toast = document.createElement('div');
         toast.className = 'toast';
         toast.innerHTML = msg;
-        toast.style.background = isError ? '#2a0a0a' : '#11111c';
-        toast.style.borderLeftColor = isError ? '#ff3b6f' : '#00d4ff';
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
     }
@@ -671,7 +721,7 @@ body {
         let service = document.getElementById('service').value;
         
         if(!name || !phone || !service) {
-            showMessage('❌ الرجاء ملء جميع الحقول', true);
+            showMessage('⚠️ Please fill all fields');
             return;
         }
         
@@ -686,7 +736,7 @@ body {
         });
         saveOrders(orders);
         
-        showMessage('✅ تم إرسال طلبك! سنتواصل معك قريباً');
+        showMessage('✅ Request sent successfully!');
         
         document.getElementById('name').value = '';
         document.getElementById('phone').value = '';
@@ -694,7 +744,7 @@ body {
         document.getElementById('message').value = '';
     });
     
-    // نقطة سرية لعرض الطلبات
+    // نقطة سرية
     let clickCount = 0, clickTimer;
     document.getElementById('secretDot').onclick = () => {
         clickCount++;
@@ -703,33 +753,14 @@ body {
             let orders = getOrders();
             if(orders.length > 0) {
                 console.table(orders);
-                showMessage(`📋 تم عرض ${orders.length} طلب في Console`);
+                showMessage(`📋 ${orders.length} requests in Console`);
             } else {
-                showMessage('📭 لا توجد طلبات حالياً');
+                showMessage('📭 No requests yet');
             }
             clickCount = 0;
         }
         clickTimer = setTimeout(() => clickCount = 0, 800);
     };
-    
-    // تحريك الأرقام
-    function animateNumber(el, target, suffix = '') {
-        let current = 0;
-        let step = Math.ceil(target / 30);
-        let interval = setInterval(() => {
-            current += step;
-            if(current >= target) {
-                el.innerText = target + suffix;
-                clearInterval(interval);
-            } else {
-                el.innerText = current + suffix;
-            }
-        }, 30);
-    }
-    
-    animateNumber(document.getElementById('projects'), 45, '+');
-    animateNumber(document.getElementById('clients'), 38, '+');
-    animateNumber(document.getElementById('years'), 5, '');
 </script>
 </body>
 </html>
