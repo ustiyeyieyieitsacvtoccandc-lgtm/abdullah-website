@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أبو ناقوس | المطور المحترف</title>
+    <title>أبو ناقوس | Portfolio V3.0</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,382 +11,291 @@
 
     <style>
         :root {
-            --primary: #7d5fff;
-            --primary-glow: rgba(125, 95, 255, 0.4);
-            --secondary: #3ae374;
-            --dark-bg: #05050a;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --text-main: #ffffff;
-            --text-dim: #a0a0b8;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #8257ff;
+            --secondary: #00f2ff;
+            --bg-dark: #080810;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #e0e0e0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-main);
+            background: var(--bg-dark);
+            color: var(--text);
             overflow-x: hidden;
-            line-height: 1.8;
         }
 
-        /* خلفية فنية متحركة */
-        body::before {
-            content: "";
+        /* خلفية جزيئات برمجية */
+        #particles-js {
             position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 40%;
-            height: 40%;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(80px);
-        }
-
-        /* شريط التنقل الاحترافي */
-        .navbar {
-            position: fixed;
-            top: 0;
             width: 100%;
-            padding: 20px 8%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Nav Bar */
+        .nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(8, 8, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            padding: 15px 30px;
+            border-radius: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(5, 5, 10, 0.8);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .logo { font-size: 22px; font-weight: 900; color: #fff; text-decoration: none; }
         .logo span { color: var(--primary); }
 
-        .nav-links { display: flex; gap: 35px; }
-
-        .nav-links a {
+        .nav-menu a {
+            color: #aaa;
             text-decoration: none;
-            color: var(--text-dim);
+            margin-right: 25px;
             font-weight: 600;
+            transition: 0.3s;
             font-size: 14px;
-            transition: 0.3s;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: 0.3s;
-        }
+        .nav-menu a:hover { color: var(--secondary); }
 
-        .nav-links a:hover { color: white; }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* قسم الهيرو */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            position: relative;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
         }
 
-        .hero-content { max-width: 600px; z-index: 2; }
-
-        .hero-badge {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-            display: inline-block;
-            color: var(--primary);
-        }
-
-        .hero-content h1 {
-            font-size: clamp(40px, 6vw, 70px);
-            line-height: 1.1;
+        .hero-h1 {
+            font-size: clamp(35px, 8vw, 80px);
             font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        .hero-content h1 span {
-            background: linear-gradient(to right, #7d5fff, #3ae374);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* الأزرار المطورة */
-        .btn-main {
-            padding: 16px 40px;
+        .btn-glow {
+            padding: 15px 40px;
             background: var(--primary);
-            color: white;
-            border-radius: 12px;
+            color: #fff;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            display: inline-block;
+            box-shadow: 0 0 20px rgba(130, 87, 255, 0.4);
             transition: 0.4s;
-            box-shadow: 0 10px 20px var(--primary-glow);
+            display: inline-block;
         }
 
-        .btn-main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--primary-glow);
+        .btn-glow:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(130, 87, 255, 0.6); }
+
+        /* Skills Marquee */
+        .marquee {
+            background: var(--glass);
+            padding: 20px 0;
+            border-y: 1px solid var(--border);
+            overflow: hidden;
+            white-space: nowrap;
         }
 
-        /* بطاقات الخدمات */
-        .section { padding: 100px 8%; }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
         }
 
-        .section-title h2 { font-size: 40px; font-weight: 800; }
+        .marquee-content span {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 40px;
+            color: var(--border);
+            text-transform: uppercase;
+        }
 
-        .grid-services {
+        @keyframes scroll {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Service Cards */
+        .section { padding: 100px 10%; }
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            border: 1px solid var(--border);
             padding: 40px;
-            border-radius: 24px;
+            border-radius: 30px;
             transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
 
         .card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            background: rgba(0, 242, 255, 0.05);
             transform: translateY(-10px);
         }
 
-        .card i {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: block;
+        .card i { font-size: 45px; color: var(--secondary); margin-bottom: 20px; }
+
+        /* Social Icons */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
         }
 
-        /* الفورم الاحترافي */
-        .contact-box {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            padding: 50px;
-            border-radius: 30px;
-            max-width: 800px;
-            margin: 0 auto;
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        input, textarea, select {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--glass-border);
-            padding: 15px;
-            border-radius: 10px;
-            color: white;
-            margin-bottom: 20px;
-            font-family: 'Cairo';
-        }
+        .social-icon.fb:hover { background: #1877f2; border-color: #1877f2; }
+        .social-icon.ig:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
+        .social-icon.wa:hover { background: #25d366; border-color: #25d366; }
 
-        input:focus { outline: 1px solid var(--primary); }
-
-        /* أيقونة السر للمبرمجين */
-        .dev-tool {
+        /* Floating WA */
+        .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+            background: #25d366;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 999;
-            animation: pulse 2s infinite;
+            color: #fff;
+            font-size: 30px;
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(125, 95, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(125, 95, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(125, 95, 255, 0); }
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 40px;
-            left: 40px;
-            background: #1ed760;
-            color: black;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-weight: bold;
-            display: none;
-            z-index: 2000;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { flex-direction: column; text-align: center; padding-top: 150px; }
-        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <i class="fas fa-terminal"></i> أبو <span>ناقوس</span>
-        </a>
-        <div class="nav-links">
-            <a href="#">الرئيسية</a>
+    <div id="particles-js"></div>
+
+    <nav class="nav">
+        <a href="#" class="logo">أبو <span>ناقوس</span></a>
+        <div class="nav-menu">
             <a href="#services">الخدمات</a>
-            <a href="#portfolio">المشاريع</a>
-            <a href="#contact">تواصل معي</a>
+            <a href="#contact">تواصل</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <div class="hero-badge">Available for Work 2026</div>
-            <h1>نبني <span>المستقبل</span> الرقمي بأكواد احترافية</h1>
-            <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 18px;">
-                أنا مطور واجهات أمامية متخصص في تحويل الأفكار المعقدة إلى واجهات مستخدم سلسة وتفاعلية.
+        <div data-aos="zoom-in">
+            <div style="color: var(--secondary); font-weight: 700; margin-bottom: 10px;">Creative Developer & Designer</div>
+            <h1 class="hero-h1">نحول الكود إلى<br>تجربة رقمية مذهلة</h1>
+            <p style="max-width: 600px; margin: 0 auto 30px; color: #888;">
+                دقة في التنفيذ، سرعة في الأداء، وتصاميم تواكب أحدث الصيحات العالمية.
             </p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn-main">ابدأ مشروعك الآن</a>
-            </div>
-        </div>
-        <div class="hero-image" data-aos="zoom-in">
-            <i class="fas fa-cubes" style="font-size: 250px; color: var(--primary); opacity: 0.2;"></i>
+            <a href="#contact" class="btn-glow">ابدأ مشروعك الآن</a>
         </div>
     </section>
 
-    <section id="services" class="section">
-        <div class="section-title" data-aos="fade-down">
-            <h2>خدمات <span>نخبوية</span></h2>
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>HTML5</span> <span>CSS3</span> <span>JAVASCRIPT</span> <span>REACT</span> <span>PHP</span> <span>UI/UX</span> <span>E-COMMERCE</span>
         </div>
-        <div class="grid-services">
-            <div class="card" data-aos="flip-left">
-                <i class="fas fa-rocket"></i>
-                <h3>مواقع تعريفية</h3>
-                <p>تصميم واجهات UI/UX عصرية تخطف الأنظار وتدعم هويتك.</p>
-                <div style="margin-top: 15px; color: var(--secondary)">تبدأ من $50</div>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="100">
-                <i class="fas fa-stethoscope"></i>
-                <h3>أنظمة عيادات</h3>
-                <p>إدارة مواعيد المرضى والبيانات الطبية بنظام سحابي آمن.</p>
-                <div style="margin-top: 15px; color: var(--secondary)">تبدأ من $100</div>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="200">
-                <i class="fas fa-shopping-bag"></i>
-                <h3>متاجر إلكترونية</h3>
-                <p>متجر متكامل يدعم الدفع الإلكتروني وتتبع الشحنات.</p>
-                <div style="margin-top: 15px; color: var(--secondary)">تبدأ من $150</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="contact-box" data-aos="zoom-in">
-            <h2 style="text-align: center; margin-bottom: 30px;">أخبرني عن <span>فكرتك</span></h2>
-            <div class="input-group">
-                <input type="text" id="name" placeholder="الاسم الكامل">
-                <input type="email" id="email" placeholder="البريد الإلكتروني">
-                <select id="service">
-                    <option>نوع المشروع</option>
-                    <option>موقع تعريفي</option>
-                    <option>متجر إلكتروني</option>
-                    <option>نظام خاص</option>
-                </select>
-                <textarea id="msg" rows="5" placeholder="تفاصيل المشروع..."></textarea>
-                <button class="btn-main" style="width: 100%; border: none; cursor: pointer;" onclick="sendLead()">إرسال الطلب</button>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 50px; border-top: 1px solid var(--glass-border); color: var(--text-dim);">
-        <p>© 2026 أبو ناقوس - تصميم وبرمجة بإتقان</p>
-    </footer>
-
-    <div class="dev-tool" onclick="accessAdmin()" title="لوحة التحكم">
-        <i class="fas fa-code-branch"></i>
     </div>
 
-    <div id="toast" class="toast">تم حفظ البيانات بنجاح!</div>
+    <section id="services" class="section">
+        <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+            <h2 style="font-size: 35px;">ماذا نقدم؟</h2>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-laptop-code"></i>
+                <h3>مواقع تعريفية</h3>
+                <p>بناء هويتك الرقمية بأحدث التقنيات المتجاوبة.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-hospital-user"></i>
+                <h3>أنظمة عيادات</h3>
+                <p>إدارة المرضى والمواعيد بكل سهولة واحترافية.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>متاجر إلكترونية</h3>
+                <p>حلول متكاملة للبيع عبر الإنترنت وزيادة أرباحك.</p>
+            </div>
+        </div>
+    </section>
 
+    <section id="contact" class="section" style="background: rgba(255,255,255,0.01);">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="margin-bottom: 20px;">دعنا نتحدث عن مشروعك</h2>
+            
+            <div class="social-container">
+                <a href="https://www.facebook.com/share/191DRXcdf6/" target="_blank" class="social-icon fb">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="social-icon ig">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="social-icon wa">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/YOUR_NUMBER" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000 });
 
-        // إدارة الطلبات محلياً (لوحة تحكم مصغرة)
-        function sendLead() {
-            const data = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                service: document.getElementById('service').value,
-                time: new Date().toLocaleString()
-            };
-
-            if(!data.name || !data.email) {
-                alert("يرجى ملء البيانات الأساسية");
-                return;
+        /* تهيئة جزيئات الخلفية */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80 },
+                "color": { "value": "#8257ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2 },
+                "size": { "value": 3 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#8257ff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            },
+            "interactivity": {
+                "events": { "onhover": { "enable": true, "mode": "repulse" } }
             }
-
-            let leads = JSON.parse(localStorage.getItem('leads') || '[]');
-            leads.push(data);
-            localStorage.setItem('leads', JSON.stringify(leads));
-
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
-
-            // تفريغ الفورم
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-        }
-
-        // خاصية سرية للمبرمجين (الضغط 5 مرات يفتح اللوج)
-        let count = 0;
-        function accessAdmin() {
-            count++;
-            if(count === 3) {
-                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                console.log("%c 🚀 لوحة تحكم أبو ناقوس ", "background: #7d5fff; color: white; padding: 5px; border-radius: 5px;");
-                console.table(leads);
-                alert("أهلاً بك يا أدمن.. تم عرض الطلبات في الـ Console (F12)");
-                count = 0;
-            }
-        }
+        });
     </script>
 </body>
 </html>
