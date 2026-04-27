@@ -3,217 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أبو ناقوس | المهندس الرقمي الفذ</title>
     
-    <title>أبو ناقوس | المهندس الرقمي</title>
-    <meta name="description" content="موقع أبو ناقوس - احترافية في البرمجة، إبداع في التصميم.">
-    <meta property="og:title" content="أبو ناقوس | مطور مواقع محترف">
-    <meta property="og:description" content="شاهد أعمالي واطلب موقعك الآن بأحدث التقنيات العالمية.">
-    <meta property="og:image" content="ضع_رابط_صورتك_هنا.jpg"> <meta property="og:url" content="https://yourlink.com">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="أبو ناقوس - Visionary Developer">
+    <meta property="og:description" content="تحدي حدود البرمجيات والتصميم.">
+    <meta property="og:image" content="https://your-image-url.jpg">
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #00f2ff;
-            --secondary: #7000ff;
-            --dark: #050508;
-            --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
+            --neon: #00ff88;
+            --deep-purple: #6e4aff;
+            --bg-black: #020205;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(0, 255, 136, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        body { font-family: 'Cairo', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg-black); color: white; overflow-x: hidden; }
 
-        /* خلفية الشبكة العصبية */
-        #canvas-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        /* الماوس التفاعلي */
+        #cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--neon); border-radius: 50%; z-index: 10000; pointer-events: none; }
+        #cursor-outline { position: fixed; width: 40px; height: 40px; border: 2px solid var(--neon); border-radius: 50%; z-index: 9999; pointer-events: none; transition: 0.15s ease-out; }
 
-        /* الماوس النيوني */
-        #custom-cursor {
-            position: fixed; width: 20px; height: 20px; background: var(--primary);
-            border-radius: 50%; pointer-events: none; z-index: 9999;
-            box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
-            transition: transform 0.1s ease;
-        }
+        /* الخلفية الرقمية */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
 
-        /* القائمة العلوية Glassmorphism */
+        /* Navbar - Ultra Glassmorphism */
         nav {
-            position: fixed; width: 90%; top: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--glass); backdrop-filter: blur(15px);
-            padding: 15px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            position: fixed; top: 0; width: 100%; padding: 25px 8%;
             display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(2,2,5,0.9), transparent);
         }
 
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 900; color: var(--primary); }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; color: var(--neon); text-shadow: 0 0 15px var(--neon); }
 
-        /* الهيرو سيكشن */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; background: radial-gradient(circle at center, rgba(112, 0, 255, 0.1) 0%, transparent 70%);
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%; }
+        .hero-text h1 { font-size: clamp(45px, 12vw, 120px); font-weight: 900; line-height: 0.9; margin-bottom: 20px; }
+        .hero-text h1 span { -webkit-text-stroke: 2px var(--neon); color: transparent; }
+
+        /* Terminal Section - لطلاب الـ IT */
+        .terminal-container {
+            max-width: 800px; margin: 0 auto 100px; background: #0a0a0f;
+            border-radius: 12px; border: 1px solid var(--border); overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); font-family: 'Courier New', monospace;
         }
+        .terminal-header { background: #1a1a24; padding: 10px 20px; display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-body { padding: 25px; height: 250px; overflow-y: auto; text-align: left; direction: ltr; color: var(--neon); }
 
-        .hero h1 { font-size: clamp(40px, 10vw, 100px); font-weight: 900; letter-spacing: -2px; line-height: 1; }
-        .hero h1 span { color: transparent; -webkit-text-stroke: 1px var(--primary); }
+        /* Portfolio Cards */
+        .section { padding: 100px 10%; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .glass-card {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 50px 30px; border-radius: 30px; backdrop-filter: blur(10px);
+            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .glass-card:hover { transform: translateY(-20px) scale(1.02); border-color: var(--neon); box-shadow: 0 0 30px rgba(0, 255, 136, 0.2); }
+        .glass-card i { font-size: 45px; color: var(--neon); margin-bottom: 25px; }
 
-        /* أزرار سايبر بانك */
-        .btn-cyber {
-            margin-top: 30px; padding: 15px 40px; border: none; background: var(--primary);
-            color: var(--dark); font-weight: 900; font-size: 18px; border-radius: 5px;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        /* Buttons */
+        .btn-neon {
+            padding: 18px 50px; background: transparent; border: 2px solid var(--neon);
+            color: var(--neon); font-family: 'Orbitron'; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 2px; position: relative;
             transition: 0.3s; text-decoration: none; display: inline-block;
         }
-        .btn-cyber:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--primary); }
+        .btn-neon:hover { background: var(--neon); color: black; box-shadow: 0 0 40px var(--neon); }
 
-        /* كروت الخدمات - 3D Glow */
-        .services { padding: 100px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card {
-            background: var(--glass); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.5s; position: relative; overflow: hidden;
-        }
-        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 10px 50px rgba(0, 242, 255, 0.2); }
-        .card i { font-size: 50px; color: var(--secondary); margin-bottom: 20px; }
-
-        /* الروابط الاجتماعية */
-        .socials { display: flex; gap: 20px; justify-content: center; padding: 50px; }
-        .socials a {
-            width: 60px; height: 60px; background: var(--glass); border-radius: 50%;
+        /* Social Links */
+        .social-wrap { display: flex; justify-content: center; gap: 30px; padding: 50px; }
+        .social-wrap a {
+            font-size: 28px; color: white; transition: 0.3s;
+            text-decoration: none; width: 60px; height: 60px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 25px; color: white; text-decoration: none; transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid var(--border); border-radius: 15px;
         }
-        .socials a:hover { color: var(--primary); border-color: var(--primary); transform: rotate(360deg); }
+        .social-wrap a:hover { color: var(--neon); border-color: var(--neon); transform: rotate(-10deg) scale(1.2); }
 
-        /* شريط المهارات المتحرك */
-        .skills-bar { background: var(--primary); color: var(--dark); padding: 10px 0; overflow: hidden; white-space: nowrap; font-weight: 900; }
-        .skills-content { display: inline-block; animation: scroll 20s linear infinite; }
-
-        @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
-
-        @media (max-width: 768px) { * { cursor: auto; } #custom-cursor { display: none; } }
+        @media (max-width: 768px) { * { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas-bg"></canvas>
-    <div id="custom-cursor"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
 
     <nav>
-        <div class="logo">ABU NAQOS</div>
-        <div class="socials" style="padding: 0; margin: 0;">
-            <a href="https://wa.me/962779418419" style="width:40px; height:40px; font-size:18px;"><i class="fab fa-whatsapp"></i></a>
-        </div>
+        <div class="logo">NAQOS_ENV</div>
+        <div style="font-family: 'Orbitron'; font-size: 12px; color: var(--border);">V4.0_STABLE</div>
     </nav>
 
-    <div class="hero">
-        <h1 data-aos="zoom-in">أبو <span>ناقوس</span></h1>
-        <p style="font-size: 20px; color: var(--primary); font-weight: 600;" data-aos="fade-up" data-aos-delay="200">الجيل القادم من حلول الويب</p>
-        <a href="#contact" class="btn-cyber" data-aos="fade-up" data-aos-delay="400">دخول النظام</a>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="hero-text" data-aos="zoom-in">
+                <p style="font-family: 'Orbitron'; letter-spacing: 5px; color: var(--neon);">SYSTEM READY</p>
+                <h1>أبو <span>ناقوس</span></h1>
+                <p style="font-size: 22px; color: #888; margin-bottom: 40px;">نحن لا نصمم المواقع، نحن نبني أنظمة ذكاء بصرية.</p>
+                <a href="#projects" class="btn-neon">استكشاف الأكواد</a>
+            </div>
+        </section>
 
-    <div class="skills-bar">
-        <div class="skills-content">
-            FULL STACK DEVELOPMENT • UI/UX DESIGN • CYBER SECURITY • API INTEGRATION • MOBILE FIRST DESIGN • REACT JS • LARAVEL • NODE JS
-        </div>
-    </div>
+        <section class="section" data-aos="fade-up">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="dot" style="background: #ff5f56;"></div>
+                    <div class="dot" style="background: #ffbd2e;"></div>
+                    <div class="dot" style="background: #27c93f;"></div>
+                    <span style="color: #555; font-size: 12px; margin-left: 10px;">guest@abunaqos: ~</span>
+                </div>
+                <div class="terminal-body" id="terminal">
+                    <div id="terminal-output">
+                        > Initializing core system...<br>
+                        > Loading skills: [HTML, CSS, JS, REACT, PHP]... OK<br>
+                        > Status: <span style="color: white;">Master Developer Detected.</span><br>
+                        > Type 'help' to see commands.<br><br>
+                    </div>
+                    <div style="display: flex;">
+                        <span>>&nbsp;</span><input type="text" id="terminal-input" autofocus style="background:transparent; border:none; color:var(--neon); outline:none; font-family:inherit; width:100%;">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="services">
-        <div class="card" data-aos="fade-up">
-            <i class="fas fa-layer-group"></i>
-            <h3>أنظمة ذكية</h3>
-            <p>نقوم ببناء أنظمة متكاملة للعيادات والمحلات التجارية بأعلى معايير الأمان.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <i class="fas fa-bolt"></i>
-            <h3>سرعة البرق</h3>
-            <p>مواقعنا تسجل 100/100 في اختبارات جوجل للسرعة والأداء.</p>
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="400">
-            <i class="fas fa-fingerprint"></i>
-            <h3>تصميم فريد</h3>
-            <p>لا نستخدم القوالب الجاهزة؛ كل كود يكتب من الصفر لضمان التميز.</p>
-        </div>
-    </section>
+        <section id="projects" class="section">
+            <div class="cards-grid">
+                <div class="glass-card" data-aos="fade-up">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Architecture</h3>
+                    <p>هيكلة برمجية نظيفة تضمن أداءً لا يضاهى في معالجة البيانات الضخمة.</p>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-eye"></i>
+                    <h3>UI Aesthetics</h3>
+                    <p>تصاميم واجهة المستخدم (UI) مبنية على سيكولوجية التفاعل البشري.</p>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>Cyber Security</h3>
+                    <p>حماية البيانات وتأمين الثغرات هو أولويتنا القصوى في كل سطر كود.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <div class="socials" id="contact">
+    <div class="social-wrap">
         <a href="https://www.facebook.com/share/191DRXcdf6/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/bdllh.nqws" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/962779418419" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:info@abunaqos.com"><i class="fas fa-envelope"></i></a>
     </div>
 
-    <footer style="text-align: center; padding: 40px; color: #444; font-size: 12px;">
-        ENGINEERED BY ABU NAQOS © 2026 | ALL SYSTEMS OPERATIONAL
+    <footer style="text-align: center; padding: 40px; font-family: 'Orbitron'; color: #333; letter-spacing: 2px;">
+        [ ENCRYPTION ACTIVE ] 2026 - ABU NAQOS CORE
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ duration: 1000 });
 
         // Custom Cursor Logic
-        const cursor = document.getElementById('custom-cursor');
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            outline.style.left = (e.clientX - 20) + 'px';
+            outline.style.top = (e.clientY - 20) + 'px';
         });
 
-        // Neural Network Background
-        const canvas = document.getElementById('canvas-bg');
+        // Background Animation (Connecting Dots)
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+        let points = [];
+        for(let i=0; i<80; i++) points.push({
+            x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+            vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5
+        });
 
-        let particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = '#7000ff';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            for (let i = 0; i < 100; i++) particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, index) => {
-                p.update();
-                p.draw();
-                for (let j = index; j < particles.length; j++) {
-                    const dx = p.x - particles[j].x;
-                    const dy = p.y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        ctx.strokeStyle = 'rgba(0, 242, 255, 0.1)';
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.strokeStyle = 'rgba(0, 255, 136, 0.1)';
+            points.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x<0 || p.x>canvas.width) p.vx *= -1;
+                if(p.y<0 || p.y>canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI*2); ctx.fill();
+                points.forEach(p2 => {
+                    let d = Math.hypot(p.x-p2.x, p.y-p2.y);
+                    if(d<150) {
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
                     }
-                }
+                });
             });
-            requestAnimationFrame(animate);
-        } 
-        init(); animate();
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+        // Terminal Logic - تفاعل المبرمجين
+        const input = document.getElementById('terminal-input');
+        const output = document.getElementById('terminal-output');
+        input.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter') {
+                const cmd = input.value.toLowerCase();
+                let res = '';
+                if(cmd === 'help') res = '> Available: about, skills, clear, hack';
+                else if(cmd === 'about') res = '> Abu Naqos: A digital architect specialized in outperforming expectations.';
+                else if(cmd === 'skills') res = '> Professional Mastery in JS, Python, CyberSec, and UI Design.';
+                else if(cmd === 'hack') res = '> [ERROR] Access denied. Just kidding, you are already impressed.';
+                else if(cmd === 'clear') { output.innerHTML = ''; input.value = ''; return; }
+                else res = `> Command not found: ${cmd}`;
+                
+                output.innerHTML += `<div>> ${cmd}</div><div>${res}</div><br>`;
+                input.value = '';
+                document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
+            }
+        });
     </script>
 </body>
 </html>
