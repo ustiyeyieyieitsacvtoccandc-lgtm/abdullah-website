@@ -22,7 +22,10 @@
             --border-color: rgba(0, 242, 255, 0.2);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* منع القفز المفاجئ عند التحميل */
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Cairo', sans-serif; background: var(--dark-bg); color: #fff; overflow-x: hidden; }
 
         #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; }
@@ -70,6 +73,7 @@
         }
         .service-card i { font-size: 45px; color: var(--main-color); margin-bottom: 20px; }
         .service-card h3 { font-size: 24px; margin-bottom: 15px; color: var(--main-color); }
+        
         .badge {
             position: absolute; top: 15px; left: -30px; background: var(--accent-color);
             color: white; padding: 5px 40px; transform: rotate(-45deg); font-size: 10px; font-weight: 700;
@@ -101,7 +105,7 @@
         <a href="#contact" class="btn-main" style="padding: 10px 25px; font-size: 14px;">تواصل الآن</a>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="top">
         <div data-aos="fade-up">
             <p style="color: var(--main-color); font-weight: 700; letter-spacing: 3px;">نحوّل رؤيتك إلى كود</p>
             <h1>أبو ناقوس لتطوير <span>الأنظمة الذكية</span></h1>
@@ -173,9 +177,20 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.css"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        AOS.init({ duration: 1000 });
+        // الحل الجذري لمشكلة فتح الموقع من الأسفل
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        window.onload = function() {
+            window.scrollTo(0, 0);
+            AOS.init({ duration: 1000, once: true });
+        };
 
         particlesJS("particles-js", {
             "particles": {
