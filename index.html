@@ -19,90 +19,34 @@
     --primary: #ff6b35;
     --primary-dark: #e85d2c;
     --secondary: #8b5cf6;
-    --dark: #0a0a0f;
-    --dark-light: #1a1a2e;
+    --dark: #0f0715;
+    --dark-light: #1a1025;
     --gray: #94a3b8;
     --white: #ffffff;
     --gradient-1: linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%);
-    --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-    --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.1);
-    --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.1);
-    --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.25);
-    --shadow-xl: 0 35px 60px -15px rgba(0,0,0,0.3);
 }
 
 body {
     font-family: 'Cairo', sans-serif;
-    background: var(--gradient-2);
+    background: linear-gradient(135deg, #0f0715 0%, #1a1025 100%);
     color: var(--white);
     min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* خلفية متحركة حديثة */
-.bg-modern {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.4;
-    animation: floatBlob 20s infinite ease-in-out;
-}
-
-.blob-1 {
-    width: 400px;
-    height: 400px;
-    background: #ff6b35;
-    top: -100px;
-    right: -100px;
-    animation-delay: 0s;
-}
-
-.blob-2 {
-    width: 500px;
-    height: 500px;
-    background: #8b5cf6;
-    bottom: -150px;
-    left: -150px;
-    animation-delay: -5s;
-}
-
-.blob-3 {
-    width: 300px;
-    height: 300px;
-    background: #06b6d4;
-    top: 50%;
-    left: 30%;
-    animation-delay: -10s;
-}
-
-@keyframes floatBlob {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, -50px) scale(1.1); }
 }
 
 /* شريط التنقل */
 .navbar {
-    position: relative;
-    z-index: 10;
-    background: rgba(10, 10, 15, 0.8);
-    backdrop-filter: blur(20px);
-    padding: 18px 6%;
+    background: rgba(15, 7, 21, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,107,53,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -112,14 +56,18 @@ body {
 }
 
 .logo-img {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 16px;
-    object-fit: cover;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
 }
 
 .logo-text {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     background: var(--gradient-1);
     -webkit-background-clip: text;
@@ -130,7 +78,7 @@ body {
 .status-badge {
     background: rgba(255,107,53,0.15);
     border: 1px solid var(--primary);
-    padding: 8px 20px;
+    padding: 6px 18px;
     border-radius: 40px;
     font-size: 13px;
     font-weight: 600;
@@ -138,51 +86,43 @@ body {
 
 .status-badge i {
     color: var(--primary);
-    margin-left: 8px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0%,100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    margin-left: 6px;
 }
 
 /* المحتوى الرئيسي */
 .main-container {
-    position: relative;
-    z-index: 10;
     max-width: 1100px;
-    margin: 80px auto;
-    padding: 0 24px;
+    margin: 60px auto;
+    padding: 0 20px;
 }
 
 /* بطاقة الصيانة */
 .maintenance-card {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .badge-icon {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     background: var(--gradient-1);
-    border-radius: 35px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 30px;
-    font-size: 48px;
-    box-shadow: var(--shadow-xl);
+    margin: 0 auto 25px;
+    font-size: 42px;
+    box-shadow: 0 20px 35px -10px rgba(255,107,53,0.3);
 }
 
 .maintenance-card h1 {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 @media (max-width: 768px) {
-    .maintenance-card h1 { font-size: 36px; }
+    .maintenance-card h1 { font-size: 32px; }
 }
 
 .maintenance-card h1 span {
@@ -193,43 +133,42 @@ body {
 }
 
 .coming-soon {
-    font-size: 28px;
+    font-size: 24px;
     color: #f59e0b;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: 700;
 }
 
 .sub-text {
     color: var(--gray);
-    max-width: 550px;
+    max-width: 500px;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-/* عداد فقط */
+/* عداد */
 .countdown-wrapper {
     background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(10px);
-    border-radius: 60px;
-    padding: 35px;
-    margin: 45px auto;
-    max-width: 700px;
-    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 50px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 650px;
 }
 
 .countdown-timer {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .countdown-item {
     text-align: center;
+    min-width: 80px;
 }
 
 .countdown-number {
-    font-size: 48px;
+    font-size: 45px;
     font-weight: 800;
     background: var(--gradient-1);
     -webkit-background-clip: text;
@@ -241,26 +180,26 @@ body {
 
 @media (max-width: 550px) {
     .countdown-number { font-size: 32px; }
-    .countdown-timer { gap: 15px; }
+    .countdown-item { min-width: 60px; }
 }
 
 .countdown-label {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--gray);
-    margin-top: 8px;
+    margin-top: 6px;
     display: block;
 }
 
-/* شريط التقدم البسيط */
+/* شريط التقدم */
 .progress-wrapper {
-    max-width: 500px;
-    margin: 30px auto;
+    max-width: 450px;
+    margin: 20px auto;
 }
 
 .progress-label {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-size: 13px;
     color: var(--gray);
 }
@@ -281,50 +220,48 @@ body {
 
 /* فريق أبو ناقوس */
 .team-section {
-    margin: 60px 0;
     text-align: center;
+    margin: 50px 0;
 }
 
 .team-card {
     display: inline-block;
     background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(10px);
-    border-radius: 40px;
-    padding: 40px 50px;
+    border-radius: 35px;
+    padding: 35px 45px;
     text-align: center;
     border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .team-card:hover {
     transform: translateY(-5px);
     border-color: var(--primary);
-    box-shadow: var(--shadow-lg);
 }
 
 .team-avatar {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 18px;
     background: var(--gradient-1);
-    border-radius: 35px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 55px;
+    font-size: 48px;
     color: white;
 }
 
 .team-name {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .team-role {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--primary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .team-status {
@@ -340,53 +277,51 @@ body {
 /* أيقونات التواصل */
 .social-section {
     text-align: center;
-    margin: 50px auto;
+    margin: 45px auto;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .social-icon {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     background: rgba(255,255,255,0.05);
-    border-radius: 30px;
+    border-radius: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 26px;
     color: white;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
 }
 
 .social-icon:hover {
     background: var(--gradient-1);
-    transform: translateY(-5px);
-    border-color: transparent;
+    transform: translateY(-3px);
 }
 
 /* تذييل */
 .footer {
     text-align: center;
-    padding: 40px;
+    padding: 35px;
     border-top: 1px solid rgba(255,255,255,0.05);
-    margin-top: 50px;
-    font-size: 13px;
+    margin-top: 40px;
+    font-size: 12px;
     color: var(--gray);
 }
 
 /* نقطة سرية */
 .secret-access {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 45px;
-    height: 45px;
+    bottom: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
     background: rgba(255,255,255,0.05);
     border-radius: 50%;
     cursor: pointer;
@@ -395,26 +330,18 @@ body {
     align-items: center;
     justify-content: center;
     transition: 0.3s;
-    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .secret-access:hover {
     background: var(--gradient-1);
-    transform: rotate(15deg);
 }
 </style>
 </head>
 <body>
 
-<div class="bg-modern">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-</div>
-
 <nav class="navbar">
     <div class="logo">
-        <img src="https://placehold.co/200x200/ff6b35/white?text=ن" alt="شعار أبو ناقوس" class="logo-img">
+        <div class="logo-img"><i class="fas fa-crown"></i></div>
         <div class="logo-text">أبو ناقوس</div>
     </div>
     <div class="status-badge">
@@ -431,7 +358,6 @@ body {
         </div>
         <p class="sub-text">نقوم بتطوير الموقع بالكامل لنقدم لك تجربة فريدة ومميزة</p>
 
-        <!-- عداد فقط -->
         <div class="countdown-wrapper">
             <div class="countdown-timer">
                 <div class="countdown-item">
@@ -453,7 +379,6 @@ body {
             </div>
         </div>
 
-        <!-- شريط التقدم البسيط -->
         <div class="progress-wrapper">
             <div class="progress-label">
                 <span>نسبة الإنجاز</span>
@@ -465,7 +390,6 @@ body {
         </div>
     </div>
 
-    <!-- فريق أبو ناقوس -->
     <div class="team-section">
         <div class="team-card">
             <div class="team-avatar"><i class="fas fa-crown"></i></div>
@@ -475,7 +399,6 @@ body {
         </div>
     </div>
 
-    <!-- أيقونات التواصل -->
     <div class="social-section">
         <div class="social-icons">
             <a href="https://www.facebook.com/share/14b2shMn3QR/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -491,7 +414,6 @@ body {
 <div class="secret-access" id="secretAccess"><i class="fas fa-key"></i></div>
 
 <script>
-    // عداد 5 أيام
     let endDate = new Date();
     endDate.setDate(endDate.getDate() + 5);
     endDate.setHours(0, 0, 0, 0);
@@ -521,7 +443,6 @@ body {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // نقطة سرية
     let clickCount = 0, clickTimer;
     document.getElementById('secretAccess').onclick = () => {
         clickCount++;
