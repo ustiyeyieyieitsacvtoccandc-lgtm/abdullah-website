@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-<title>أبو ناقوس | صيانة وتطوير الموقع</title>
+<title>أبو ناقوس | قيد التطوير - القادم أعظم</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,11 +19,13 @@
     --primary: #ff6b35;
     --primary-dark: #e85d2c;
     --secondary: #8b5cf6;
+    --success: #10b981;
     --dark: #0f0715;
     --dark-light: #1a1025;
     --gray: #94a3b8;
     --white: #ffffff;
     --gradient-1: linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%);
+    --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 
 body {
@@ -33,6 +35,7 @@ body {
     min-height: 100vh;
 }
 
+/* شريط التنقل */
 .navbar {
     background: rgba(15, 7, 21, 0.95);
     backdrop-filter: blur(10px);
@@ -81,13 +84,20 @@ body {
     border-radius: 40px;
     font-size: 13px;
     font-weight: 600;
+    transition: 0.3s;
 }
 
 .status-badge i {
-    color: var(--primary);
     margin-left: 6px;
 }
 
+.status-badge.ready {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+}
+
+/* المحتوى الرئيسي */
 .main-container {
     max-width: 1100px;
     margin: 60px auto;
@@ -110,6 +120,7 @@ body {
     margin: 0 auto 25px;
     font-size: 42px;
     box-shadow: 0 20px 35px -10px rgba(255,107,53,0.3);
+    transition: 0.3s;
 }
 
 .maintenance-card h1 {
@@ -143,13 +154,14 @@ body {
     font-size: 15px;
 }
 
+/* العداد */
 .countdown-wrapper {
     background: rgba(255,255,255,0.03);
     border-radius: 50px;
     padding: 30px;
     margin: 40px auto;
     max-width: 650px;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .countdown-timer {
@@ -187,10 +199,11 @@ body {
     display: block;
 }
 
+/* شريط التقدم */
 .progress-wrapper {
     max-width: 450px;
     margin: 20px auto;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 .progress-label {
@@ -213,24 +226,38 @@ body {
     width: 75%;
     height: 100%;
     border-radius: 30px;
+    transition: width 0.3s;
 }
 
 /* شعار الانتهاء */
 .completion-banner {
-    background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(139,92,246,0.15));
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
     border-radius: 60px;
-    padding: 40px;
+    padding: 45px 30px;
     margin: 30px auto;
     max-width: 600px;
     text-align: center;
-    border: 1px solid var(--primary);
+    border: 2px solid var(--success);
     display: none;
+    animation: celebration 0.5s ease;
+}
+
+@keyframes celebration {
+    0% { transform: scale(0.8); opacity: 0; }
+    80% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .completion-banner i {
-    font-size: 60px;
-    color: #10b981;
+    font-size: 70px;
+    color: var(--success);
     margin-bottom: 20px;
+    animation: bounce 0.8s ease;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .completion-banner h2 {
@@ -238,23 +265,28 @@ body {
     margin-bottom: 15px;
 }
 
-.completion-banner .btn-go {
+.completion-banner p {
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+.btn-go {
     display: inline-block;
-    background: var(--gradient-1);
-    padding: 12px 35px;
+    background: var(--gradient-success);
+    padding: 14px 40px;
     border-radius: 50px;
     color: white;
     text-decoration: none;
     font-weight: 700;
-    margin-top: 20px;
     transition: 0.3s;
 }
 
-.completion-banner .btn-go:hover {
+.btn-go:hover {
     transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(255,107,53,0.3);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
 }
 
+/* فريق أبو ناقوس */
 .team-section {
     text-align: center;
     margin: 50px 0;
@@ -310,6 +342,7 @@ body {
     margin-left: 6px;
 }
 
+/* تواصل */
 .social-section {
     text-align: center;
     margin: 45px auto;
@@ -368,6 +401,11 @@ body {
 .secret-access:hover {
     background: var(--gradient-1);
 }
+
+/* تأثيرات إضافية */
+.hidden {
+    display: none !important;
+}
 </style>
 </head>
 <body>
@@ -377,21 +415,20 @@ body {
         <div class="logo-img"><i class="fas fa-crown"></i></div>
         <div class="logo-text">أبو ناقوس</div>
     </div>
-    <div class="status-badge">
+    <div class="status-badge" id="statusBadge">
         <i class="fas fa-sync-alt"></i> تحت الصيانة والتطوير
     </div>
 </nav>
 
 <div class="main-container">
     <div class="maintenance-card">
-        <div class="badge-icon"><i class="fas fa-tools"></i></div>
+        <div class="badge-icon" id="badgeIcon"><i class="fas fa-tools"></i></div>
         <h1>الموقع <span>تحت الصيانة</span></h1>
         <div class="coming-soon">
             <i class="fas fa-star"></i> القادم أعظم إن شاء الله <i class="fas fa-star"></i>
         </div>
         <p class="sub-text">نقوم بتطوير الموقع بالكامل لنقدم لك تجربة فريدة ومميزة</p>
 
-        <!-- العداد -->
         <div id="countdownBox" class="countdown-wrapper">
             <div class="countdown-timer">
                 <div class="countdown-item">
@@ -413,23 +450,21 @@ body {
             </div>
         </div>
 
-        <!-- شريط التقدم -->
         <div id="progressBox" class="progress-wrapper">
             <div class="progress-label">
                 <span>نسبة الإنجاز</span>
-                <span id="progressPercent">75%</span>
+                <span id="progressPercent">0%</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width:75%"></div>
+                <div class="progress-fill" id="progressFill" style="width:0%"></div>
             </div>
         </div>
 
-        <!-- شعار الانتهاء من الصيانة (يظهر بعد 5 أيام) -->
         <div id="completionBanner" class="completion-banner">
             <i class="fas fa-check-circle"></i>
-            <h2>تم الانتهاء من الصيانة!</h2>
-            <p>الموقع الآن جاهز للاستخدام بأحدث إصداراته</p>
-            <a href="#" class="btn-go"><i class="fas fa-arrow-left"></i> دخول الموقع</a>
+            <h2>🎉 تم الانتهاء من الصيانة!</h2>
+            <p>الموقع الآن جاهز للاستخدام بأحدث إصداراته وتصميمه الجديد</p>
+            <a href="#" class="btn-go" id="goToSiteBtn"><i class="fas fa-arrow-left"></i> دخول الموقع الآن</a>
         </div>
     </div>
 
@@ -457,16 +492,30 @@ body {
 <div class="secret-access" id="secretAccess"><i class="fas fa-key"></i></div>
 
 <script>
-    let endDate = new Date();
-    endDate.setDate(endDate.getDate() + 5);
-    endDate.setHours(0, 0, 0, 0);
+    // حساب تاريخ الانتهاء (5 أيام من الآن)
+    let endDate;
+    let savedEndDate = localStorage.getItem('abunaqos_endDate');
+    
+    if(savedEndDate) {
+        endDate = new Date(savedEndDate);
+    } else {
+        endDate = new Date();
+        endDate.setDate(endDate.getDate() + 5);
+        endDate.setHours(0, 0, 0, 0);
+        localStorage.setItem('abunaqos_endDate', endDate.toISOString());
+    }
+
+    let isCompleted = false;
 
     function updateCountdown() {
         let now = new Date();
         let diff = endDate - now;
         
         // إذا انتهى الوقت
-        if(diff <= 0) {
+        if(diff <= 0 && !isCompleted) {
+            isCompleted = true;
+            
+            // تحديث الأرقام
             document.getElementById('days').innerText = '00';
             document.getElementById('hours').innerText = '00';
             document.getElementById('minutes').innerText = '00';
@@ -476,17 +525,28 @@ body {
             document.getElementById('countdownBox').style.display = 'none';
             document.getElementById('progressBox').style.display = 'none';
             
-            // إظهار شعار الانتهاء
-            document.getElementById('completionBanner').style.display = 'block';
+            // إظهار شعار الانتهاء مع تأثير
+            let banner = document.getElementById('completionBanner');
+            banner.style.display = 'block';
             
-            // تغيير حالة شريط التنقل
-            document.querySelector('.status-badge').innerHTML = '<i class="fas fa-check-circle"></i> الموقع جاهز الآن!';
-            document.querySelector('.status-badge').style.borderColor = '#10b981';
+            // تغيير الأيقونة
+            document.getElementById('badgeIcon').innerHTML = '<i class="fas fa-check-circle"></i>';
+            document.getElementById('badgeIcon').style.background = 'var(--gradient-success)';
+            
+            // تغيير شريط الحالة
+            let statusBadge = document.getElementById('statusBadge');
+            statusBadge.innerHTML = '<i class="fas fa-check-circle"></i> الموقع جاهز الآن!';
+            statusBadge.classList.add('ready');
+            
+            // تغيير عنوان الصفحة
+            document.title = "أبو ناقوس | الموقع جاهز!";
             
             return;
         }
         
-        // إذا لسى في وقت
+        if(diff <= 0) return;
+        
+        // حساب الأيام والساعات والدقائق والثواني
         let days = Math.floor(diff / (1000*60*60*24));
         let hours = Math.floor((diff % 86400000) / 3600000);
         let minutes = Math.floor((diff % 3600000) / 60000);
@@ -497,14 +557,25 @@ body {
         document.getElementById('minutes').innerText = minutes.toString().padStart(2,'0');
         document.getElementById('seconds').innerText = seconds.toString().padStart(2,'0');
         
+        // حساب نسبة الإنجاز (كل يوم 20%)
         let progress = ((5-days)/5)*100;
+        if(progress > 100) progress = 100;
+        if(progress < 0) progress = 0;
         document.getElementById('progressFill').style.width = progress + '%';
         document.getElementById('progressPercent').innerText = Math.floor(progress) + '%';
     }
     
+    // تشغيل العداد كل ثانية
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
+    
+    // زر الدخول للموقع (عدل الرابط حسب موقعك الحقيقي)
+    document.getElementById('goToSiteBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = "/";
+    });
+    
+    // نقطة سرية
     let clickCount = 0, clickTimer;
     document.getElementById('secretAccess').onclick = () => {
         clickCount++;
@@ -515,6 +586,8 @@ body {
         }
         clickTimer = setTimeout(() => clickCount = 0, 800);
     };
+    
+    console.log("%c 🔥 موقع أبو ناقوس - تحت الصيانة | سيتم الانتهاء بعد 5 أيام", "color:#ff6b35; font-size:14px");
 </script>
 </body>
 </html>
