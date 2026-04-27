@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>موقع عبد الله أبو ناقوس | قيد التطوير</title>
+<title>عبد الله أبو ناقوس | قيد التطوير - القادم أعظم</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,9 +19,6 @@ body {
     font-family: 'Cairo', sans-serif;
     background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     overflow-x: hidden;
 }
@@ -44,37 +41,10 @@ body {
     animation: float 20s infinite;
 }
 
-.circle:nth-child(1) {
-    width: 300px;
-    height: 300px;
-    top: -100px;
-    right: -100px;
-    animation-delay: 0s;
-}
-
-.circle:nth-child(2) {
-    width: 500px;
-    height: 500px;
-    bottom: -200px;
-    left: -150px;
-    animation-delay: -5s;
-}
-
-.circle:nth-child(3) {
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 20%;
-    animation-delay: -10s;
-}
-
-.circle:nth-child(4) {
-    width: 150px;
-    height: 150px;
-    bottom: 10%;
-    right: 10%;
-    animation-delay: -15s;
-}
+.circle:nth-child(1) { width: 300px; height: 300px; top: -100px; right: -100px; }
+.circle:nth-child(2) { width: 500px; height: 500px; bottom: -200px; left: -150px; animation-delay: -5s; }
+.circle:nth-child(3) { width: 200px; height: 200px; top: 50%; left: 20%; animation-delay: -10s; }
+.circle:nth-child(4) { width: 150px; height: 150px; bottom: 10%; right: 10%; animation-delay: -15s; }
 
 @keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
@@ -82,20 +52,33 @@ body {
     100% { transform: translateY(0) rotate(360deg); opacity: 0.3; }
 }
 
-/* المحتوى الرئيسي */
-.maintenance-container {
+.main-container {
     position: relative;
     z-index: 10;
-    text-align: center;
-    padding: 40px 20px;
-    max-width: 800px;
+    max-width: 1300px;
     margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-/* شعار فخم */
-.logo-wrapper {
-    margin-bottom: 40px;
-    animation: fadeInDown 0.8s ease;
+/* قسم الصيانة */
+.maintenance-section {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+/* قسم اللعبة */
+.game-section {
+    flex: 1;
+    min-width: 350px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 30px;
+    border: 1px solid rgba(255,107,53,0.3);
 }
 
 .logo-icon {
@@ -128,16 +111,14 @@ body {
     color: transparent;
 }
 
-/* عنوان الصيانة */
 .maintenance-title {
-    font-size: 64px;
+    font-size: 55px;
     font-weight: 900;
-    margin-bottom: 20px;
-    animation: fadeInUp 0.8s ease;
+    margin: 30px 0 20px;
 }
 
 @media (max-width: 768px) {
-    .maintenance-title { font-size: 42px; }
+    .maintenance-title { font-size: 38px; }
 }
 
 .maintenance-title span {
@@ -147,48 +128,153 @@ body {
     color: transparent;
 }
 
-.maintenance-subtitle {
-    font-size: 20px;
-    color: #aaa;
-    margin-bottom: 30px;
-    padding: 0 20px;
-    line-height: 1.8;
-}
-
-/* بطاقة المعلومات */
-.info-card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 50px;
-    padding: 35px;
-    margin: 30px 0;
-    border: 1px solid rgba(255,107,53,0.3);
-    animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-.info-card i {
-    font-size: 48px;
-    color: #ff6b35;
-    margin-bottom: 20px;
-}
-
-.info-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
+.coming-soon {
+    font-size: 28px;
     color: #ffd966;
+    margin: 15px 0;
+    font-weight: 800;
 }
 
-.info-card p {
-    color: #bbb;
-    margin-bottom: 20px;
+.coming-soon i {
+    margin: 0 10px;
 }
 
-/* أيقونات التواصل */
-.social-icons {
+.open-date {
+    background: rgba(255,107,53,0.2);
+    padding: 12px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    margin: 20px 0;
+    font-size: 18px;
+    border: 1px solid #ff6b35;
+}
+
+/* عداد 5 أيام */
+.countdown {
+    background: rgba(0,0,0,0.5);
+    border-radius: 60px;
+    padding: 25px;
+    margin: 20px 0;
+}
+
+.countdown-text {
+    font-size: 16px;
+    color: #ffd966;
+    margin-bottom: 15px;
+}
+
+.countdown-timer {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    min-width: 80px;
+    padding: 15px;
+    background: rgba(255,107,53,0.2);
+    border-radius: 20px;
+}
+
+.countdown-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ff6b35;
+    display: block;
+}
+
+.countdown-label {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* اللعبة */
+.game-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffd966;
+}
+
+.game-title i {
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.game-canvas {
+    background: #1a1a2e;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.score {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff6b35;
+    margin-bottom: 15px;
+}
+
+.game-area {
+    background: #0a0a0f;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.target {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(145deg, #ff6b35, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    cursor: pointer;
+    transition: 0.1s;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.target:active {
+    transform: scale(0.9);
+}
+
+.game-btn {
+    background: linear-gradient(135deg, #ff6b35, #8b5cf6);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.high-score {
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* أزرار التواصل */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
     flex-wrap: wrap;
 }
 
@@ -204,7 +290,6 @@ body {
     text-decoration: none;
     transition: 0.3s;
     background: rgba(255,255,255,0.1);
-    animation: fadeInUp 0.8s ease 0.4s both;
 }
 
 .social-icon:hover {
@@ -216,78 +301,26 @@ body {
 .instagram:hover { background: linear-gradient(45deg, #f09433, #d62976, #962fbf); }
 .whatsapp:hover { background: #25D366; }
 
-/* عداد الصيانة */
-.countdown {
-    background: rgba(0,0,0,0.5);
-    border-radius: 60px;
-    padding: 20px;
-    margin-top: 30px;
-    animation: fadeInUp 0.8s ease 0.6s both;
-}
-
-.countdown-text {
+.contact-info {
+    margin-top: 20px;
     font-size: 14px;
-    color: #888;
-    margin-bottom: 10px;
-}
-
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.countdown-item {
-    min-width: 70px;
-    padding: 10px;
-    background: rgba(255,107,53,0.2);
-    border-radius: 20px;
-}
-
-.countdown-number {
-    font-size: 28px;
-    font-weight: 800;
-    color: #ff6b35;
-    display: block;
-}
-
-.countdown-label {
-    font-size: 12px;
     color: #aaa;
 }
 
-/* زر الإشعار */
-.notify-btn {
-    background: linear-gradient(135deg, #ff6b35, #8b5cf6);
-    border: none;
-    padding: 14px 35px;
-    border-radius: 40px;
-    color: white;
-    font-weight: 800;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+.contact-info i {
+    margin-left: 8px;
+    color: #ff6b35;
 }
 
-.notify-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(255,107,53,0.4);
-}
-
-/* التذييل */
 .footer {
-    margin-top: 50px;
+    text-align: center;
+    padding: 30px;
     font-size: 12px;
     color: #555;
-    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 30px;
 }
 
-/* تويستر الإشعار */
 .toast {
     position: fixed;
     bottom: 30px;
@@ -307,33 +340,22 @@ body {
     to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
 
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* شفرة أبو ناقوس السرية (للوصول للوحة التحكم حتى أثناء الصيانة) */
 .secret-access {
     position: fixed;
     bottom: 20px;
     left: 20px;
     width: 40px;
     height: 40px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
     border-radius: 50%;
     cursor: pointer;
     z-index: 999;
     opacity: 0.3;
-    transition: 0.3s;
 }
 
-.secret-access:hover {
-    opacity: 1;
+@media (max-width: 800px) {
+    .main-container { flex-direction: column; }
+    .game-section { order: -1; }
 }
 </style>
 </head>
@@ -346,58 +368,81 @@ body {
     <div class="circle"></div>
 </div>
 
-<!-- نقطة سرية للدخول للوحة التحكم (اضغط 5 مرات) -->
 <div class="secret-access" id="secretAccess"></div>
 
-<div class="maintenance-container">
-    <div class="logo-wrapper">
+<div class="main-container">
+    <!-- قسم الصيانة -->
+    <div class="maintenance-section">
         <div class="logo-icon"><i class="fas fa-code"></i></div>
         <div class="logo-text">عبد الله أبو ناقوس</div>
-    </div>
+        
+        <h1 class="maintenance-title">تحت <span>التطوير</span></h1>
+        
+        <div class="coming-soon">
+            <i class="fas fa-star"></i> القادم أعظم إن شاء الله <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="open-date">
+            <i class="fas fa-calendar-alt"></i> سيتم فتح الموقع بعد 5 أيام
+        </div>
 
-    <h1 class="maintenance-title">تحت <span>الصيانة</span></h1>
-    <p class="maintenance-subtitle">
-        <i class="fas fa-tools"></i> نقوم بتطوير وتحديث الموقع لنقدم لك أفضل تجربة<br>
-        عودتك قريباً إلى عالم الإبداع والبساطة 🚀
-    </p>
+        <!-- عداد تنازلي 5 أيام -->
+        <div class="countdown">
+            <div class="countdown-text"><i class="fas fa-hourglass-half"></i> الوقت المتبقي لفتح الموقع:</div>
+            <div class="countdown-timer">
+                <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">أيام</span></div>
+                <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">ساعات</span></div>
+                <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">دقائق</span></div>
+                <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">ثواني</span></div>
+            </div>
+        </div>
 
-    <div class="info-card">
-        <i class="fas fa-clock"></i>
-        <h3>ما هي المدة المتوقعة؟</h3>
-        <p>نعمل حاليًا على تطوير واجهة جديدة وتحديث خدماتنا<br>نتوقع الانتهاء خلال <strong>24-48 ساعة</strong> إن شاء الله</p>
-    </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/14b2shMn3QR/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/962772158245" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+        </div>
 
-    <!-- عداد تنازلي -->
-    <div class="countdown">
-        <div class="countdown-text"><i class="fas fa-hourglass-half"></i> الوقت المتبقي للانتهاء من الصيانة:</div>
-        <div class="countdown-timer">
-            <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">أيام</span></div>
-            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">ساعات</span></div>
-            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">دقائق</span></div>
-            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">ثواني</span></div>
+        <div class="contact-info">
+            <p><i class="fas fa-phone"></i> للاستفسار: <strong style="color:#ff6b35;">0779418419</strong></p>
+            <p><i class="fas fa-envelope"></i> abunaqos@example.com</p>
         </div>
     </div>
 
-    <button class="notify-btn" onclick="notifyMe()">
-        <i class="fas fa-bell"></i> أخبرني عند الانتهاء
-    </button>
-
-    <div class="social-icons">
-        <a href="https://www.facebook.com/share/1P4pMKiWTu/" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/962772158245" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-    </div>
-
-    <div class="footer">
-        <p>عبد الله أبو ناقوس | تصميم وتطوير المواقع الاحترافية</p>
-        <p style="margin-top:5px;">للاستفسار: 0779418419</p>
+    <!-- قسم اللعبة -->
+    <div class="game-section">
+        <div class="game-title">
+            <i class="fas fa-gamepad"></i>
+            <span>تسلاية أثناء الانتظار</span>
+            <i class="fas fa-smile-wink"></i>
+        </div>
+        
+        <div class="game-canvas" id="gameCanvas">
+            <div class="score">🎯 النقاط: <span id="score">0</span></div>
+            <div class="game-area" id="gameArea">
+                <div class="target" onclick="hitTarget(this)">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <button class="game-btn" onclick="startGame()"><i class="fas fa-play"></i> بدء اللعبة</button>
+            <div class="high-score">🏆 أعلى نتيجة: <span id="highScore">0</span></div>
+        </div>
+        <p style="font-size: 12px; color: #555; text-align: center; margin-top: 15px;">
+            <i class="fas fa-mouse-pointer"></i> اضغط على النجمة لتكسب نقطة
+        </p>
     </div>
 </div>
 
+<div class="footer">
+    <p>عبد الله أبو ناقوس | تصميم وتطوير المواقع الاحترافية</p>
+    <p style="margin-top: 5px;">© 2025 جميع الحقوق محفوظة | تحت حماية أبو ناقوس</p>
+</div>
+
 <script>
-    // تاريخ الانتهاء من الصيانة (بعد 48 ساعة من الآن)
+    // ========== عداد 5 أيام ==========
     let endDate = new Date();
-    endDate.setHours(endDate.getHours() + 48);
+    endDate.setDate(endDate.getDate() + 5);
+    endDate.setHours(0, 0, 0, 0);
 
     function updateCountdown() {
         let now = new Date();
@@ -425,33 +470,86 @@ body {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    function notifyMe() {
-        if(Notification.permission === "granted") {
-            new Notification("عبد الله أبو ناقوس", { body: "سنخبرك عند انتهاء الصيانة 🚀" });
-            showToast("✅ تم تسجيل طلبك، سنخبرك فور الانتهاء!");
-        } else if(Notification.permission !== "denied") {
-            Notification.requestPermission().then(permission => {
-                if(permission === "granted") {
-                    new Notification("عبد الله أبو ناقوس", { body: "سنخبرك عند انتهاء الصيانة 🚀" });
-                    showToast("✅ تم تفعيل الإشعارات!");
+    // ========== اللعبة ==========
+    let currentScore = 0;
+    let highScore = localStorage.getItem('gameHighScore') || 0;
+    let gameInterval = null;
+    let isGameRunning = false;
+
+    document.getElementById('highScore').innerText = highScore;
+
+    function updateScoreUI() {
+        document.getElementById('score').innerText = currentScore;
+    }
+
+    function createTarget() {
+        let gameArea = document.getElementById('gameArea');
+        gameArea.innerHTML = '';
+        
+        let target = document.createElement('div');
+        target.className = 'target';
+        target.style.position = 'absolute';
+        
+        // موقع عشوائي
+        let maxX = gameArea.clientWidth - 90;
+        let maxY = gameArea.clientHeight - 90;
+        let randomX = Math.random() * maxX;
+        let randomY = Math.random() * maxY;
+        
+        target.style.position = 'absolute';
+        target.style.left = randomX + 'px';
+        target.style.top = randomY + 'px';
+        target.style.width = '70px';
+        target.style.height = '70px';
+        target.style.background = 'linear-gradient(145deg, #ff6b35, #8b5cf6)';
+        target.style.borderRadius = '50%';
+        target.style.display = 'flex';
+        target.style.alignItems = 'center';
+        target.style.justifyContent = 'center';
+        target.style.cursor = 'pointer';
+        target.style.transition = '0.1s';
+        target.innerHTML = '<i class="fas fa-star" style="font-size: 30px; color: white;"></i>';
+        
+        target.onclick = function() {
+            if(isGameRunning) {
+                currentScore++;
+                updateScoreUI();
+                createTarget();
+                
+                if(currentScore > highScore) {
+                    highScore = currentScore;
+                    localStorage.setItem('gameHighScore', highScore);
+                    document.getElementById('highScore').innerText = highScore;
                 }
-            });
-        } else {
-            showToast("❌ يرجى تفعيل الإشعارات من إعدادات المتصفح", true);
-        }
+            }
+        };
+        
+        gameArea.appendChild(target);
+        gameArea.style.position = 'relative';
+        gameArea.style.height = '350px';
     }
 
-    function showToast(msg, isError = false) {
-        let toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.innerHTML = msg;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+    function startGame() {
+        if(gameInterval) clearInterval(gameInterval);
+        currentScore = 0;
+        updateScoreUI();
+        isGameRunning = true;
+        createTarget();
+        
+        // تنتهي اللعبة بعد 30 ثانية
+        gameInterval = setTimeout(() => {
+            isGameRunning = false;
+            let gameArea = document.getElementById('gameArea');
+            gameArea.innerHTML = `<div style="text-align:center; padding:50px;">
+                <i class="fas fa-trophy" style="font-size:50px; color:#ffd966;"></i>
+                <p style="margin-top:15px;">انتهت اللعبة! نقاطك: ${currentScore}</p>
+                <button class="game-btn" onclick="startGame()"><i class="fas fa-redo"></i> لعب مرة أخرى</button>
+            </div>`;
+        }, 30000);
     }
 
-    // نقطة سرية للوصول للوحة التحكم حتى أثناء الصيانة (5 نقرات)
-    let clickCount = 0;
-    let clickTimer;
+    // نقطة سرية للدخول للوحة التحكم
+    let clickCount = 0, clickTimer;
     document.getElementById('secretAccess').addEventListener('click', () => {
         clickCount++;
         clearTimeout(clickTimer);
@@ -462,7 +560,7 @@ body {
         clickTimer = setTimeout(() => clickCount = 0, 800);
     });
 
-    console.log("%c 🔒 موقع عبد الله أبو ناقوس - تحت الصيانة | أبو ناقوس يحمي ملكه", "color:#ff6b35; font-size:16px;");
+    console.log("%c 🔒 موقع عبد الله أبو ناقوس - تحت الصيانة | القادم أعظم إن شاء الله", "color:#ff6b35; font-size:16px;");
 </script>
 </body>
 </html>
