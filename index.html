@@ -3,230 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أبو ناقوس | المهندس الرقمي الفذ</title>
     
-    <meta property="og:title" content="أبو ناقوس - Visionary Developer">
-    <meta property="og:description" content="تحدي حدود البرمجيات والتصميم.">
-    <meta property="og:image" content="https://your-image-url.jpg">
+    <title>أبو ناقوس | ARCHITECT</title>
+    <meta property="og:title" content="أبو ناقوس - المهندس الرقمي">
+    <meta property="og:description" content="استكشف مستقبل الويب مع أنظمة أبو ناقوس المتطورة.">
+    <meta property="og:image" content="https://i.ibb.co/3ykXv6B/cyber-thumb.jpg"> <meta name="theme-color" content="#00f2ff">
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@300;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --neon: #00ff88;
-            --deep-purple: #6e4aff;
-            --bg-black: #020205;
-            --glass: rgba(255, 255, 255, 0.02);
-            --border: rgba(0, 255, 136, 0.2);
+            --primary: #00f2ff;
+            --secondary: #bc13fe;
+            --bg: #020204;
+            --card-bg: rgba(10, 10, 15, 0.8);
+            --border: rgba(0, 242, 255, 0.2);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-        body { font-family: 'Cairo', sans-serif; background: var(--bg-black); color: white; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg); color: #fff; overflow-x: hidden; }
 
-        /* الماوس التفاعلي */
-        #cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--neon); border-radius: 50%; z-index: 10000; pointer-events: none; }
-        #cursor-outline { position: fixed; width: 40px; height: 40px; border: 2px solid var(--neon); border-radius: 50%; z-index: 9999; pointer-events: none; transition: 0.15s ease-out; }
+        /* خلفية الشبكة المتطورة */
+        #neural-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* الخلفية الرقمية */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
+        /* Scanline Effect (تأثير الشاشة التقنية) */
+        body::before {
+            content: " "; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%; z-index: 100; pointer-events: none;
+        }
 
-        /* Navbar - Ultra Glassmorphism */
+        /* Nav Bar */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 25px 8%;
-            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
-            background: linear-gradient(to bottom, rgba(2,2,5,0.9), transparent);
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); sticky: top; z-index: 200;
+        }
+        .sys-status { font-family: 'Orbitron'; font-size: 10px; color: var(--primary); letter-spacing: 2px; }
+
+        /* Hero */
+        .hero { height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        
+        .glitch {
+            font-family: 'Orbitron', sans-serif; font-size: clamp(50px, 12vw, 120px); font-weight: 900;
+            position: relative; color: #fff; text-transform: uppercase;
+        }
+        .glitch span { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .glitch:hover span:first-child { animation: glitch 650ms infinite; clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); transform: translate(-5px); color: var(--primary); }
+        .glitch:hover span:last-child { animation: glitch 650ms infinite; clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%); transform: translate(5px); color: var(--secondary); }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
         }
 
-        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; color: var(--neon); text-shadow: 0 0 15px var(--neon); }
-
-        /* Hero Section */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%; }
-        .hero-text h1 { font-size: clamp(45px, 12vw, 120px); font-weight: 900; line-height: 0.9; margin-bottom: 20px; }
-        .hero-text h1 span { -webkit-text-stroke: 2px var(--neon); color: transparent; }
-
-        /* Terminal Section - لطلاب الـ IT */
-        .terminal-container {
-            max-width: 800px; margin: 0 auto 100px; background: #0a0a0f;
-            border-radius: 12px; border: 1px solid var(--border); overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); font-family: 'Courier New', monospace;
+        /* Bento Grid Services */
+        .bento-container {
+            padding: 50px 10%; display: grid;
+            grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 250px);
+            gap: 20px; max-width: 1400px; margin: 0 auto;
         }
-        .terminal-header { background: #1a1a24; padding: 10px 20px; display: flex; gap: 8px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-body { padding: 25px; height: 250px; overflow-y: auto; text-align: left; direction: ltr; color: var(--neon); }
 
-        /* Portfolio Cards */
-        .section { padding: 100px 10%; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .glass-card {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 50px 30px; border-radius: 30px; backdrop-filter: blur(10px);
-            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        .bento-item {
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px; position: relative;
+            overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .glass-card:hover { transform: translateY(-20px) scale(1.02); border-color: var(--neon); box-shadow: 0 0 30px rgba(0, 255, 136, 0.2); }
-        .glass-card i { font-size: 45px; color: var(--neon); margin-bottom: 25px; }
+        .bento-item:hover { border-color: var(--primary); transform: scale(1.02); box-shadow: 0 0 30px rgba(0,242,255,0.1); }
 
-        /* Buttons */
-        .btn-neon {
-            padding: 18px 50px; background: transparent; border: 2px solid var(--neon);
-            color: var(--neon); font-family: 'Orbitron'; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 2px; position: relative;
-            transition: 0.3s; text-decoration: none; display: inline-block;
+        .item-1 { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+        .item-2 { grid-column: span 2; }
+        .item-3 { grid-column: span 1; }
+        .item-4 { grid-column: span 1; }
+
+        .bento-item i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+        .bento-item h3 { font-size: 24px; margin-bottom: 10px; }
+        .bento-item p { color: #888; font-size: 14px; }
+
+        /* Social Icons */
+        .social-dock {
+            position: fixed; left: 30px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 20px; z-index: 500;
         }
-        .btn-neon:hover { background: var(--neon); color: black; box-shadow: 0 0 40px var(--neon); }
-
-        /* Social Links */
-        .social-wrap { display: flex; justify-content: center; gap: 30px; padding: 50px; }
-        .social-wrap a {
-            font-size: 28px; color: white; transition: 0.3s;
-            text-decoration: none; width: 60px; height: 60px;
-            display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border); border-radius: 15px;
+        .social-dock a {
+            width: 50px; height: 50px; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: white; text-decoration: none; transition: 0.3s;
         }
-        .social-wrap a:hover { color: var(--neon); border-color: var(--neon); transform: rotate(-10deg) scale(1.2); }
+        .social-dock a:hover { background: var(--primary); color: #000; transform: translateX(10px); box-shadow: 0 0 20px var(--primary); }
 
-        @media (max-width: 768px) { * { cursor: auto; } #cursor-dot, #cursor-outline { display: none; } }
+        /* Footer */
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); font-family: 'Orbitron'; font-size: 12px; color: #444; }
+
+        @media (max-width: 992px) {
+            .bento-container { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .item-1 { grid-column: span 2; }
+            .social-dock { flex-direction: row; left: 50%; top: auto; bottom: 20px; transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
-    <div id="cursor-dot"></div>
-    <div id="cursor-outline"></div>
+    <canvas id="neural-canvas"></canvas>
 
     <nav>
-        <div class="logo">NAQOS_ENV</div>
-        <div style="font-family: 'Orbitron'; font-size: 12px; color: var(--border);">V4.0_STABLE</div>
+        <div class="sys-status" id="clock">SYSTEM_TIME: 00:00:00</div>
+        <div class="logo" style="font-family: 'Orbitron'; font-weight: 900; color: var(--primary);">NAQOS_ARCHITECT</div>
+        <div class="sys-status">LATENCY: 14ms</div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-text" data-aos="zoom-in">
-                <p style="font-family: 'Orbitron'; letter-spacing: 5px; color: var(--neon);">SYSTEM READY</p>
-                <h1>أبو <span>ناقوس</span></h1>
-                <p style="font-size: 22px; color: #888; margin-bottom: 40px;">نحن لا نصمم المواقع، نحن نبني أنظمة ذكاء بصرية.</p>
-                <a href="#projects" class="btn-neon">استكشاف الأكواد</a>
-            </div>
-        </section>
-
-        <section class="section" data-aos="fade-up">
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <div class="dot" style="background: #ff5f56;"></div>
-                    <div class="dot" style="background: #ffbd2e;"></div>
-                    <div class="dot" style="background: #27c93f;"></div>
-                    <span style="color: #555; font-size: 12px; margin-left: 10px;">guest@abunaqos: ~</span>
-                </div>
-                <div class="terminal-body" id="terminal">
-                    <div id="terminal-output">
-                        > Initializing core system...<br>
-                        > Loading skills: [HTML, CSS, JS, REACT, PHP]... OK<br>
-                        > Status: <span style="color: white;">Master Developer Detected.</span><br>
-                        > Type 'help' to see commands.<br><br>
-                    </div>
-                    <div style="display: flex;">
-                        <span>>&nbsp;</span><input type="text" id="terminal-input" autofocus style="background:transparent; border:none; color:var(--neon); outline:none; font-family:inherit; width:100%;">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="cards-grid">
-                <div class="glass-card" data-aos="fade-up">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Architecture</h3>
-                    <p>هيكلة برمجية نظيفة تضمن أداءً لا يضاهى في معالجة البيانات الضخمة.</p>
-                </div>
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-eye"></i>
-                    <h3>UI Aesthetics</h3>
-                    <p>تصاميم واجهة المستخدم (UI) مبنية على سيكولوجية التفاعل البشري.</p>
-                </div>
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-shield-halved"></i>
-                    <h3>Cyber Security</h3>
-                    <p>حماية البيانات وتأمين الثغرات هو أولويتنا القصوى في كل سطر كود.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="social-wrap">
+    <div class="social-dock">
         <a href="https://www.facebook.com/share/191DRXcdf6/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/bdllh.nqws" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
         <a href="mailto:info@abunaqos.com"><i class="fas fa-envelope"></i></a>
     </div>
 
-    <footer style="text-align: center; padding: 40px; font-family: 'Orbitron'; color: #333; letter-spacing: 2px;">
-        [ ENCRYPTION ACTIVE ] 2026 - ABU NAQOS CORE
+    <section class="hero">
+        <div data-aos="zoom-out">
+            <h1 class="glitch">
+                ABU_NAQOS
+                <span>ABU_NAQOS</span>
+                <span>ABU_NAQOS</span>
+            </h1>
+            <p style="letter-spacing: 8px; color: var(--primary); font-weight: 900; margin-top: 10px;">DATA & DESIGN VIRTUALIST</p>
+        </div>
+    </section>
+
+    <div class="bento-container">
+        <div class="bento-item item-1" data-aos="fade-right">
+            <i class="fas fa-terminal"></i>
+            <h3>تطوير الأنظمة المعقدة</h3>
+            <p>نحن لا نصمم واجهات فقط، نحن نبني محركات برمجية خلفية قادرة على إدارة آلاف العمليات في الثانية بكل دقة وأمان.</p>
+            <div style="margin-top: 20px; color: var(--primary); font-family: 'Orbitron'; font-size: 12px;">> CORE_READY_100%</div>
+        </div>
+        <div class="bento-item item-2" data-aos="fade-left">
+            <i class="fas fa-brain"></i>
+            <h3>ذكاء واجهة المستخدم</h3>
+            <p>دمج الذكاء الاصطناعي في واجهات الاستخدام لتحسين تجربة العميل وزيادة المبيعات.</p>
+        </div>
+        <div class="bento-item item-3" data-aos="fade-up">
+            <i class="fas fa-database"></i>
+            <h3>أمن البيانات</h3>
+            <p>تشفير عالي المستوى لحماية مشاريعك.</p>
+        </div>
+        <div class="bento-item item-4" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-microchip"></i>
+            <h3>أداء فائق</h3>
+            <p>سرعة تحميل تقاس بالملي ثانية.</p>
+        </div>
+    </div>
+
+    <footer>
+        DESIGNED FOR THE FUTURE. [ ABU NAQOS ] &copy; 2026<br>
+        ALL RIGHTS RESERVED BY SYSTEM_ADMIN
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000 });
 
-        // Custom Cursor Logic
-        const dot = document.getElementById('cursor-dot');
-        const outline = document.getElementById('cursor-outline');
-        document.addEventListener('mousemove', (e) => {
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-            outline.style.left = (e.clientX - 20) + 'px';
-            outline.style.top = (e.clientY - 20) + 'px';
-        });
+        // تحديث الساعة البرمجية
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = `SYSTEM_TIME: ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+        }
+        setInterval(updateClock, 1000);
 
-        // Background Animation (Connecting Dots)
-        const canvas = document.getElementById('bg-canvas');
+        // Neural Network Animation (Optimized)
+        const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let points = [];
-        for(let i=0; i<80; i++) points.push({
-            x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-            vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5
-        });
+        let particles = [];
 
-        function draw() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.strokeStyle = 'rgba(0, 255, 136, 0.1)';
-            points.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if(p.x<0 || p.x>canvas.width) p.vx *= -1;
-                if(p.y<0 || p.y>canvas.height) p.vy *= -1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI*2); ctx.fill();
-                points.forEach(p2 => {
-                    let d = Math.hypot(p.x-p2.x, p.y-p2.y);
-                    if(d<150) {
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.onresize = resize;
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+        }
+
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.3)';
+                ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill();
+                
+                particles.forEach(p2 => {
+                    let d = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (d < 120) {
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${1 - d/120 - 0.7})`;
                         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
                     }
                 });
             });
-            requestAnimationFrame(draw);
+            requestAnimationFrame(animate);
         }
-        draw();
-
-        // Terminal Logic - تفاعل المبرمجين
-        const input = document.getElementById('terminal-input');
-        const output = document.getElementById('terminal-output');
-        input.addEventListener('keydown', (e) => {
-            if(e.key === 'Enter') {
-                const cmd = input.value.toLowerCase();
-                let res = '';
-                if(cmd === 'help') res = '> Available: about, skills, clear, hack';
-                else if(cmd === 'about') res = '> Abu Naqos: A digital architect specialized in outperforming expectations.';
-                else if(cmd === 'skills') res = '> Professional Mastery in JS, Python, CyberSec, and UI Design.';
-                else if(cmd === 'hack') res = '> [ERROR] Access denied. Just kidding, you are already impressed.';
-                else if(cmd === 'clear') { output.innerHTML = ''; input.value = ''; return; }
-                else res = `> Command not found: ${cmd}`;
-                
-                output.innerHTML += `<div>> ${cmd}</div><div>${res}</div><br>`;
-                input.value = '';
-                document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
-            }
-        });
+        animate();
     </script>
 </body>
 </html>
