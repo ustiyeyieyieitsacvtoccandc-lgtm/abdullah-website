@@ -45,7 +45,7 @@ body {
     background: radial-gradient(circle at 20% 30%, rgba(255,107,53,0.08), transparent 70%);
 }
 
-/* النقطة الحمراء - نظام الدخول السري */
+/* النقطة الحمراء */
 .red-dot {
     position: fixed;
     bottom: 30px;
@@ -78,7 +78,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 550px;
+    max-width: 650px;
     max-height: 85vh;
     overflow-y: auto;
     background: #0c0c14;
@@ -89,45 +89,55 @@ body {
     box-shadow: 0 0 50px rgba(255,107,53,0.3);
     backdrop-filter: blur(16px);
 }
-.secret-panel input {
+.secret-panel input, .secret-panel textarea {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
     background: #1a1a2a;
     border: 1px solid #ff6b35;
     color: white;
-    border-radius: 40px;
-    text-align: center;
-    font-size: 20px;
-    letter-spacing: 3px;
+    border-radius: 20px;
+    margin: 8px 0;
 }
 .overlay-secret { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); z-index: 1000000; }
 
-/* قسم مشغل الثقة - مثال لموقع زبون */
-.trust-showcase {
-    background: linear-gradient(125deg, rgba(255,107,53,0.12), rgba(139,92,246,0.08));
-    border-radius: 64px;
-    max-width: 1200px;
+/* قسم المنشورات */
+.posts-section {
+    max-width: 1300px;
     margin: 50px auto;
-    padding: 50px 30px;
-    text-align: center;
-    border: 2px solid rgba(255,107,53,0.5);
-    backdrop-filter: blur(3px);
+    padding: 0 6%;
 }
-.made-by-badge {
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.post-card {
+    background: var(--dark-card);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255,107,53,0.3);
+    transition: 0.3s;
+}
+.post-card:hover { transform: translateY(-8px); border-color: var(--primary); }
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.post-content { padding: 20px; }
+.post-title { font-size: 20px; color: var(--gold); margin-bottom: 10px; }
+.post-description { color: #aaa; font-size: 14px; margin-bottom: 15px; }
+.post-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(0,0,0,0.6);
+    gap: 8px;
+    background: var(--gradient-1);
     padding: 8px 20px;
-    border-radius: 40px;
-    margin: 15px auto;
-    width: fit-content;
-}
-.protected-hint {
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
     font-size: 13px;
-    color: #88ffaa;
-    margin-top: 10px;
-    opacity: 0.8;
 }
 
 .services-grid {
@@ -194,72 +204,42 @@ body {
     gap: 12px;
 }
 
-/* تصميم جدول الزبائن داخل اللوحة السرية */
+/* تصميم داخل اللوحة السرية */
 .clients-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
 }
 .clients-table th, .clients-table td {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 12px;
 }
-.clients-table th {
-    background: rgba(255,107,53,0.3);
-    color: #ffd966;
-}
+.clients-table th { background: rgba(255,107,53,0.3); color: #ffd966; }
+.counter-badge { background: var(--primary); padding: 3px 10px; border-radius: 20px; }
 .client-actions button {
     background: rgba(255,255,255,0.1);
     border: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin: 3px;
+    padding: 4px 8px;
+    border-radius: 15px;
+    margin: 2px;
     cursor: pointer;
     color: white;
 }
-.client-actions button:hover { background: var(--primary); }
-.add-client-form {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 20px;
-}
-.add-client-form input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    background: #1a1a2a;
-    border: 1px solid #ff6b35;
-    border-radius: 20px;
-    color: white;
-}
-.add-client-form button {
-    background: var(--gradient-1);
-    border: none;
-    padding: 10px;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-}
-.counter-badge {
-    background: var(--primary);
-    padding: 5px 12px;
-    border-radius: 30px;
-    font-weight: bold;
-    display: inline-block;
-}
-.clients-stats {
-    background: rgba(255,107,53,0.2);
-    padding: 12px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+.add-form { margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 20px; }
+.clients-stats { background: rgba(255,107,53,0.2); padding: 10px; border-radius: 20px; margin-bottom: 15px; text-align: center; }
+.posts-list { margin-top: 20px; max-height: 300px; overflow-y: auto; }
+.post-item { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 15px; margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
+.post-item img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+.post-item-info { flex: 1; }
+.post-item-title { font-weight: bold; font-size: 14px; }
+.post-item-actions button { background: rgba(255,255,255,0.1); border: none; padding: 4px 10px; border-radius: 15px; color: white; cursor: pointer; }
+
 @media(max-width:768px){
-    .clients-table th, .clients-table td { font-size: 11px; padding: 6px; }
+    .clients-table th, .clients-table td { font-size: 9px; padding: 4px; }
     .secret-panel { padding: 20px; }
+    .posts-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -283,7 +263,7 @@ body {
         <button onclick="closeSecretPanel()" style="background:#2d2d3a; width:100%; padding:10px; border-radius:40px; border:none; color:white;">إلغاء</button>
     </div>
     <div id="adminToolsArea" style="display:none; margin-top:20px;"></div>
-    <small style="display:block; margin-top:12px; text-align:center;">🔒 نظام حماية متكامل</small>
+    <small style="display:block; margin-top:12px; text-align:center;">🔒 نظام إدارة المنشورات والعدادات</small>
 </div>
 
 <nav class="navbar" style="padding:12px 6%; display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,8,0.98);">
@@ -309,18 +289,22 @@ body {
     <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>تحسين SEO</h3><p>نتائج متقدمة</p></div>
 </div>
 
-<!-- قسم مثال لموقع زبون: مشغل الثقة -->
-<div class="trust-showcase" id="trustSection">
-    <div class="made-by-badge">
+<!-- 📢 قسم آخر المنشورات -->
+<h2 class="section-title">📢 آخر <span>المنشورات</span></h2>
+<div class="posts-section">
+    <div id="postsGrid" class="posts-grid">
+        <!-- المنشورات تظهر هنا تلقائياً -->
+    </div>
+</div>
+
+<!-- مثال موقع لزبون: مشغل الثقة -->
+<div style="background: linear-gradient(125deg, rgba(255,107,53,0.12), rgba(139,92,246,0.08)); border-radius: 64px; max-width: 1200px; margin: 30px auto; padding: 30px; text-align: center;">
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 40px;">
         <i class="fas fa-trophy" style="color:#ffd966;"></i>
         <span style="font-weight:800;">مشروع منفذ لصالح: مشغل الثقة</span>
-        <i class="fas fa-star" style="color:#ffd966;"></i>
     </div>
-    <div class="protected-hint">
-        <i class="fas fa-check-circle"></i> تم التصميم والتطوير بواسطة عبد الله أبو ناقوس
-    </div>
-    <div style="margin-top:20px;">
-        <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="display:inline-flex; gap:12px; background:var(--gradient-1); padding:12px 28px; border-radius:60px; text-decoration:none; color:white; font-weight:800;">
+    <div style="margin-top:15px;">
+        <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="display:inline-flex; gap:12px; background:var(--gradient-1); padding:10px 25px; border-radius:60px; text-decoration:none; color:white; font-weight:800;">
             <i class="fas fa-external-link-alt"></i> رابط موقع مشغل الثقة
         </a>
     </div>
@@ -343,7 +327,6 @@ body {
 </footer>
 
 <script>
-    // الرقم السري
     const PROTECTION_CODE = "0779418419";
     let failedAttempts = 0;
     
@@ -356,14 +339,12 @@ body {
         setTimeout(() => toast.remove(), 3000);
     }
     
-    // ========== إدارة الزبائن والعدادات المخفية ==========
-    // كل زبون: { id, name, websiteUrl, counter, imageUrl? }
-    
+    // ========== إدارة الزبائن ==========
     function loadClients() {
         let defaultClients = [
-            { id: 1, name: "مشغل الثقة", websiteUrl: "https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/", counter: 0 },
-            { id: 2, name: "شركة الأردن للبناء", websiteUrl: "https://example.com/jordan-building", counter: 0 },
-            { id: 3, name: "مطعم سفرة", websiteUrl: "https://example.com/sufra", counter: 0 }
+            { id: 1, name: "مشغل الثقة", websiteUrl: "https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/", counter: 0, image: "https://picsum.photos/id/106/400/200" },
+            { id: 2, name: "شركة الأردن للبناء", websiteUrl: "https://example.com/jordan-building", counter: 0, image: "https://picsum.photos/id/26/400/200" },
+            { id: 3, name: "مطعم سفرة", websiteUrl: "https://example.com/sufra", counter: 0, image: "https://picsum.photos/id/30/400/200" }
         ];
         let stored = localStorage.getItem('abunaqos_clients');
         if(stored) return JSON.parse(stored);
@@ -371,25 +352,19 @@ body {
         return defaultClients;
     }
     
-    function saveClients(clients) {
-        localStorage.setItem('abunaqos_clients', JSON.stringify(clients));
-    }
+    function saveClients(clients) { localStorage.setItem('abunaqos_clients', JSON.stringify(clients)); }
     
     function incrementCounter(clientId) {
         let clients = loadClients();
         let client = clients.find(c => c.id === clientId);
-        if(client) {
-            client.counter++;
-            saveClients(clients);
-            return client.counter;
-        }
+        if(client) { client.counter++; saveClients(clients); return client.counter; }
         return 0;
     }
     
-    function addClient(name, websiteUrl) {
+    function addClient(name, websiteUrl, imageUrl) {
         let clients = loadClients();
         let newId = Date.now();
-        clients.push({ id: newId, name: name, websiteUrl: websiteUrl, counter: 0 });
+        clients.push({ id: newId, name: name, websiteUrl: websiteUrl, counter: 0, image: imageUrl || "https://picsum.photos/id/20/400/200" });
         saveClients(clients);
         return clients;
     }
@@ -401,69 +376,158 @@ body {
         return clients;
     }
     
-    // نشر على فيسبوك
-    function shareOnFacebook(client) {
-        let postText = `✅ موقع جديد لـ ${client.name}\n📱 تصميم وتطوير بواسطة عبد الله أبو ناقوس\n🔗 ${client.websiteUrl}\n📞 للاستفسار: 0779418419`;
-        let url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(client.websiteUrl)}&quote=${encodeURIComponent(postText)}`;
-        window.open(url, '_blank');
-        let newCounter = incrementCounter(client.id);
-        showMessage(`📊 تم نشر ${client.name} - العداد الآن: ${newCounter}`);
-        renderClientsTable();
+    // ========== إدارة المنشورات (تخزين في الموقع) ==========
+    function loadPosts() {
+        let stored = localStorage.getItem('abunaqos_posts');
+        if(stored) return JSON.parse(stored);
+        return [];
     }
     
-    // نشر على واتساب
-    function shareOnWhatsApp(client) {
-        let postText = `✅ موقع جديد لـ ${client.name}\n📱 تصميم وتطوير بواسطة عبد الله أبو ناقوس\n🔗 ${client.websiteUrl}\n📞 للاستفسار: 0779418419`;
-        let url = `https://wa.me/?text=${encodeURIComponent(postText)}`;
-        window.open(url, '_blank');
-        let newCounter = incrementCounter(client.id);
-        showMessage(`📊 تم نشر ${client.name} - العداد الآن: ${newCounter}`);
-        renderClientsTable();
+    function savePosts(posts) { localStorage.setItem('abunaqos_posts', JSON.stringify(posts)); }
+    
+    function addPost(clientId, title, description, imageUrl, websiteUrl) {
+        let posts = loadPosts();
+        let newPost = {
+            id: Date.now(),
+            clientId: clientId,
+            clientName: loadClients().find(c => c.id === clientId)?.name || "مشروع جديد",
+            title: title,
+            description: description,
+            imageUrl: imageUrl,
+            websiteUrl: websiteUrl,
+            date: new Date().toLocaleString('ar-EG')
+        };
+        posts.unshift(newPost); // الأحدث في الأعلى
+        savePosts(posts);
+        return posts;
     }
     
+    function deletePost(postId) {
+        let posts = loadPosts();
+        posts = posts.filter(p => p.id !== postId);
+        savePosts(posts);
+        return posts;
+    }
+    
+    // عرض المنشورات في الموقع الرئيسي
+    function renderPostsToWebsite() {
+        let posts = loadPosts();
+        let container = document.getElementById('postsGrid');
+        if(posts.length === 0) {
+            container.innerHTML = `<div style="text-align:center; color:#aaa; padding:50px;">📭 لا توجد منشورات بعد، أضف منشوراً من لوحة التحكم</div>`;
+            return;
+        }
+        container.innerHTML = '';
+        posts.forEach(post => {
+            let card = document.createElement('div');
+            card.className = 'post-card';
+            card.innerHTML = `
+                <img src="${post.imageUrl}" class="post-image" onerror="this.src='https://picsum.photos/id/106/400/200'">
+                <div class="post-content">
+                    <h3 class="post-title">${post.title}</h3>
+                    <p class="post-description">${post.description}</p>
+                    <a href="${post.websiteUrl}" target="_blank" class="post-link"><i class="fas fa-external-link-alt"></i> زيارة الموقع</a>
+                    <div style="margin-top:10px; font-size:11px; color:#555;">📅 ${post.date}</div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+    
+    // ========== عرض لوحة التحكم ==========
     function renderClientsTable() {
         let clients = loadClients();
         let totalPosts = clients.reduce((sum, c) => sum + c.counter, 0);
         let html = `<div class="clients-stats">
-                        <i class="fas fa-chart-line"></i> إجمالي المنشورات: <strong>${totalPosts}</strong> | عدد الزبائن: <strong>${clients.length}</strong>
+                        <i class="fas fa-chart-line"></i> إجمالي المنشورات المنشورة: <strong>${totalPosts}</strong> | عدد الزبائن: <strong>${clients.length}</strong>
                     </div>
                     <table class="clients-table">
-                        <thead>
-                            <tr><th>المشروع (الموقع)</th><th>رابط الموقع</th><th>عدد المنشورات</th><th>نشر</th><th>حذف</th></tr>
-                        </thead>
+                        <thead><tr><th>الزبون</th><th>العداد</th><th>نشر</th><th>حذف</th></tr></thead>
                         <tbody>`;
         clients.forEach(client => {
             html += `<tr>
-                        <td><strong>${client.name}</strong></td>
-                        <td><a href="${client.websiteUrl}" target="_blank" style="color:#ffd966; font-size:12px;">رابط</a></td>
+                        <td><strong>${client.name}</strong><br><a href="${client.websiteUrl}" target="_blank" style="color:#ffd966; font-size:10px;">رابط</a></td>
                         <td><span class="counter-badge">${client.counter}</span></td>
                         <td class="client-actions">
-                            <button onclick="shareOnFacebookClient(${client.id})"><i class="fab fa-facebook-f"></i></button>
-                            <button onclick="shareOnWhatsAppClient(${client.id})"><i class="fab fa-whatsapp"></i></button>
-                        </td>
+                            <button onclick="preparePublish(${client.id}, '${client.name}', '${client.websiteUrl}', '${client.image || 'https://picsum.photos/id/106/400/200'}')"><i class="fas fa-plus-circle"></i> نشر</button>
+                         </td>
                         <td><button onclick="deleteClientById(${client.id})" style="background:#dc2626;"><i class="fas fa-trash"></i></button></td>
-                     </tr>`;
+                      </tr>`;
         });
         html += `</tbody></table>
-                 <div class="add-client-form">
-                    <h4 style="margin-bottom:10px;"><i class="fas fa-plus-circle"></i> إضافة زبون جديد (موقع جديد سويتة)</h4>
-                    <input type="text" id="newClientName" placeholder="اسم الزبون / المشروع">
-                    <input type="url" id="newClientUrl" placeholder="رابط الموقع الإلكتروني">
-                    <button onclick="addNewClient()"><i class="fas fa-save"></i> إضافة وحفظ</button>
-                 </div>`;
+            <div class="add-form">
+                <h4><i class="fas fa-plus-circle"></i> إضافة زبون جديد</h4>
+                <input type="text" id="newClientName" placeholder="اسم الزبون" style="margin:5px 0;">
+                <input type="url" id="newClientUrl" placeholder="رابط الموقع" style="margin:5px 0;">
+                <input type="url" id="newClientImage" placeholder="رابط الصورة المعاينة (اختياري)" style="margin:5px 0;">
+                <button onclick="addNewClient()" style="background:var(--gradient-1); border:none; padding:10px; border-radius:25px; color:white; cursor:pointer; width:100%;">➕ إضافة زبون</button>
+            </div>
+            
+            <div style="margin-top:25px;">
+                <h4><i class="fas fa-newspaper"></i> المنشورات المنزلة في الموقع</h4>
+                <div id="postsListAdmin" class="posts-list"></div>
+            </div>`;
         document.getElementById('clientsTableContainer').innerHTML = html;
+        renderAdminPostsList();
     }
     
-    window.shareOnFacebookClient = function(clientId) {
-        let clients = loadClients();
-        let client = clients.find(c => c.id === clientId);
-        if(client) shareOnFacebook(client);
+    function renderAdminPostsList() {
+        let posts = loadPosts();
+        let container = document.getElementById('postsListAdmin');
+        if(!container) return;
+        if(posts.length === 0) {
+            container.innerHTML = '<p style="color:#aaa; text-align:center;">لا توجد منشورات</p>';
+            return;
+        }
+        container.innerHTML = '';
+        posts.forEach(post => {
+            let div = document.createElement('div');
+            div.className = 'post-item';
+            div.innerHTML = `
+                <img src="${post.imageUrl}" onerror="this.src='https://picsum.photos/id/106/50/50'">
+                <div class="post-item-info">
+                    <div class="post-item-title">${post.title}</div>
+                    <div style="font-size:11px; color:#aaa;">${post.clientName} | ${post.date}</div>
+                </div>
+                <div class="post-item-actions">
+                    <button onclick="deletePostById(${post.id})"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+    
+    window.preparePublish = function(clientId, clientName, websiteUrl, imageUrl) {
+        document.getElementById('publishClientId').value = clientId;
+        document.getElementById('publishClientName').innerText = clientName;
+        document.getElementById('publishWebsiteUrl').value = websiteUrl;
+        document.getElementById('publishImageUrl').value = imageUrl;
+        document.getElementById('publishForm').style.display = 'block';
     };
     
-    window.shareOnWhatsAppClient = function(clientId) {
-        let clients = loadClients();
-        let client = clients.find(c => c.id === clientId);
-        if(client) shareOnWhatsApp(client);
+    window.publishPostNow = function() {
+        let clientId = parseInt(document.getElementById('publishClientId').value);
+        let title = document.getElementById('postTitle').value.trim();
+        let description = document.getElementById('postDescription').value.trim();
+        let imageUrl = document.getElementById('publishImageUrl').value.trim();
+        let websiteUrl = document.getElementById('publishWebsiteUrl').value.trim();
+        
+        if(!title) { showMessage('❌ الرجاء إدخال عنوان المنشور', true); return; }
+        if(!description) { showMessage('❌ الرجاء إدخال وصف المنشور', true); return; }
+        
+        // زيادة عداد الزبون
+        incrementCounter(clientId);
+        // إضافة المنشور للتخزين
+        addPost(clientId, title, description, imageUrl, websiteUrl);
+        // تحديث الواجهات
+        renderClientsTable();
+        renderPostsToWebsite();
+        showMessage(`✅ تم نشر المنشور وزيادة العداد!`);
+        
+        // إخفاء النموذج وتفريغه
+        document.getElementById('publishForm').style.display = 'none';
+        document.getElementById('postTitle').value = '';
+        document.getElementById('postDescription').value = '';
     };
     
     window.deleteClientById = function(clientId) {
@@ -474,34 +538,35 @@ body {
         }
     };
     
+    window.deletePostById = function(postId) {
+        if(confirm('هل تريد حذف هذا المنشور من الموقع؟')) {
+            deletePost(postId);
+            renderClientsTable();
+            renderPostsToWebsite();
+            showMessage('🗑 تم حذف المنشور');
+        }
+    };
+    
     window.addNewClient = function() {
         let name = document.getElementById('newClientName').value.trim();
         let url = document.getElementById('newClientUrl').value.trim();
-        if(!name || !url) {
-            showMessage('❌ الرجاء إدخال اسم الزبون ورابط الموقع', true);
-            return;
-        }
-        addClient(name, url);
+        let image = document.getElementById('newClientImage').value.trim();
+        if(!name || !url) { showMessage('❌ الرجاء إدخال الاسم والرابط', true); return; }
+        addClient(name, url, image);
         renderClientsTable();
         document.getElementById('newClientName').value = '';
         document.getElementById('newClientUrl').value = '';
-        showMessage(`✅ تم إضافة ${name} بنجاح`);
+        document.getElementById('newClientImage').value = '';
+        showMessage(`✅ تم إضافة ${name}`);
     };
     
-    // ========== النقطة الحمراء والتحقق ==========
-    let clickCount = 0;
-    let clickTimer;
-    const dotButton = document.getElementById('secretDotTrigger');
-    dotButton.addEventListener('click', () => {
+    // ========== النقطة الحمراء ==========
+    let clickCount = 0, clickTimer;
+    document.getElementById('secretDotTrigger').addEventListener('click', () => {
         clickCount++;
         if(clickTimer) clearTimeout(clickTimer);
-        if(clickCount === 5) {
-            openSecretModal();
-            clickCount = 0;
-        }
+        if(clickCount === 5) { openSecretModal(); clickCount = 0; }
         clickTimer = setTimeout(() => { clickCount = 0; }, 800);
-        dotButton.style.transform = "scale(0.9)";
-        setTimeout(() => dotButton.style.transform = "", 150);
     });
     
     function openSecretModal() {
@@ -526,17 +591,29 @@ body {
                 <div style="background:#11111c; border-radius:28px; padding:18px;">
                     <i class="fas fa-check-circle" style="color:#00ffaa;"></i> 
                     <strong>مرحباً مطور عبد الله أبو ناقوس</strong>
-                    <p style="margin:8px 0;">✅ نظام إدارة المنشورات والعدادات المخفية</p>
                     <div id="clientsTableContainer"></div>
+                    
+                    <div id="publishForm" style="display:none; margin-top:20px; padding:15px; background:rgba(255,107,53,0.1); border-radius:20px;">
+                        <h4><i class="fas fa-plus-circle"></i> إنشاء منشور جديد لـ: <span id="publishClientName"></span></h4>
+                        <input type="hidden" id="publishClientId">
+                        <input type="hidden" id="publishWebsiteUrl">
+                        <input type="hidden" id="publishImageUrl">
+                        <input type="text" id="postTitle" placeholder="عنوان المنشور" style="margin:8px 0;">
+                        <textarea id="postDescription" rows="3" placeholder="وصف المنشور..."></textarea>
+                        <button onclick="publishPostNow()" style="background:var(--gradient-1); border:none; padding:10px; border-radius:25px; color:white; width:100%; margin-top:10px;">📢 نشر المنشور + زيادة العداد</button>
+                        <button onclick="document.getElementById('publishForm').style.display='none'" style="background:#333; border:none; padding:8px; border-radius:20px; color:white; width:100%; margin-top:8px;">إلغاء</button>
+                    </div>
+                    
                     <button onclick="closeSecretPanel()" style="background:#8b5cf6; border:none; padding:10px; border-radius:30px; margin-top:15px; color:white; width:100%;">🔒 إغلاق اللوحة</button>
                 </div>
             `;
             renderClientsTable();
+            renderPostsToWebsite();
             showMessage("تم فتح لوحة التحكم بنجاح ✅");
             failedAttempts = 0;
         } else {
             failedAttempts++;
-            showMessage(`❌ رمز التحقق غير صحيح! المحاولة ${failedAttempts}/3`, true);
+            showMessage(`❌ رمز التحقق غير صحيح!`, true);
             if(failedAttempts >= 3) {
                 showMessage("🔴 تم حظر المحاولات المؤقتة!", true);
                 document.getElementById('secretCodeInput').disabled = true;
@@ -545,25 +622,23 @@ body {
         }
     };
     
-    // إرسال طلب تواصل
+    // طلب تواصل
     document.getElementById('sendRequestBtn').addEventListener('click', () => {
         let name = document.getElementById('userName').value.trim();
         let phone = document.getElementById('userPhone').value.trim();
         let email = document.getElementById('userEmail').value.trim();
-        let service = document.getElementById('serviceSelect').value;
-        let msg = document.getElementById('userMsg').value.trim();
-        if(!name || !phone || !email) return showMessage("يرجى ملء الاسم والجوال والبريد", true);
-        let requests = JSON.parse(localStorage.getItem('abunaqos_requests') || '[]');
-        requests.push({ name, phone, email, service, msg, date: new Date().toLocaleString() });
-        localStorage.setItem('abunaqos_requests', JSON.stringify(requests));
-        showMessage(`شكراً ${name}، تم استلام طلبك وسنقوم بالتواصل معك`);
+        if(!name || !phone || !email) return showMessage("يرجى ملء البيانات", true);
+        showMessage(`شكراً ${name}، تم استلام طلبك`);
         document.getElementById('userName').value = '';
         document.getElementById('userPhone').value = '';
         document.getElementById('userEmail').value = '';
         document.getElementById('userMsg').value = '';
     });
     
-    console.log("%c 🔒 نظام إدارة المنشورات والعدادات المخفية - عبد الله أبو ناقوس", "color:#00ffaa; font-size:14px");
+    // تحميل المنشورات عند فتح الصفحة
+    renderPostsToWebsite();
+    
+    console.log("%c 🔒 نظام إدارة المنشورات والعدادات المخفية - المنشورات تنزل وتتخزن في الموقع", "color:#00ffaa; font-size:14px");
 </script>
 </body>
 </html>
