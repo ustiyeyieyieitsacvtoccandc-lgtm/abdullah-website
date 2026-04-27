@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>عبد الله أبو ناقوس | تصميم وتطوير مشغل الثقة</title>
+<title>عبد الله أبو ناقوس | تصميم وتطوير المواقع</title>
 <!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <!-- Google Fonts -->
@@ -35,7 +35,6 @@ body {
     overflow-x: hidden;
 }
 
-/* خلفية متحركة */
 .bg-animation {
     position: fixed;
     top: 0;
@@ -79,7 +78,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 450px;
+    max-width: 550px;
+    max-height: 85vh;
+    overflow-y: auto;
     background: #0c0c14;
     border-radius: 48px;
     padding: 35px;
@@ -101,7 +102,7 @@ body {
 }
 .overlay-secret { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); backdrop-filter: blur(8px); z-index: 1000000; }
 
-/* قسم مشغل الثقة - نصنعه نحن للزبون */
+/* قسم مشغل الثقة - مثال لموقع زبون */
 .trust-showcase {
     background: linear-gradient(125deg, rgba(255,107,53,0.12), rgba(139,92,246,0.08));
     border-radius: 64px;
@@ -111,16 +112,6 @@ body {
     text-align: center;
     border: 2px solid rgba(255,107,53,0.5);
     backdrop-filter: blur(3px);
-}
-.trust-logo-glow {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    background: linear-gradient(135deg, rgba(255,107,53,0.25), rgba(139,92,246,0.2));
-    padding: 15px 30px;
-    border-radius: 100px;
-    margin-bottom: 20px;
-    border: 1px solid var(--gold);
 }
 .made-by-badge {
     display: inline-flex;
@@ -132,13 +123,6 @@ body {
     margin: 15px auto;
     width: fit-content;
 }
-.seal-badge {
-    background: radial-gradient(circle, #ff6b3533, transparent);
-    padding: 25px;
-    border-radius: 80px;
-    display: inline-block;
-    margin: 15px 0;
-}
 .protected-hint {
     font-size: 13px;
     color: #88ffaa;
@@ -146,7 +130,6 @@ body {
     opacity: 0.8;
 }
 
-/* خدمات ومعرض */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -165,24 +148,6 @@ body {
 }
 .service-card:hover { transform: translateY(-8px); border-color: var(--primary); }
 .service-icon { width: 75px; height: 75px; background: var(--gradient-1); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 32px; }
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-    gap: 25px;
-    max-width: 1300px;
-    margin: 30px auto;
-    padding: 0 6%;
-}
-.gallery-card {
-    background: rgba(19,19,26,0.7);
-    border-radius: 28px;
-    overflow: hidden;
-    transition: 0.3s;
-    cursor: pointer;
-}
-.gallery-card:hover { transform: translateY(-6px); border: 1px solid var(--primary); }
-.gallery-img { width: 100%; height: 210px; object-fit: cover; }
 
 .contact-box {
     max-width: 700px;
@@ -210,7 +175,6 @@ body {
 }
 .section-title span { background: linear-gradient(135deg, #ff6b35, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-/* تذييل الحماية */
 .protection-footer {
     background: linear-gradient(135deg, #030307, #0a0a14);
     padding: 40px 6%;
@@ -230,9 +194,72 @@ body {
     gap: 12px;
 }
 
+/* تصميم جدول الزبائن داخل اللوحة السرية */
+.clients-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.clients-table th, .clients-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.clients-table th {
+    background: rgba(255,107,53,0.3);
+    color: #ffd966;
+}
+.client-actions button {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 3px;
+    cursor: pointer;
+    color: white;
+}
+.client-actions button:hover { background: var(--primary); }
+.add-client-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+}
+.add-client-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    background: #1a1a2a;
+    border: 1px solid #ff6b35;
+    border-radius: 20px;
+    color: white;
+}
+.add-client-form button {
+    background: var(--gradient-1);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+.counter-badge {
+    background: var(--primary);
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    display: inline-block;
+}
+.clients-stats {
+    background: rgba(255,107,53,0.2);
+    padding: 12px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 @media(max-width:768px){
-    .hero h1{font-size:30px;}
-    .shield-signature{font-size:18px;}
+    .clients-table th, .clients-table td { font-size: 11px; padding: 6px; }
+    .secret-panel { padding: 20px; }
 }
 </style>
 </head>
@@ -248,18 +275,20 @@ body {
 <!-- اللوحة السرية -->
 <div id="overlaySecret" class="overlay-secret" onclick="closeSecretPanel()"></div>
 <div id="secretModal" class="secret-panel">
-    <h3><i class="fas fa-shield-haltered"></i> نظام الدخول الآمن</h3>
-    <p style="color:#aaa;">أدخل رمز التحقق السري (خاص بالمطور فقط)</p>
-    <input type="password" id="secretCodeInput" placeholder="••••••••" autocomplete="off" maxlength="10">
-    <button onclick="verifySecretCode()" style="background:var(--gradient-1); width:100%; padding:12px; border-radius:40px; border:none; color:white; font-weight:bold; margin:12px 0;">🔓 تحقق وادخل</button>
-    <button onclick="closeSecretPanel()" style="background:#2d2d3a; width:100%; padding:10px; border-radius:40px; border:none; color:white;">إلغاء</button>
+    <h3 style="text-align:center;"><i class="fas fa-shield-haltered"></i> لوحة التحكم - أبو ناقوس</h3>
+    <div id="adminLoginArea">
+        <p style="color:#aaa; text-align:center;">أدخل رمز التحقق</p>
+        <input type="password" id="secretCodeInput" placeholder="••••••••" autocomplete="off" maxlength="10">
+        <button onclick="verifySecretCode()" style="background:var(--gradient-1); width:100%; padding:12px; border-radius:40px; border:none; color:white; font-weight:bold; margin:12px 0;">🔓 دخول</button>
+        <button onclick="closeSecretPanel()" style="background:#2d2d3a; width:100%; padding:10px; border-radius:40px; border:none; color:white;">إلغاء</button>
+    </div>
     <div id="adminToolsArea" style="display:none; margin-top:20px;"></div>
-    <small style="display:block; margin-top:12px;">🔒 نظام حماية متكامل | الرمز مشفر</small>
+    <small style="display:block; margin-top:12px; text-align:center;">🔒 نظام حماية متكامل</small>
 </div>
 
 <nav class="navbar" style="padding:12px 6%; display:flex; justify-content:space-between; align-items:center; background:rgba(5,5,8,0.98);">
     <div class="logo" style="display:flex; align-items:center; gap:12px;">
-        <img src="https://placehold.co/200x200/ff6b35/white?text=عبدالله+أبو+ناقوس" alt="شعار عبد الله أبو ناقوس" style="width:55px; height:55px; border-radius:18px; object-fit:cover;">
+        <div style="width:55px; height:55px; background:var(--gradient-1); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:28px;"><i class="fas fa-code"></i></div>
         <div class="logo-text"><div class="name" style="font-size:20px; font-weight:800; background:linear-gradient(135deg,#fff,#ffb347); -webkit-background-clip:text; background-clip:text; color:transparent;">عبد الله أبو ناقوس</div></div>
     </div>
     <div class="social-links">
@@ -271,51 +300,29 @@ body {
 <section class="hero" style="text-align:center; padding:80px 6% 50px;">
     <h1>نصنع <span>المواقع</span> التي<br>تبني علامتك التجارية</h1>
     <p>وكالة عبد الله أبو ناقوس - تصميم وتطوير حلول رقمية متكاملة</p>
-    <button class="btn-glow" id="scrollToTrustBtn" style="margin-top:25px; background:var(--gradient-1); border:none; padding:12px 28px; border-radius:40px; color:white; cursor:pointer;"><i class="fas fa-shield-alt"></i> مشغل الثقة - أعمالنا</button>
 </section>
 
 <h2 class="section-title">خدماتنا <span>الاحترافية</span></h2>
-<div class="services-grid" id="servicesGrid">
+<div class="services-grid">
     <div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>تصميم مواقع</h3><p>متجاوبة 100%</p></div>
     <div class="service-card"><div class="service-icon"><i class="fas fa-cart-shopping"></i></div><h3>متاجر إلكترونية</h3><p>بوابات دفع آمنة</p></div>
     <div class="service-card"><div class="service-icon"><i class="fas fa-chart-line"></i></div><h3>تحسين SEO</h3><p>نتائج متقدمة</p></div>
 </div>
 
-<h2 class="section-title">أحدث <span>أعمالنا</span> 📸</h2>
-<div class="gallery-grid" id="galleryGrid"></div>
-
-<!-- قسم مشغل الثقة - نصنعه نحن للزبون -->
+<!-- قسم مثال لموقع زبون: مشغل الثقة -->
 <div class="trust-showcase" id="trustSection">
-    <div class="trust-logo-glow">
-        <i class="fas fa-shield-virus" style="font-size:48px; color:#ffd966;"></i>
-        <span style="font-size:28px; font-weight:900;">مشغل الثقة</span>
-        <i class="fas fa-certificate" style="font-size:48px; color:#ff6b35;"></i>
-    </div>
-    
-    <!-- توضيح أننا من صنعنا هذا المشروع للزبون -->
     <div class="made-by-badge">
         <i class="fas fa-trophy" style="color:#ffd966;"></i>
-        <span style="font-weight:800;">تم التصميم والتطوير بواسطة: وكالة عبد الله أبو ناقوس</span>
+        <span style="font-weight:800;">مشروع منفذ لصالح: مشغل الثقة</span>
         <i class="fas fa-star" style="color:#ffd966;"></i>
     </div>
-    
-    <div class="seal-badge">
-        <i class="fas fa-award" style="font-size:58px; color:#ffd966;"></i>
-        <h2 style="margin:10px 0;">شهادة مشغل الثقة المعتمدة</h2>
-        <div style="background:rgba(0,0,0,0.5); padding:12px 24px; border-radius:60px; display:inline-block; margin:15px 0;">
-            <i class="fas fa-lock"></i> رمز التحقق: ●●●●●●●●●●
-        </div>
-        <p class="protected-hint">🔐 هذا المنتج الرقمي تم تصميمه وتطويره بالكامل بواسطة فريقنا لصالح عميلنا</p>
+    <div class="protected-hint">
+        <i class="fas fa-check-circle"></i> تم التصميم والتطوير بواسطة عبد الله أبو ناقوس
     </div>
-    
-    <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="display:inline-flex; gap:12px; background:var(--gradient-1); padding:12px 28px; border-radius:60px; text-decoration:none; color:white; margin:15px 0; font-weight:800;">
-        <i class="fas fa-external-link-alt"></i> رابط مشغل الثقة - المشروع المنفذ
-    </a>
-    
-    <div style="margin-top:20px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-        <span style="background:rgba(0,0,0,0.5); padding:6px 18px; border-radius:40px;"><i class="fas fa-check-circle"></i> تسليم 100%</span>
-        <span style="background:rgba(0,0,0,0.5); padding:6px 18px; border-radius:40px;"><i class="fas fa-shield-alt"></i> ضمان الجودة</span>
-        <span style="background:rgba(0,0,0,0.5); padding:6px 18px; border-radius:40px;"><i class="fas fa-headset"></i> دعم فني</span>
+    <div style="margin-top:20px;">
+        <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" style="display:inline-flex; gap:12px; background:var(--gradient-1); padding:12px 28px; border-radius:60px; text-decoration:none; color:white; font-weight:800;">
+            <i class="fas fa-external-link-alt"></i> رابط موقع مشغل الثقة
+        </a>
     </div>
 </div>
 
@@ -324,23 +331,19 @@ body {
     <div class="input-group"><input type="text" id="userName" placeholder="الاسم الكامل"></div>
     <div class="input-group"><input type="tel" id="userPhone" placeholder="رقم الجوال"></div>
     <div class="input-group"><input type="email" id="userEmail" placeholder="البريد الإلكتروني"></div>
-    <div class="input-group"><select id="serviceSelect"><option>اختر الخدمة</option><option>تصميم مواقع</option><option>متجر إلكتروني</option><option>SEO متقدم</option><option>مشغل ثقة مخصص</option></select></div>
+    <div class="input-group"><select id="serviceSelect"><option>اختر الخدمة</option><option>تصميم مواقع</option><option>متجر إلكتروني</option><option>SEO متقدم</option></select></div>
     <div class="input-group"><textarea id="userMsg" rows="3" placeholder="تفاصيل المشروع..."></textarea></div>
     <button class="btn-submit" id="sendRequestBtn"><i class="fas fa-check-circle"></i> إرسال الطلب</button>
 </div>
 
-<!-- تذييل الحماية -->
 <footer class="protection-footer">
     <div class="shield-signature">
         <i class="fas fa-shield-alt"></i> تحت حماية أبو ناقوس <i class="fas fa-lock"></i>
     </div>
-    <div style="margin-top:10px; font-size:13px; color:#aaa;">
-        جميع المشاريع المقدمة تم تصميمها وتطويرها بواسطة وكالة عبد الله أبو ناقوس
-    </div>
 </footer>
 
 <script>
-    // الرقم السري مخفي تماماً (0779418419) - لا يظهر في أي مكان في الواجهة
+    // الرقم السري
     const PROTECTION_CODE = "0779418419";
     let failedAttempts = 0;
     
@@ -353,7 +356,139 @@ body {
         setTimeout(() => toast.remove(), 3000);
     }
     
-    // النقطة الحمراء: 5 نقرات
+    // ========== إدارة الزبائن والعدادات المخفية ==========
+    // كل زبون: { id, name, websiteUrl, counter, imageUrl? }
+    
+    function loadClients() {
+        let defaultClients = [
+            { id: 1, name: "مشغل الثقة", websiteUrl: "https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/", counter: 0 },
+            { id: 2, name: "شركة الأردن للبناء", websiteUrl: "https://example.com/jordan-building", counter: 0 },
+            { id: 3, name: "مطعم سفرة", websiteUrl: "https://example.com/sufra", counter: 0 }
+        ];
+        let stored = localStorage.getItem('abunaqos_clients');
+        if(stored) return JSON.parse(stored);
+        localStorage.setItem('abunaqos_clients', JSON.stringify(defaultClients));
+        return defaultClients;
+    }
+    
+    function saveClients(clients) {
+        localStorage.setItem('abunaqos_clients', JSON.stringify(clients));
+    }
+    
+    function incrementCounter(clientId) {
+        let clients = loadClients();
+        let client = clients.find(c => c.id === clientId);
+        if(client) {
+            client.counter++;
+            saveClients(clients);
+            return client.counter;
+        }
+        return 0;
+    }
+    
+    function addClient(name, websiteUrl) {
+        let clients = loadClients();
+        let newId = Date.now();
+        clients.push({ id: newId, name: name, websiteUrl: websiteUrl, counter: 0 });
+        saveClients(clients);
+        return clients;
+    }
+    
+    function deleteClient(clientId) {
+        let clients = loadClients();
+        clients = clients.filter(c => c.id !== clientId);
+        saveClients(clients);
+        return clients;
+    }
+    
+    // نشر على فيسبوك
+    function shareOnFacebook(client) {
+        let postText = `✅ موقع جديد لـ ${client.name}\n📱 تصميم وتطوير بواسطة عبد الله أبو ناقوس\n🔗 ${client.websiteUrl}\n📞 للاستفسار: 0779418419`;
+        let url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(client.websiteUrl)}&quote=${encodeURIComponent(postText)}`;
+        window.open(url, '_blank');
+        let newCounter = incrementCounter(client.id);
+        showMessage(`📊 تم نشر ${client.name} - العداد الآن: ${newCounter}`);
+        renderClientsTable();
+    }
+    
+    // نشر على واتساب
+    function shareOnWhatsApp(client) {
+        let postText = `✅ موقع جديد لـ ${client.name}\n📱 تصميم وتطوير بواسطة عبد الله أبو ناقوس\n🔗 ${client.websiteUrl}\n📞 للاستفسار: 0779418419`;
+        let url = `https://wa.me/?text=${encodeURIComponent(postText)}`;
+        window.open(url, '_blank');
+        let newCounter = incrementCounter(client.id);
+        showMessage(`📊 تم نشر ${client.name} - العداد الآن: ${newCounter}`);
+        renderClientsTable();
+    }
+    
+    function renderClientsTable() {
+        let clients = loadClients();
+        let totalPosts = clients.reduce((sum, c) => sum + c.counter, 0);
+        let html = `<div class="clients-stats">
+                        <i class="fas fa-chart-line"></i> إجمالي المنشورات: <strong>${totalPosts}</strong> | عدد الزبائن: <strong>${clients.length}</strong>
+                    </div>
+                    <table class="clients-table">
+                        <thead>
+                            <tr><th>المشروع (الموقع)</th><th>رابط الموقع</th><th>عدد المنشورات</th><th>نشر</th><th>حذف</th></tr>
+                        </thead>
+                        <tbody>`;
+        clients.forEach(client => {
+            html += `<tr>
+                        <td><strong>${client.name}</strong></td>
+                        <td><a href="${client.websiteUrl}" target="_blank" style="color:#ffd966; font-size:12px;">رابط</a></td>
+                        <td><span class="counter-badge">${client.counter}</span></td>
+                        <td class="client-actions">
+                            <button onclick="shareOnFacebookClient(${client.id})"><i class="fab fa-facebook-f"></i></button>
+                            <button onclick="shareOnWhatsAppClient(${client.id})"><i class="fab fa-whatsapp"></i></button>
+                        </td>
+                        <td><button onclick="deleteClientById(${client.id})" style="background:#dc2626;"><i class="fas fa-trash"></i></button></td>
+                     </tr>`;
+        });
+        html += `</tbody></table>
+                 <div class="add-client-form">
+                    <h4 style="margin-bottom:10px;"><i class="fas fa-plus-circle"></i> إضافة زبون جديد (موقع جديد سويتة)</h4>
+                    <input type="text" id="newClientName" placeholder="اسم الزبون / المشروع">
+                    <input type="url" id="newClientUrl" placeholder="رابط الموقع الإلكتروني">
+                    <button onclick="addNewClient()"><i class="fas fa-save"></i> إضافة وحفظ</button>
+                 </div>`;
+        document.getElementById('clientsTableContainer').innerHTML = html;
+    }
+    
+    window.shareOnFacebookClient = function(clientId) {
+        let clients = loadClients();
+        let client = clients.find(c => c.id === clientId);
+        if(client) shareOnFacebook(client);
+    };
+    
+    window.shareOnWhatsAppClient = function(clientId) {
+        let clients = loadClients();
+        let client = clients.find(c => c.id === clientId);
+        if(client) shareOnWhatsApp(client);
+    };
+    
+    window.deleteClientById = function(clientId) {
+        if(confirm('هل أنت متأكد من حذف هذا الزبون؟')) {
+            deleteClient(clientId);
+            renderClientsTable();
+            showMessage('🗑 تم حذف الزبون');
+        }
+    };
+    
+    window.addNewClient = function() {
+        let name = document.getElementById('newClientName').value.trim();
+        let url = document.getElementById('newClientUrl').value.trim();
+        if(!name || !url) {
+            showMessage('❌ الرجاء إدخال اسم الزبون ورابط الموقع', true);
+            return;
+        }
+        addClient(name, url);
+        renderClientsTable();
+        document.getElementById('newClientName').value = '';
+        document.getElementById('newClientUrl').value = '';
+        showMessage(`✅ تم إضافة ${name} بنجاح`);
+    };
+    
+    // ========== النقطة الحمراء والتحقق ==========
     let clickCount = 0;
     let clickTimer;
     const dotButton = document.getElementById('secretDotTrigger');
@@ -374,6 +509,7 @@ body {
         document.getElementById('secretModal').style.display = 'block';
         document.getElementById('secretCodeInput').value = '';
         document.getElementById('adminToolsArea').style.display = 'none';
+        document.getElementById('adminLoginArea').style.display = 'block';
     }
     window.closeSecretPanel = function() {
         document.getElementById('overlaySecret').style.display = 'none';
@@ -383,40 +519,33 @@ body {
     window.verifySecretCode = function() {
         let entered = document.getElementById('secretCodeInput').value.trim();
         if(entered === PROTECTION_CODE) {
+            document.getElementById('adminLoginArea').style.display = 'none';
             const toolsDiv = document.getElementById('adminToolsArea');
             toolsDiv.style.display = 'block';
             toolsDiv.innerHTML = `
                 <div style="background:#11111c; border-radius:28px; padding:18px;">
-                    <i class="fas fa-check-circle" style="color:#00ffaa;"></i> <strong>مرحباً مطور عبد الله أبو ناقوس</strong>
-                    <p style="margin:8px 0;">✅ تم التحقق - يمكنك إدارة مشغل الثقة والطلبات</p>
-                    <button id="showRequestsBtn" style="background:#8b5cf6; border:none; padding:8px 14px; border-radius:30px; margin:5px; color:white;">📋 عرض طلبات العملاء</button>
-                    <button id="clearRequestsBtn" style="background:#ff6b35; border:none; padding:8px 14px; border-radius:30px; margin:5px; color:white;">🗑️ مسح الطلبات</button>
-                    <p style="margin-top:12px;"><i class="fas fa-code"></i> مشغل الثقة من تصميم وتطوير عبد الله أبو ناقوس</p>
+                    <i class="fas fa-check-circle" style="color:#00ffaa;"></i> 
+                    <strong>مرحباً مطور عبد الله أبو ناقوس</strong>
+                    <p style="margin:8px 0;">✅ نظام إدارة المنشورات والعدادات المخفية</p>
+                    <div id="clientsTableContainer"></div>
+                    <button onclick="closeSecretPanel()" style="background:#8b5cf6; border:none; padding:10px; border-radius:30px; margin-top:15px; color:white; width:100%;">🔒 إغلاق اللوحة</button>
                 </div>
             `;
-            document.getElementById('showRequestsBtn')?.addEventListener('click', () => {
-                let requests = JSON.parse(localStorage.getItem('trust_projects_requests') || '[]');
-                if(requests.length) { console.table(requests); showMessage(`✅ عرض ${requests.length} طلب في Console`); }
-                else showMessage("لا توجد طلبات مسجلة", true);
-            });
-            document.getElementById('clearRequestsBtn')?.addEventListener('click', () => {
-                localStorage.removeItem('trust_projects_requests');
-                showMessage("تم مسح جميع الطلبات بنجاح");
-            });
+            renderClientsTable();
             showMessage("تم فتح لوحة التحكم بنجاح ✅");
             failedAttempts = 0;
         } else {
             failedAttempts++;
             showMessage(`❌ رمز التحقق غير صحيح! المحاولة ${failedAttempts}/3`, true);
             if(failedAttempts >= 3) {
-                showMessage("🔴 تم حظر المحاولات المؤقتة حماية للرمز!", true);
+                showMessage("🔴 تم حظر المحاولات المؤقتة!", true);
                 document.getElementById('secretCodeInput').disabled = true;
                 setTimeout(() => { document.getElementById('secretCodeInput').disabled = false; failedAttempts = 0; }, 15000);
             }
         }
     };
     
-    // إرسال الطلب
+    // إرسال طلب تواصل
     document.getElementById('sendRequestBtn').addEventListener('click', () => {
         let name = document.getElementById('userName').value.trim();
         let phone = document.getElementById('userPhone').value.trim();
@@ -424,9 +553,9 @@ body {
         let service = document.getElementById('serviceSelect').value;
         let msg = document.getElementById('userMsg').value.trim();
         if(!name || !phone || !email) return showMessage("يرجى ملء الاسم والجوال والبريد", true);
-        let requests = JSON.parse(localStorage.getItem('trust_projects_requests') || '[]');
+        let requests = JSON.parse(localStorage.getItem('abunaqos_requests') || '[]');
         requests.push({ name, phone, email, service, msg, date: new Date().toLocaleString() });
-        localStorage.setItem('trust_projects_requests', JSON.stringify(requests));
+        localStorage.setItem('abunaqos_requests', JSON.stringify(requests));
         showMessage(`شكراً ${name}، تم استلام طلبك وسنقوم بالتواصل معك`);
         document.getElementById('userName').value = '';
         document.getElementById('userPhone').value = '';
@@ -434,32 +563,7 @@ body {
         document.getElementById('userMsg').value = '';
     });
     
-    // معرض الصور
-    const galleryItems = [
-        { title: "مشغل الثقة - واجهة العميل", img: "https://picsum.photos/id/106/400/260" },
-        { title: "لوحة تحكم مشغل الثقة", img: "https://picsum.photos/id/20/400/260" },
-        { title: "تصميم موقع شركة", img: "https://picsum.photos/id/26/400/260" },
-        { title: "منصة خدمات رقمية", img: "https://picsum.photos/id/13/400/260" }
-    ];
-    function loadGallery() {
-        const container = document.getElementById('galleryGrid');
-        container.innerHTML = '';
-        galleryItems.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'gallery-card';
-            card.innerHTML = `<img src="${item.img}" class="gallery-img" loading="lazy"><p><i class="fas fa-star" style="color:#ff6b35;"></i> ${item.title}</p>`;
-            card.onclick = () => window.open(item.img, '_blank');
-            container.appendChild(card);
-        });
-    }
-    loadGallery();
-    
-    document.getElementById('scrollToTrustBtn').addEventListener('click', () => {
-        document.getElementById('trustSection').scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    console.log("%c 🔒 مشغل الثقة - تم التصميم والتطوير بواسطة عبد الله أبو ناقوس | الرقم السري مشفر ومخفي", "color:#00ffaa; font-size:14px");
-    console.log("الرقم 0779418419 مخفي تماماً ولا يظهر لأي مستخدم");
+    console.log("%c 🔒 نظام إدارة المنشورات والعدادات المخفية - عبد الله أبو ناقوس", "color:#00ffaa; font-size:14px");
 </script>
 </body>
 </html>
