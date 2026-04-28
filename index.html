@@ -2,695 +2,257 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>أبو ناقوس | قمة الحلول البرمجية المتكاملة</title>
-    <meta name="description" content="نبرمج أحلامك لواقع متكامل: أنظمة ذكية، عيادات، مشاريع طلابية، ومواقع تعريفية بأعلى تقنيات العصر.">
-    <meta property="og:title" content="أبو ناقوس | الحل الأمثل لمشروعك الرقمي">
-    <meta property="og:description" content="حلول برمجية متكاملة - أنظمة العيادات، مشاريع التخرج، ومواقع احترافية مع دعم التقنيات الحديثة.">
-    <meta property="og:image" content="https://i.ibb.co/3ykXv6B/cyber-thumb.jpg">
-    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أرابيسك | تحت التطوير</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;900&family=Orbitron:wght@900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --main-cyan: #00f2ff;
+            --main-purple: #bc13fe;
+            --bg-deep: #000000;
         }
 
-        :root {
-            --neon-blue: #00f2ff;
-            --deep-purple: #7000ff;
-            --dark-bg: #03030a;
-            --glass-card: rgba(15, 15, 30, 0.6);
-            --border-neon: rgba(0, 242, 255, 0.25);
-            --glow-blue: 0 0 12px rgba(0, 242, 255, 0.5);
-            --glow-purple: 0 0 12px rgba(112, 0, 255, 0.6);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--dark-bg);
-            color: #f0f0ff;
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-
-        /* animated gradient mesh */
-        .bg-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.08) 0%, rgba(112, 0, 255, 0.12) 60%, #03030a 100%);
-            z-index: -2;
-        }
-
-        canvas#particles-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* modern scroll */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #111;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--neon-blue);
-            border-radius: 10px;
-        }
-
-        /* navigation cyber */
-        .navbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            padding: 1rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(16px);
-            background: rgba(3, 3, 10, 0.7);
-            border-bottom: 1px solid var(--border-neon);
-            z-index: 1000;
-            transition: 0.3s;
-        }
-
-        .logo {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-blue), var(--deep-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            font-size: 1rem;
-            color: var(--neon-blue);
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-        }
-
-        .nav-btn {
-            background: linear-gradient(90deg, var(--neon-blue), var(--deep-purple));
-            padding: 0.6rem 1.8rem;
-            border-radius: 40px;
-            font-weight: 700;
-            color: #000;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 0.9rem;
-            box-shadow: 0 0 8px rgba(0,242,255,0.4);
-        }
-
-        .nav-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--neon-blue);
-        }
-
-        /* hero section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 6rem 5% 2rem;
-            position: relative;
-        }
-
-        .hero-badge {
-            background: rgba(0, 242, 255, 0.15);
-            padding: 0.4rem 1.2rem;
-            border-radius: 60px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--neon-blue);
-            font-weight: 600;
-            letter-spacing: 2px;
-            backdrop-filter: blur(5px);
-        }
-
-        .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
-        }
-
-        .hero h1 .neon-text {
-            color: var(--neon-blue);
-            text-shadow: 0 0 12px var(--neon-blue);
-        }
-
-        .hero-desc {
-            font-size: 1.2rem;
-            color: #bcbcff;
-            max-width: 700px;
-            margin-bottom: 2rem;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(95deg, var(--neon-blue), #2b6eff);
-            padding: 0.9rem 2.3rem;
-            border-radius: 60px;
-            font-weight: 800;
-            color: #03030a;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 0 12px rgba(0,242,255,0.4);
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--neon-blue);
-            padding: 0.9rem 2.3rem;
-            border-radius: 60px;
-            font-weight: 800;
-            color: var(--neon-blue);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .btn-primary:hover, .btn-outline:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0,242,255,0.3);
-        }
-
-        /* section titles */
-        .section {
-            padding: 5rem 7% 4rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(120deg, #fff, var(--neon-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .section-header .glow-line {
-            width: 70px;
-            height: 4px;
-            background: var(--neon-blue);
-            margin: 0.8rem auto 0;
-            border-radius: 4px;
-            box-shadow: var(--glow-blue);
-        }
-
-        /* cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .service-card {
-            background: var(--glass-card);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border-neon);
-            border-radius: 2rem;
-            padding: 2rem 1.8rem;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--neon-blue), var(--deep-purple));
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .service-card:hover {
-            border-color: var(--neon-blue);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 35px -12px rgba(0,242,255,0.2);
-            background: rgba(20, 20, 45, 0.75);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            color: var(--neon-blue);
-            margin-bottom: 1.2rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: #cbcbff;
-            line-height: 1.6;
-        }
-
-        .badge-hot {
-            position: absolute;
-            top: 20px;
-            left: -25px;
-            background: var(--deep-purple);
-            color: white;
-            padding: 4px 40px;
-            transform: rotate(-45deg);
-            font-size: 0.7rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 12px rgba(112,0,255,0.4);
-        }
-
-        /* trust section special */
-        .trust-showcase {
-            margin: 1rem 0 4rem;
-            background: radial-gradient(ellipse at 50% 50%, rgba(0, 242, 255, 0.05), transparent);
-            border-radius: 3rem;
-            padding: 2rem;
-        }
-        
-        .trust-card {
-            background: linear-gradient(145deg, rgba(0, 242, 255, 0.08), rgba(112, 0, 255, 0.08));
-            border: 1px solid rgba(0,242,255,0.4);
-            border-radius: 2rem;
-            padding: 2rem 2rem;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            transition: 0.3s;
-        }
-        
-        .trust-card:hover {
-            box-shadow: 0 0 25px rgba(0,242,255,0.3);
-            border-color: var(--neon-blue);
-        }
-        
-        .trust-title {
-            font-size: 1.9rem;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, #fff, #aaffff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .trust-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #0a0a1f;
-            padding: 0.8rem 1.8rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            color: var(--neon-blue);
-            margin-top: 1rem;
-            border: 1px solid var(--neon-blue);
-            transition: 0.25s;
-        }
-        
-        .trust-link i {
-            font-size: 1.3rem;
-        }
-        
-        .trust-link:hover {
-            background: var(--neon-blue);
-            color: #000;
-            box-shadow: var(--glow-blue);
-            gap: 18px;
-        }
-        
-        .arabic-quote {
-            font-size: 1rem;
-            color: #bbbbff;
-            margin-top: 1.2rem;
-            letter-spacing: 0.5px;
-        }
-        
-        /* features grid */
-        .features-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2.5rem;
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .feature-item {
-            background: rgba(255,255,255,0.02);
-            padding: 1.5rem;
-            border-radius: 2rem;
-            width: 220px;
-            transition: all 0.2s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .feature-item i {
-            font-size: 2.4rem;
-            color: var(--deep-purple);
-            margin-bottom: 1rem;
-            text-shadow: var(--glow-purple);
-        }
-        
-        .feature-item h4 {
-            font-size: 1.3rem;
-            margin: 0.5rem 0;
-        }
-        
-        /* contact social area */
-        .contact-zone {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4rem;
-            padding: 2.5rem;
-            margin-top: 2rem;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.8rem;
-            margin-top: 1.8rem;
-            flex-wrap: wrap;
-        }
-        
-        .social-icon {
-            background: rgba(0, 242, 255, 0.1);
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.8rem;
+            background: var(--bg-deep);
             color: #fff;
-            border: 1px solid var(--border-neon);
-            transition: 0.25s;
-            text-decoration: none;
-        }
-        
-        .social-icon:hover {
-            background: var(--neon-blue);
-            color: #000;
-            transform: scale(1.1);
-            border-color: var(--neon-blue);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-neon);
-            margin-top: 3rem;
-            color: #6f6faa;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @media (max-width: 750px) {
-            .section {
-                padding: 3rem 5%;
-            }
-            .button-group {
-                gap: 1rem;
-            }
-            .navbar {
-                padding: 0.8rem 5%;
-            }
-            .logo {
-                font-size: 1.4rem;
-            }
+        #canvas-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(1px);
         }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .status-bar {
+            font-size: 1.2rem;
+            letter-spacing: 10px;
+            color: var(--main-purple);
+            text-shadow: 0 0 10px var(--main-purple);
+            margin-bottom: 10px;
+            animation: blink 1.5s infinite;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+
+        .title-container h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(4rem, 18vw, 9rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            background: linear-gradient(90deg, #fff, var(--main-cyan), var(--main-purple), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .timer-capsule {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px 60px;
+            border-radius: 100px;
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .t-unit b {
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: var(--main-cyan);
+            text-shadow: 0 0 20px var(--main-cyan);
+        }
+
+        .t-unit span {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bomb-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #fff;
+        }
+
+        .bomb-icon {
+            color: #ff3c00;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .launch-day {
+            font-size: 2.5rem;
+            color: var(--main-cyan);
+            font-weight: 900;
+            margin: 20px 0;
+            text-shadow: 0 0 15px var(--main-cyan);
+        }
+
+        .cyber-line {
+            width: 300px; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--main-cyan), transparent);
+            margin: 30px auto;
+        }
+
     </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
-<canvas id="particles-bg"></canvas>
+    <canvas id="canvas-bg"></canvas>
+    <div class="overlay"></div>
 
-<nav class="navbar">
-    <div class="logo">NAQOS<span>_CYBER</span></div>
-    <a href="#contact-section" class="nav-btn"><i class="fas fa-paper-plane" style="margin-left: 6px;"></i> تواصل فوري</a>
-</nav>
-
-<section class="hero" id="home">
-    <div data-aos="fade-up" data-aos-duration="1000">
-        <div class="hero-badge"><i class="fas fa-code"></i> 革新 التكنولوجيا</div>
-        <h1>أبو ناقوس لتطوير <span class="neon-text">الأنظمة الذكية</span><br>& حلول المستقبل</h1>
-        <p class="hero-desc">نحوِّل رؤيتك إلى واقع رقمي — أنظمة متكاملة للعيادات، مشاريع تخرج مذهلة، ومواقع تعكس هويتك بتميز.</p>
-        <div class="button-group">
-            <a href="#services" class="btn-primary"><i class="fas fa-cogs" style="margin-left: 8px;"></i> خدماتنا</a>
-            <a href="#contact-section" class="btn-outline"><i class="fas fa-headset"></i> اطلب استشارة</a>
+    <div class="main-content">
+        <div class="status-bar" data-aos="fade-down">الموقع تحت التطوير</div>
+        
+        <div class="title-container" data-aos="zoom-in">
+            <h1>ARABESQUE</h1>
         </div>
+
+        <div class="launch-day" data-aos="fade-up">الخميس الانطلاق</div>
+
+        <div class="timer-capsule" data-aos="fade-up" data-aos-delay="400">
+            <div class="t-unit"><b id="d">00</b><span>يوم</span></div>
+            <div class="t-unit"><b id="h">00</b><span>ساعة</span></div>
+            <div class="t-unit"><b id="m">00</b><span>دقيقة</span></div>
+            <div class="t-unit"><b id="s">00</b><span>ثانية</span></div>
+        </div>
+
+        <div class="bomb-text" data-aos="fade-up" data-aos-delay="600">
+            <i class="fas fa-bomb bomb-icon"></i>
+            قنبلة البرمجة القادمة
+        </div>
+
+        <div class="cyber-line"></div>
+        
+        <p style="font-size: 1.5rem; font-weight: 900; letter-spacing: 5px; color: #888;" data-aos="fade-in" data-aos-delay="800">
+            القادم أعظم
+        </p>
     </div>
-</section>
 
-<!-- services section -->
-<section class="section" id="services">
-    <div class="section-header" data-aos="fade-up">
-        <h2>مجالات الخبرة</h2>
-        <div class="glow-line"></div>
-        <p style="margin-top: 10px; color:#aaa;">كل مشروع نلمسه يصبح قطعة فنية بأعلى معايير الجودة</p>
-    </div>
-    <div class="cards-grid">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
-            <h3>أنظمة العيادات</h3>
-            <p>إدارة ذكية للمواعيد، السجلات الطبية، والمرضى. واجهة سهلة وإحصائيات لحظية لتطوير الأداء الطبي.</p>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="badge-hot">⭐ طلابي مميز</div>
-            <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-            <h3>مشاريع الطلاب</h3>
-            <p>تنفيذ مشاريع تخرج IT احترافية + شرح كامل للكود. نضمن لك التفوق والفهم العميق لكل جزئية.</p>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="card-icon"><i class="fas fa-browser"></i></div>
-            <h3>مواقع تعريفية</h3>
-            <p>تصاميم عصرية تعرض هويتك، أعمالك، وخدماتك بأسلوب جذاب وسريع الاستجابة لجميع الأجهزة.</p>
-        </div>
-    </div>
-</section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
 
-<!-- مَشغل الثقة section - حسب طلبك "من اعملنه.  شاهد مشغل الثقة" -->
-<section class="section" style="padding-top: 0;">
-    <div class="trust-showcase" data-aos="fade-up">
-        <div class="trust-card">
-            <i class="fas fa-certificate" style="font-size: 2.5rem; color: #00f2ff; margin-bottom: 10px; display: inline-block;"></i>
-            <div class="trust-title">🔍 من اعملنه .. شاهد مشغل الثقة</div>
-            <p style="margin: 0.5rem auto; max-width: 500px;">نفتخر بجودة عملنا ونضع بين يديك رابط “مشغل الثقة” الذي يعكس موثوقية الخدمات البرمجية التي نقدمها. انقر لترى بأم عينك مستوى الإتقان.</p>
-            <a href="https://ustiyeyieyieitsacvtoccandc-lgtm.github.io/mshghal-althiqa/" target="_blank" class="trust-link" rel="noopener noreferrer">
-                <i class="fas fa-eye"></i> تشغيل الثقة الآن
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <div class="arabic-quote">
-                <i class="fas fa-handshake"></i> “ثقة كاملة وجودة احترافية — شعارنا في كل مشروع”
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Features -->
-<section class="section" style="background: rgba(0,0,0,0.2); border-radius: 60px; margin: 0 5% 2rem 5%;">
-    <div class="section-header" data-aos="fade-up">
-        <h2>لماذا تختارنا؟</h2>
-        <div class="glow-line"></div>
-    </div>
-    <div class="features-grid">
-        <div class="feature-item" data-aos="zoom-in">
-            <i class="fas fa-tachometer-alt"></i>
-            <h4>سرعة فائقة</h4>
-            <p>أكواد خفيفة وعصرية مع تحسين أداء SEO و Core Web Vitals</p>
-        </div>
-        <div class="feature-item" data-aos="zoom-in" data-aos-delay="100">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <h4>شرح الكود</h4>
-            <p>نرفق شرحاً تفصيلياً للمشاريع التعليمية لضمان فهمك الكامل</p>
-        </div>
-        <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
-            <i class="fas fa-shield-alt"></i>
-            <h4>حماية مدمجة</h4>
-            <p>معايير أمان متقدمة وحماية من الهجمات الشائعة</p>
-        </div>
-        <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
-            <i class="fas fa-code"></i>
-            <h4>كود خاص بك</h4>
-            <p>برمجة يدوية من الصفر، لا قوالب جاهزة، تميز تام بمشروعك</p>
-        </div>
-    </div>
-</section>
-
-<!-- contact section with social -->
-<section class="section" id="contact-section">
-    <div class="contact-zone" data-aos="fade-up">
-        <h2 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fas fa-comment-dots"></i> جاهز لتحويل فكرتك إلى حقيقة؟</h2>
-        <p style="color: #bcbcff; margin-bottom: 1rem;">تواصل معي عبر أي من منصات التواصل، فنحن على بعد رسالة لمناقشة طلبك والبدء الفوري.</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/share/191DRXcdf6/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/bdllh.nqws" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/962779418419" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div style="margin-top: 2rem;">
-            <a href="https://wa.me/962779418419?text=مرحباً%20أبو%20ناقوس،%20أريد%20مناقشة%20مشروع%20برمجي" class="btn-primary" style="background: #25D366; box-shadow: none;"><i class="fab fa-whatsapp"></i> واتساب مباشر</a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>جميع الحقوق محفوظة &copy; 2026 | المهندس: أبو ناقوس للحلول البرمجية المتكاملة</p>
-    <p style="font-size: 0.75rem; margin-top: 8px;">تحت إشراف تقني احترافي — أنظمة مبتكرة تخدم أعمالك</p>
-</footer>
-
-<!-- scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    // منع تغيير موضع التمرير التلقائي وضبط بداية الصفحة من الأعلى بشكل قطعي
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
-    window.addEventListener('load', () => {
-        window.scrollTo(0, 0);
-        AOS.init({
-            duration: 800,
-            once: true,
-            mirror: false,
-            offset: 50
-        });
-    });
-    window.scrollTo(0, 0);
-    
-    // خلفية الجسيمات التفاعلية (نسخة خفيفة بانسيابية)
-    (function initParticles() {
-        const canvas = document.getElementById('particles-bg');
-        if (!canvas) return;
+        const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
-        let width = window.innerWidth;
-        let height = window.innerHeight;
-        let particlesArray = [];
-        const particleCount = 70;
-        
-        function resizeCanvas() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+        let width, height;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2.2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.color = `rgba(0, 242, 255, ${this.opacity})`;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0) this.x = width;
-                if (this.x > width) this.x = 0;
-                if (this.y < 0) this.y = height;
-                if (this.y > height) this.y = 0;
-            }
-            draw() {
-                if (!ctx) return;
+        window.addEventListener('resize', resize);
+        resize();
+
+        const dots = [];
+        for(let i=0; i<150; i++) {
+            dots.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0,0,width,height);
+            ctx.fillStyle = "rgba(0, 242, 255, 0.5)";
+            
+            dots.forEach(d => {
+                d.x += d.vx;
+                d.y += d.vy;
+                if(d.x < 0 || d.x > width) d.vx *= -1;
+                if(d.y < 0 || d.y > height) d.vy *= -1;
+                
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
+                ctx.arc(d.x, d.y, 1.5, 0, Math.PI*2);
                 ctx.fill();
-            }
-        }
-        
-        function initParticlesArray() {
-            particlesArray = [];
-            for (let i = 0; i < particleCount; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-        
-        function animateParticles() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, width, height);
-            for (let p of particlesArray) {
-                p.update();
-                p.draw();
-            }
-            // draw subtle connections
-            ctx.beginPath();
-            for (let i = 0; i < particlesArray.length; i++) {
-                for (let j = i + 1; j < particlesArray.length; j++) {
-                    const dx = particlesArray[i].x - particlesArray[j].x;
-                    const dy = particlesArray[i].y - particlesArray[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 110) {
-                        ctx.strokeStyle = `rgba(0, 242, 255, ${0.1 * (1 - distance / 110)})`;
-                        ctx.lineWidth = 0.5;
+                
+                dots.forEach(d2 => {
+                    let dist = Math.hypot(d.x - d2.x, d.y - d2.y);
+                    if(dist < 150) {
+                        ctx.strokeStyle = `rgba(188, 19, 254, ${1 - dist/150})`;
+                        ctx.lineWidth = 0.2;
                         ctx.beginPath();
-                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.moveTo(d.x, d.y);
+                        ctx.lineTo(d2.x, d2.y);
                         ctx.stroke();
                     }
-                }
-            }
-            requestAnimationFrame(animateParticles);
+                });
+            });
+            requestAnimationFrame(draw);
         }
-        
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticlesArray();
-        });
-        resizeCanvas();
-        initParticlesArray();
-        animateParticles();
-    })();
-</script>
+        draw();
+
+        function updateTimer() {
+            // تحديد موعد الانطلاق (الخميس القادم)
+            let now = new Date();
+            let target = new Date();
+            target.setDate(now.getDate() + (4 - now.getDay() + 7) % 7);
+            target.setHours(0, 0, 0, 0);
+
+            let diff = target - now;
+            if (diff < 0) {
+                target.setDate(target.getDate() + 7);
+                diff = target - now;
+            }
+
+            document.getElementById('d').innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
+            document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
+            document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+            document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
 </body>
 </html>
