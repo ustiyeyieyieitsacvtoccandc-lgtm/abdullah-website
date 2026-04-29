@@ -507,13 +507,11 @@
     renderer.setClearColor(0x000000, 0);
     canvasDiv.appendChild(renderer.domElement);
     
-    // Central Dynamic Object: Spinning Hyper Torus Knot + particles
     const knotGeo = new THREE.TorusKnotGeometry(1.5, 0.35, 300, 48, 3, 4);
     const knotMat = new THREE.MeshStandardMaterial({ color: 0x00f7ff, wireframe: true, emissive: 0x005588, emissiveIntensity: 0.7 });
     const knot = new THREE.Mesh(knotGeo, knotMat);
     scene.add(knot);
     
-    // additional floating rings
     const ringGeo = new THREE.TorusGeometry(2.2, 0.07, 128, 200);
     const ringMat = new THREE.MeshStandardMaterial({ color: 0xb000ff, emissive: 0x440066 });
     const ring = new THREE.Mesh(ringGeo, ringMat);
@@ -566,16 +564,21 @@
 </script>
 
 <script>
+    // حل مشكلة تحميل الموقع في المنتصف أو الأسفل
+    // نضمن بقاء الصفحة في الأعلى عند إعادة التحميل أو الدخول
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     AOS.init({ once: false, mirror: true, duration: 800 });
     
-    // Navbar scroll effect
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
         if (window.scrollY > 50) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
     });
     
-    // Neon particle explosion
     document.body.addEventListener('click', (e) => {
         for (let i = 0; i < 12; i++) {
             const p = document.createElement('div');
@@ -589,7 +592,6 @@
         }
     });
     
-    // Custom Cursor Follower
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
     window.addEventListener('mousemove', (e) => {
@@ -603,9 +605,7 @@
         el.addEventListener('mouseleave', () => cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)');
     });
     
-    // Counter Animation
     const counters = document.querySelectorAll('.stat-number');
-    const speed = 150;
     const startCounting = () => {
         counters.forEach(counter => {
             const updateCount = () => {
@@ -635,13 +635,19 @@
     }, { threshold: 0.5 });
     if (statsSection) observer.observe(statsSection);
     
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
+
+    // تأكيد إضافي للصعود للأعلى بعد تحميل الـ AOS والـ 3D
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 100);
     });
 </script>
 </body>
