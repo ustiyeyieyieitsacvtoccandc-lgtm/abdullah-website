@@ -8,10 +8,12 @@
     <meta name="description" content="أربكس البرمجة - حيث تتحول الأفكار إلى أنظمة ذكية. حلول روبوتية متكاملة ومشاريع هندسية.">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/"> <meta property="og:title" content="✦ أربكس البرمجة | NEURO SYMPHONY ✦">
+    <meta property="og:url" content="https://yourwebsite.com/"> 
+    <meta property="og:title" content="✦ أربكس البرمجة | NEURO SYMPHONY ✦">
     <meta property="og:description" content="من الخوادم الكمومية إلى الروبوتات المدركة — نبني واقعًا موازيًا من الإبداع التكنولوجي.">
     
-    <meta property="og:image" content="https://images2.imgbox.com/0f/22/w3T2748P_o.png"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://images2.imgbox.com/0f/22/w3T2748P_o.png"> 
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="✦ أربكس البرمجة | NEURO SYMPHONY ✦">
     <meta property="twitter:description" content="من الخوادم الكمومية إلى الروبوتات المدركة — نبني واقعًا موازيًا من الإبداع التكنولوجي.">
     <meta property="twitter:image" content="https://images2.imgbox.com/0f/22/w3T2748P_o.png">
@@ -360,7 +362,7 @@
             direction: ltr;
         }
 
-        /* --- نـمط قـسم الـمراسلة الـجديد --- */
+        /* --- نـمط قـسم الـمراسلة الـمطور --- */
         .cyber-input {
             width: 100%;
             padding: 15px;
@@ -369,7 +371,7 @@
             border-radius: 15px;
             color: white;
             font-family: 'Cairo', sans-serif;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             outline: none;
             transition: 0.3s;
         }
@@ -377,7 +379,6 @@
             box-shadow: var(--neon-glow-cyan);
             background: rgba(0, 247, 255, 0.1);
         }
-        /* ---------------------------------- */
 
         footer {
             text-align: center;
@@ -467,6 +468,8 @@
         <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; font-family: 'Orbitron';">📡 قـناة الاتصال الـمباشر</h2>
         <p style="margin-bottom: 2rem; color: var(--primary-cyan);">أرسل رسالة فورية إلى عقل النظام (المبرمج)</p>
         
+        <input type="text" id="userName" class="cyber-input" placeholder="اسمك الكريم...">
+        <input type="text" id="userContact" class="cyber-input" placeholder="رقم هاتفك أو حسابك (للرد عليك)...">
         <textarea id="devMessage" class="cyber-input" placeholder="اكتب شفرتك أو رسالتك هنا..." rows="4"></textarea>
         
         <button onclick="sendToDev()" class="btn-cyber">
@@ -607,17 +610,38 @@
         else nav.classList.remove('scrolled');
     });
 
-    // --- وظـيفة الإرسـال الـسحرية ---
+    // --- وظـيفة الإرسـال الـمطورة (بالاسم الجديد السري) ---
     function sendToDev() {
+        const name = document.getElementById('userName').value;
+        const contact = document.getElementById('userContact').value;
         const msg = document.getElementById('devMessage').value;
-        if (!msg) { alert("أدخل رسالة أولاً!"); return; }
 
-        fetch('https://ntfy.sh/abdullah_dev_2026', {
+        if (!msg) { 
+            alert("أدخل رسالة أولاً!"); 
+            return; 
+        }
+
+        const fullMessage = `👤 الاسم: ${name || 'غير معروف'}\n📞 التواصل: ${contact || 'لم يذكر'}\n\n💬 الرسالة:\n${msg}`;
+
+        // ملاحظة: قمت بتغيير اسم القناة إلى كود سري لضمان الخصوصية
+        fetch('https://ntfy.sh/arb_private_gate_z91x', {
             method: 'POST',
-            body: msg
-        }).then(() => {
-            alert("تـم بـث الرسالـة بنجاح! سيهتز هاتفك الآن.");
-            document.getElementById('devMessage').value = "";
+            body: fullMessage,
+            headers: {
+                'Title': '📡 رسالة جديدة من أربكس البرمجة',
+                'Priority': 'high',
+                'Tags': 'incoming_envelope,zap',
+                'Actions': 'view, الرد عبر واتساب, https://wa.me/962779418419; view, فتح الموقع, https://yourwebsite.com/'
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("تـم بـث الرسالـة بنجاح! سيهتز هاتفك الآن.");
+                document.getElementById('userName').value = "";
+                document.getElementById('userContact').value = "";
+                document.getElementById('devMessage').value = "";
+            } else {
+                alert("فشل الإرسال، حاول لاحقاً.");
+            }
         });
     }
     // ----------------------------
